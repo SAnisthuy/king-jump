@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	visible = false
+	queue_free()
 	coin_collected.emit()
