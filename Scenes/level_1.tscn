@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://bfjb3oe1sa1ri"]
 
-[ext_resource type="PackedScene" uid="uid://c6jcqf2bc6x3k" path="res://Scenes/player.tscn" id="1_ebmjs"]
-[ext_resource type="Texture2D" uid="uid://cpklwvhhar0i2" path="res://Assets/maintileset/midground_/dungeon_.png" id="2_qxrlw"]
-[ext_resource type="Texture2D" uid="uid://qhess0d4fiul" path="res://Assets/maintileset/background_/dungeon_.png" id="3_3dryh"]
-[ext_resource type="Texture2D" uid="uid://uscojrxquhxq" path="res://Assets/maintileset/objects_/staticObjects_.png" id="3_wrm1d"]
-[ext_resource type="Script" uid="uid://3yxoq5eyy2up" path="res://Scripts/deathzone.gd" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://qrj8wlmcg1as" path="res://Scenes/coin.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://c6jcqf2bc6x3k" path="res://Scenes/player.tscn" id="1_xrdnt"]
+[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="2_wrinw"]
+[ext_resource type="Script" uid="uid://ndcktfqmfyyp" path="res://Scripts/coinscore1.gd" id="3_chwpn"]
+[ext_resource type="Texture2D" uid="uid://cpklwvhhar0i2" path="res://Assets/maintileset/midground_/dungeon_.png" id="4_af3po"]
+[ext_resource type="Texture2D" uid="uid://uscojrxquhxq" path="res://Assets/maintileset/objects_/staticObjects_.png" id="5_uy8f0"]
+[ext_resource type="Texture2D" uid="uid://qhess0d4fiul" path="res://Assets/maintileset/background_/dungeon_.png" id="6_6r07y"]
+[ext_resource type="Script" uid="uid://3yxoq5eyy2up" path="res://Scripts/deathzone.gd" id="7_6ioyp"]
+[ext_resource type="PackedScene" uid="uid://qrj8wlmcg1as" path="res://Scenes/coin.tscn" id="8_oovug"]
+[ext_resource type="Script" uid="uid://dydx5t1f6iawl" path="res://Scenes/nextlevel.gd" id="9_wrinw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
-texture = ExtResource("2_qxrlw")
+texture = ExtResource("4_af3po")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -1.6187286, -1.978447, -1.4388695, -1.7985878, 3.057598, -8, 3.5971756)
 1:0/0 = 0
@@ -383,7 +386,7 @@ texture = ExtResource("2_qxrlw")
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 3.057598, 2.6978817, 3.2374573, 1.6187286, -1.6187286, -8, -1.6187286)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dryh"]
-texture = ExtResource("3_wrm1d")
+texture = ExtResource("5_uy8f0")
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
@@ -530,7 +533,7 @@ texture = ExtResource("3_wrm1d")
 2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
-texture = ExtResource("3_3dryh")
+texture = ExtResource("6_6r07y")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -597,10 +600,25 @@ distance = -256.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wowpa"]
 
-[node name="Game" type="Node2D" unique_id=1482271114]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chwpn"]
+size = Vector2(48, 24)
 
-[node name="Player" parent="." unique_id=1331434805 instance=ExtResource("1_ebmjs")]
+[node name="Level 1" type="Node2D" unique_id=1482271114]
+
+[node name="Player" parent="." unique_id=1331434805 instance=ExtResource("1_xrdnt")]
 position = Vector2(-232, 40)
+
+[node name="coinsNeeded" type="Label" parent="Player" unique_id=1250685786]
+z_index = 2
+offset_left = -136.0
+offset_top = -72.0
+offset_right = -79.0
+offset_bottom = -49.0
+theme_override_fonts/font = ExtResource("2_wrinw")
+theme_override_font_sizes/font_size = 8
+text = "Coins needed:"
+script = ExtResource("3_chwpn")
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=262323473]
 zoom = Vector2(4, 4)
@@ -616,38 +634,47 @@ layer_2/name = "Background"
 layer_2/z_index = -1
 layer_2/tile_data = PackedInt32Array(196593, 3, 0, 262129, 3, 1, 327665, 3, 2, 393201, 3, 3, 196594, 65539, 0, 262130, 65539, 1, 327666, 65539, 2, 393202, 65539, 3, 196595, 131075, 0, 262131, 131075, 1, 327667, 131075, 2, 393203, 131075, 3, 196596, 196611, 0, 262132, 196611, 1, 327668, 196611, 2, 393204, 196611, 3, 196597, 262147, 0, 262133, 262147, 1, 327669, 262147, 2, 393205, 262147, 3, 196598, 3, 0, 262134, 3, 1, 327670, 3, 2, 393206, 3, 3, 196599, 65539, 0, 262135, 65539, 1, 327671, 65539, 2, 393207, 65539, 3, 196600, 131075, 0, 262136, 131075, 1, 327672, 131075, 2, 393208, 131075, 3, 196601, 196611, 0, 262137, 196611, 1, 327673, 196611, 2, 393209, 196611, 3, 196602, 262147, 0, 262138, 262147, 1, 327674, 262147, 2, 393210, 262147, 3, 196603, 3, 0, 262139, 3, 1, 327675, 3, 2, 393211, 3, 3, 196604, 65539, 0, 262140, 65539, 1, 327676, 65539, 2, 393212, 65539, 3, 196605, 131075, 0, 262141, 131075, 1, 327677, 131075, 2, 393213, 131075, 3, 196606, 196611, 0, 262142, 196611, 1, 327678, 196611, 2, 393214, 196611, 3, 196607, 262147, 0, 262143, 262147, 1, 327679, 262147, 2, 393215, 262147, 3, 131072, 3, 0, 196608, 3, 1, 262144, 3, 2, 327680, 3, 3, -65551, 3, 0, -15, 3, 1, 65521, 3, 2, 131057, 3, 3, -65550, 65539, 0, -14, 65539, 1, 65522, 65539, 2, 131058, 65539, 3, -65549, 131075, 0, -13, 131075, 1, 65523, 131075, 2, 131059, 131075, 3, -65548, 196611, 0, -12, 196611, 1, 65524, 196611, 2, 131060, 196611, 3, -65547, 262147, 0, -11, 262147, 1, 65525, 262147, 2, 131061, 262147, 3, -65546, 3, 0, -10, 3, 1, 65526, 3, 2, 131062, 3, 3, -65545, 65539, 0, -9, 65539, 1, 65527, 65539, 2, 131063, 65539, 3, -65544, 131075, 0, -8, 131075, 1, 65528, 131075, 2, 131064, 131075, 3, -65543, 196611, 0, -7, 196611, 1, 65529, 196611, 2, 131065, 196611, 3, -65542, 262147, 0, -6, 262147, 1, 65530, 262147, 2, 131066, 262147, 3, -65541, 3, 0, -5, 3, 1, 65531, 3, 2, 131067, 3, 3, -327694, 3, 0, -262158, 3, 1, -196622, 3, 2, -131086, 3, 3, -327693, 65539, 0, -262157, 65539, 1, -196621, 65539, 2, -131085, 65539, 3, -327692, 131075, 0, -262156, 131075, 1, -196620, 131075, 2, -131084, 131075, 3, -327691, 196611, 0, -262155, 196611, 1, -196619, 196611, 2, -131083, 196611, 3, -327690, 262147, 0, -262154, 262147, 1, -196618, 262147, 2, -131082, 262147, 3, -327689, 3, 0, -262153, 3, 1, -196617, 3, 2, -131081, 3, 3, -327688, 65539, 0, -262152, 65539, 1, -196616, 65539, 2, -131080, 65539, 3, -327687, 131075, 0, -262151, 131075, 1, -196615, 131075, 2, -131079, 131075, 3, -327686, 196611, 0, -262150, 196611, 1, -196614, 196611, 2, -131078, 196611, 3, -327685, 262147, 0, -262149, 262147, 1, -196613, 3, 0, -131077, 3, 1, -327684, 327683, 0, -262148, 327683, 1, -196612, 65539, 0, -131076, 65539, 1, -65540, 65539, 0, -4, 65539, 1, -196611, 131075, 0, -131075, 131075, 1, -65539, 131075, 0, -3, 131075, 1, -196610, 3, 2, -131074, 3, 3, -65538, 196611, 0, -2, 196611, 1, -196609, 65539, 2, -131073, 65539, 3, -65537, 262147, 0, -1, 262147, 1, -262144, 131075, 2, -196608, 3, 0, -131072, 3, 1, -65536, 3, 2, 65532, 65539, 2, 131068, 65539, 3, 65533, 131075, 2, 131069, 131075, 3, 65534, 196611, 2, 131070, 196611, 3, 65535, 262147, 2, 131071, 262147, 3, 0, 3, 0, 65536, 3, 1, -327682, 3, 0, -262146, 3, 1, -327681, 65539, 0, -262145, 65539, 1, -393216, 131075, 0, -327680, 131075, 1, -393215, 196611, 0, -327679, 196611, 1, -262143, 196611, 2, -196607, 65539, 0, -393214, 262147, 0, -327678, 262147, 1, -262142, 262147, 2, -196606, 131075, 0, -393213, 327683, 0, -327677, 327683, 1, -262141, 327683, 2, -196605, 196611, 0, -131071, 65539, 1, -65535, 65539, 2, 1, 65539, 0, -131070, 131075, 1, -65534, 131075, 2, 2, 131075, 0, -131069, 196611, 1, -65533, 196611, 2, 3, 196611, 0, -196604, 262147, 0, -131068, 262147, 1, -65532, 3, 0, 4, 3, 1, -196603, 327683, 0, -131067, 327683, 1, -65531, 65539, 0, 5, 65539, 1, 65537, 65539, 1, 131073, 65539, 0, 196609, 65539, 1, 65538, 131075, 1, 131074, 131075, 0, 196610, 131075, 1, 65539, 196611, 1, 131075, 196611, 0, 196611, 196611, 1, 65540, 3, 2, 131076, 3, 3, 196612, 262147, 1, 65541, 65539, 2, 131077, 65539, 3, 196613, 3, 1, 262145, 65539, 2, 327681, 65539, 3, 262146, 131075, 2, 327682, 131075, 3, 262147, 196611, 2, 327683, 196611, 3, 262148, 262147, 2, 327684, 262147, 3, 262149, 3, 2, 327685, 3, 3, 131078, 131075, 3, 196614, 65539, 1, 262150, 65539, 2, 327686, 65539, 3, 131079, 196611, 3, 196615, 131075, 1, 262151, 131075, 2, 327687, 131075, 3, 131080, 262147, 3, 196616, 196611, 1, 262152, 196611, 2, 327688, 196611, 3, 131081, 327683, 3, 196617, 262147, 1, 262153, 262147, 2, 327689, 262147, 3, 131082, 3, 2, 196618, 3, 3, 262154, 3, 1, 327690, 3, 2, 196620, 131075, 3, 262156, 131075, 1, 327692, 131075, 2, 393228, 131075, 3, 196621, 196611, 3, 262157, 196611, 1, 327693, 196611, 2, 393229, 196611, 3, 196622, 262147, 3, 262158, 262147, 1, 327694, 262147, 2, 393230, 262147, 3, 196623, 3, 3, 262159, 327683, 1, 327695, 327683, 2, 393231, 327683, 3, 196624, 65539, 3, 262160, 262147, 1, 327696, 3, 0, 393232, 3, 1, 196625, 131075, 3, 262161, 327683, 1, 327697, 65539, 0, 393233, 65539, 1, 393226, 3, 3, 196619, 65539, 3, 262155, 65539, 1, 327691, 65539, 2, 393227, 65539, 3, 10, 262147, 3, 65546, 196611, 3, 11, 327683, 3, 65547, 262147, 3, 131083, 65539, 2, 12, 327683, 2, 65548, 327683, 3, 131084, 131075, 2, 13, 196611, 0, 65549, 196611, 1, 131085, 196611, 2, 14, 3, 1, 65550, 3, 2, 131086, 3, 3, 15, 3, 0, 65551, 3, 1, 131087, 3, 2, -131065, 65539, 1, -65529, 196611, 0, 7, 196611, 1, 65543, 196611, 2, -131064, 131075, 1, -65528, 262147, 0, 8, 262147, 1, 65544, 262147, 2, -131063, 196611, 1, -65527, 327683, 0, 9, 327683, 1, 65545, 327683, 2, -131062, 262147, 1, -65526, 262147, 2, -131061, 3, 2, -65525, 3, 3, -131060, 65539, 2, -65524, 65539, 3, -196602, 3, 0, -131066, 3, 1, -65530, 131075, 0, 6, 131075, 1, -196601, 65539, 0, -196600, 131075, 0, -196599, 196611, 0, -196598, 262147, 0, -196597, 3, 1, 65542, 131075, 2, -262131, 131075, 0, -196595, 131075, 1, -131059, 131075, 2, -65523, 131075, 3, -262130, 196611, 0, -196594, 196611, 1, -131058, 196611, 2, -65522, 3, 0, -262129, 3, 0, -196593, 3, 1, -131057, 3, 2, -65521, 3, 3, -262128, 65539, 0, -196592, 65539, 1, -131056, 65539, 2, -65520, 65539, 3, -262127, 131075, 0, -196591, 131075, 1, -131055, 131075, 2, -65519, 131075, 3, -262126, 196611, 0, -196590, 196611, 1, -131054, 196611, 2, -65518, 196611, 3, -262133, 3, 0, -262132, 65539, 0, -196596, 65539, 1, -458747, 3, 0, -393211, 3, 1, -327675, 3, 2, -262139, 3, 3, -458746, 65539, 0, -393210, 65539, 1, -327674, 65539, 2, -262138, 65539, 3, -458745, 131075, 0, -393209, 131075, 1, -327673, 131075, 2, -262137, 131075, 3, -458744, 196611, 0, -393208, 196611, 1, -327672, 196611, 2, -262136, 196611, 3, -458743, 262147, 0, -393207, 262147, 1, -327671, 262147, 2, -262135, 262147, 3, -458742, 327683, 0, -393206, 327683, 1, -327670, 327683, 2, -262134, 327683, 3, 17, 131075, 0, 18, 196611, 0, -196589, 262147, 1, -131053, 262147, 2, -65517, 262147, 3, 19, 262147, 0, -196588, 327683, 1, -131052, 327683, 2, -65516, 327683, 3, 20, 327683, 0, -196587, 327683, 1, -131051, 327683, 2, -65515, 327683, 3, 21, 262147, 3, -196586, 327683, 0, -131050, 327683, 1, -65514, 327683, 2, 22, 327683, 3, -262125, 262147, 0, -262124, 327683, 0, -262123, 327683, 0, 16, 65539, 0, 65552, 65539, 1, 131088, 65539, 2, 65553, 131075, 1, 131089, 131075, 2, 65554, 196611, 1, 131090, 196611, 2, 65555, 3, 0, 131091, 3, 1, 196626, 196611, 3, 196627, 3, 2, 65556, 65539, 0, 131092, 65539, 1, 196628, 65539, 2, 262163, 3, 3, 262164, 65539, 3, 65557, 131075, 0, 131093, 131075, 1, 196629, 131075, 2, 262165, 131075, 3, 65558, 196611, 0, 131094, 196611, 1, 196630, 196611, 2, 262166, 196611, 3, 65559, 262147, 0, 131095, 262147, 1, 196631, 262147, 2, 262167, 262147, 3, 65560, 327683, 0, 131096, 327683, 1, 196632, 327683, 2, 262168, 327683, 3, 458768, 3, 2, 524304, 3, 3, 458769, 65539, 2, 524305, 65539, 3, 327698, 131075, 0, 393234, 131075, 1, 458770, 131075, 2, 524306, 131075, 3, 327699, 196611, 0, 393235, 196611, 1, 458771, 196611, 2, 524307, 196611, 3, 327700, 262147, 0, 393236, 262147, 1, 458772, 262147, 2, 524308, 262147, 3, 327701, 327683, 0, 393237, 327683, 1, 458773, 327683, 2, 524309, 327683, 3)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1491714660]
-script = ExtResource("5_wowpa")
+[node name="Deathzone" type="Area2D" parent="." unique_id=1491714660]
+script = ExtResource("7_6ioyp")
 
-[node name="one" type="Sprite2D" parent="Area2D" unique_id=506026210]
+[node name="one" type="Sprite2D" parent="Deathzone" unique_id=506026210]
 position = Vector2(-104, 232)
-texture = ExtResource("2_qxrlw")
+texture = ExtResource("4_af3po")
 region_enabled = true
 region_rect = Rect2(0, 150.0395, 288, 41.960495)
 
-[node name="two" type="Sprite2D" parent="Area2D" unique_id=1831495597]
+[node name="two" type="Sprite2D" parent="Deathzone" unique_id=1831495597]
 position = Vector2(184, 232)
-texture = ExtResource("2_qxrlw")
+texture = ExtResource("4_af3po")
 region_enabled = true
 region_rect = Rect2(0, 150.0395, 288, 41.960495)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1418828460]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deathzone" unique_id=1418828460]
 position = Vector2(0, -56)
 shape = SubResource("WorldBoundaryShape2D_i6g32")
 
-[node name="Timer" type="Timer" parent="Area2D" unique_id=2023709730]
+[node name="Timer" type="Timer" parent="Deathzone" unique_id=2023709730]
 wait_time = 0.5
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1051809593]
+[node name="deah detector" type="CharacterBody2D" parent="." unique_id=1051809593]
 
-[node name="boundary" type="CollisionShape2D" parent="CharacterBody2D" unique_id=2017059550]
+[node name="boundary" type="CollisionShape2D" parent="deah detector" unique_id=2017059550]
 position = Vector2(0, 208)
 shape = SubResource("WorldBoundaryShape2D_wowpa")
 
-[node name="coin" parent="." unique_id=1875311853 instance=ExtResource("6_i6g32")]
+[node name="coin" parent="." unique_id=1875311853 instance=ExtResource("8_oovug")]
 position = Vector2(160, -39.999996)
 scale = Vector2(0.3381269, 0.3381269)
 
-[connection signal="body_entered" from="Area2D" to="Player" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]
+[node name="nextlevel" type="Area2D" parent="." unique_id=1106407799]
+script = ExtResource("9_wrinw")
+
+[node name="level changer" type="CollisionShape2D" parent="nextlevel" unique_id=533750848]
+position = Vector2(312, 68)
+shape = SubResource("RectangleShape2D_chwpn")
+
+[connection signal="body_entered" from="Deathzone" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Deathzone" to="Deathzone" method="_on_body_entered"]
+[connection signal="timeout" from="Deathzone/Timer" to="Deathzone" method="_on_timer_timeout"]
+[connection signal="coin_collected" from="coin" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
+[connection signal="body_entered" from="nextlevel" to="Player/coinsNeeded" method="_on_nextlevel_body_entered"]
