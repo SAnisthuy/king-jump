@@ -18,5 +18,4 @@ func _on_coin_coin_collected() -> void:
 
 func _on_nextlevel_body_entered(body: Node2D) -> void:
 	if needed == 0:
-		print(true)
-		get_tree().change_scene_to_file("res://Scenes/level_2.tscn")
+		get_tree().change_scene_to_file("res://Scenes/scene_change.tscn")

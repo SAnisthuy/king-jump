@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bclxukj7a6nn"]
+
+[ext_resource type="Script" uid="uid://nrhoec2ctd3c" path="res://Scripts/scene_change.gd" id="1_bjh37"]
+[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="2_vudjl"]
+
+[sub_resource type="Gradient" id="Gradient_wxxcg"]
+interpolation_mode = 1
+colors = PackedColorArray(0.14406255, 0.14406255, 0.14406255, 1, 0.18359044, 0.18359047, 0.18359038, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rl1cm"]
+gradient = SubResource("Gradient_wxxcg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Scene change" type="Node2D" unique_id=1170237917]
+script = ExtResource("1_bjh37")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=604819967]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1055702879]
+offset_right = 1150.0
+offset_bottom = 650.0
+texture = SubResource("GradientTexture2D_rl1cm")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1899339471]
+offset_left = 109.0
+offset_top = 249.0
+offset_right = 1044.0
+offset_bottom = 381.0
+theme_override_fonts/font = ExtResource("2_vudjl")
+theme_override_font_sizes/font_size = 102
+text = "Changing levels...."
+
+[node name="countdown" type="Timer" parent="." unique_id=810773028]
+wait_time = 1.5
+
+[connection signal="timeout" from="countdown" to="." method="_on_countdown_timeout"]

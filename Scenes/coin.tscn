@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dctwl71jha7b3" path="res://Assets/maintileset/objects_/coin_.png" id="1_2qo34"]
 [ext_resource type="Script" uid="uid://be3islhj7u17v" path="res://Scripts/coin.gd" id="1_jgi06"]
+[ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="3_g537i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jgi06"]
 atlas = ExtResource("1_2qo34")
@@ -110,5 +111,9 @@ frame_progress = 0.9760733
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1534852162]
 shape = SubResource("CircleShape2D_m55n1")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=398949660]
+scale = Vector2(0.325, 0.325)
+texture = ExtResource("3_g537i")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

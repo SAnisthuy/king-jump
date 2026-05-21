@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bbp0plbv7agbs"]
+
+[ext_resource type="Texture2D" uid="uid://cpklwvhhar0i2" path="res://Assets/maintileset/midground_/dungeon_.png" id="1_1rc8e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5262"]
+size = Vector2(347, 65)
+
+[node name="platform" type="AnimatableBody2D" unique_id=1050125833]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1960454740]
+position = Vector2(630.3333, 293.5)
+scale = Vector2(10.833333, 10.833333)
+texture = ExtResource("1_1rc8e")
+region_enabled = true
+region_rect = Rect2(111.99695, 47.889393, 32.075302, 6.084877)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=989253022]
+position = Vector2(630.5, 293.5)
+shape = SubResource("RectangleShape2D_n5262")
+one_way_collision = true

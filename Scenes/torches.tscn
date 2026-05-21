@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dttrhqrns5k2w"]
+
+[ext_resource type="Texture2D" uid="uid://dw6qpfoyu10rt" path="res://Assets/Lighting/tochas.png" id="1_d3pbh"]
+[ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="2_fa2wh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5qha"]
+atlas = ExtResource("1_d3pbh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo1il"]
+atlas = ExtResource("1_d3pbh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khk70"]
+atlas = ExtResource("1_d3pbh")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wan3"]
+atlas = ExtResource("1_d3pbh")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50rrs"]
+atlas = ExtResource("1_d3pbh")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wk4ry"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5qha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo1il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khk70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wan3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50rrs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="torch" type="AnimatedSprite2D" unique_id=1242179553]
+sprite_frames = SubResource("SpriteFrames_wk4ry")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.97935194
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1189909251]
+scale = Vector2(0.09, 0.09)
+color = Color(1, 1, 0.28627452, 1)
+energy = 1.75
+texture = ExtResource("2_fa2wh")
