@@ -1,26 +1,23 @@
 extends CharacterBody2D
 signal death()
-var dead = 1
 var SPEED = 100
 var JUMP_VELOCITY = -250
 var attacking = false
 var dying = false
 signal attacked
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_cooldown: Timer = $"attack cooldown"
 
 func _process(delta: float) -> void:
-	
 	var direction = 1
 	if !dying:
+		
 		if not is_on_floor():
-			velocity += get_gravity() * delta * dead
+			velocity += get_gravity() * delta
 				
 		if attacking:
-			move_and_slide()
 			return
 	
-				
-			
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			
@@ -60,15 +57,20 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	animated_sprite_2d.play("death")
-	dying = true
 	GameManager.player_health = 0
 
+func player(): #makes sure player is recognizable to others
+	pass
 
 func _on_health_dead() -> void:
+	dying = true
+	animated_sprite_2d.play("death")
 	death.emit()
-
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "attack":
 		attacking = false
+
+# ATTACKING
+func enemy_attack():
+	GameManager.player_health -= 10
