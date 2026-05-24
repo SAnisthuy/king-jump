@@ -47,6 +47,7 @@ animations = [{
 }]
 
 [node name="torch" type="AnimatedSprite2D" unique_id=1242179553]
+z_index = -1
 sprite_frames = SubResource("SpriteFrames_wk4ry")
 animation = &"idle"
 autoplay = "idle"
@@ -54,6 +55,6 @@ frame_progress = 0.97935194
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1189909251]
 scale = Vector2(0.09, 0.09)
-color = Color(1, 1, 0.28627452, 1)
+color = Color(0.561748, 0.25489786, 1.92523e-07, 1)
 energy = 1.75
 texture = ExtResource("2_fa2wh")

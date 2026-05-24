@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c58q4px55flk"]
+
+[ext_resource type="Script" uid="uid://bwlc3r5u7t2n1" path="res://Scripts/quiz.gd" id="1_y1tew"]
+[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="2_fdxuh"]
+
+[node name="Quiz" type="Node2D" unique_id=1492942479]
+script = ExtResource("1_y1tew")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2038542576]
+layer = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=314931330]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.058600366, 0.21008581, 0.21035853, 1)
+
+[node name="Question" type="Label" parent="CanvasLayer" unique_id=1115012526]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 133.0
+offset_right = -1.0
+offset_bottom = 192.72917
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_fdxuh")
+theme_override_font_sizes/font_size = 47
+text = "Sample Question"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Answers" type="Node" parent="CanvasLayer" unique_id=1366460534]
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer" unique_id=551353875]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -504.0
+offset_top = -334.0
+offset_right = 504.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_stretch_ratio = 0.0
+columns = 2
+
+[node name="Answer1" type="Button" parent="CanvasLayer/GridContainer" unique_id=1358169820]
+custom_minimum_size = Vector2(502.175, 156)
+layout_mode = 2
+text = "Answer 1"
+
+[node name="Answer2" type="Button" parent="CanvasLayer/GridContainer" unique_id=1917106166]
+custom_minimum_size = Vector2(502.175, 156)
+layout_mode = 2
+text = "Answer 2"
+
+[node name="Answer3" type="Button" parent="CanvasLayer/GridContainer" unique_id=1499417789]
+custom_minimum_size = Vector2(502.175, 156)
+layout_mode = 2
+text = "Answer 3"
+
+[node name="Answer4" type="Button" parent="CanvasLayer/GridContainer" unique_id=610487053]
+custom_minimum_size = Vector2(502.175, 156)
+layout_mode = 2
+text = "Answer 4"
+
+[connection signal="pressed" from="CanvasLayer/GridContainer/Answer1" to="." method="_on_answer_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Answer2" to="." method="_on_answer_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Answer3" to="." method="_on_answer_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Answer4" to="." method="_on_answer_4_pressed"]

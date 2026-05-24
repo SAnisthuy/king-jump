@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bfjb3oe1sa1ri"]
 
+[ext_resource type="Script" uid="uid://dxs7ovs5sn3nj" path="res://Scripts/level_1.gd" id="1_uy8f0"]
 [ext_resource type="PackedScene" uid="uid://c6jcqf2bc6x3k" path="res://Scenes/player.tscn" id="1_xrdnt"]
+[ext_resource type="PackedScene" uid="uid://bbnx47h6fr5qc" path="res://Scenes/hotbar_ui.tscn" id="2_af3po"]
 [ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="2_wrinw"]
 [ext_resource type="Script" uid="uid://ndcktfqmfyyp" path="res://Scripts/coinscore1.gd" id="3_chwpn"]
 [ext_resource type="Texture2D" uid="uid://cpklwvhhar0i2" path="res://Assets/maintileset/midground_/dungeon_.png" id="4_af3po"]
@@ -605,11 +607,14 @@ distance = -256.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wowpa"]
 
 [node name="Level 1" type="Node2D" unique_id=1482271114]
+script = ExtResource("1_uy8f0")
 
 [node name="Player" parent="." unique_id=1331434805 instance=ExtResource("1_xrdnt")]
 position = Vector2(-232, 40)
 
-[node name="coinsNeeded" type="Label" parent="Player" unique_id=1250685786]
+[node name="HotbarUI" parent="Player" unique_id=2133312155 instance=ExtResource("2_af3po")]
+
+[node name="coinsNeeded2" type="Label" parent="Player" unique_id=1250685786]
 z_index = 2
 offset_left = -136.0
 offset_top = -72.0
@@ -728,11 +733,7 @@ theme_override_fonts/font = ExtResource("2_wrinw")
 text = "Dont fall...
 Collect all the coins to move on"
 
-[connection signal="body_entered" from="mapping/nextlevel" to="Player/coinsNeeded" method="_on_nextlevel_body_entered"]
+[connection signal="body_entered" from="mapping/nextlevel" to="." method="_on_nextlevel_body_entered"]
 [connection signal="body_entered" from="mapping/Deathzone" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="mapping/Deathzone" to="mapping/Deathzone" method="_on_body_entered"]
 [connection signal="timeout" from="mapping/Deathzone/Timer" to="mapping/Deathzone" method="_on_timer_timeout"]
-[connection signal="coin_collected" from="mapping/coins/coin" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="coin_collected" from="mapping/coins/coin2" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="coin_collected" from="mapping/coins/coin3" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="coin_collected" from="mapping/coins/coin4" to="Player/coinsNeeded" method="_on_coin_coin_collected"]

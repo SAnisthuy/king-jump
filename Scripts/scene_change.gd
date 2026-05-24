@@ -11,3 +11,6 @@ func _ready() -> void:
 
 func _on_countdown_timeout() -> void:
 	get_tree().change_scene_to_file(GameManager.next_level)
+	GameManager.player_health = 100
+	GameManager.curr_level += 1
+	Collectables.update_vals()

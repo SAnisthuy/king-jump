@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bbnx47h6fr5qc"]
+
+[ext_resource type="Script" uid="uid://n6e6ju8dhufj" path="res://Scripts/hotbar_ui.gd" id="1_tbcuq"]
+
+[node name="HotbarUI" type="CanvasLayer" unique_id=2133312155]
+script = ExtResource("1_tbcuq")
+
+[node name="Slots" type="HBoxContainer" parent="." unique_id=1515953808]
+offset_left = 444.0
+offset_top = 583.0
+offset_right = 712.0
+offset_bottom = 647.0
+
+[node name="Slot1" type="Panel" parent="Slots" unique_id=1036406436]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Slots/Slot1" unique_id=2080096733]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Slot2" type="Panel" parent="Slots" unique_id=1180720579]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Slots/Slot2" unique_id=1475588526]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Slot3" type="Panel" parent="Slots" unique_id=297106360]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Slots/Slot3" unique_id=710438719]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Slot4" type="Panel" parent="Slots" unique_id=663473564]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Slots/Slot4" unique_id=1054561861]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5

@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dka2jikmyfb07"]
+
+[ext_resource type="Script" uid="uid://b1ydqfnsnw8ni" path="res://Scripts/skull.gd" id="1_6bgmt"]
+[ext_resource type="Texture2D" uid="uid://ckquiw3bnbbps" path="res://Assets/Inventory/1.png" id="2_hcoa0"]
+[ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="2_vjweu"]
+[ext_resource type="Texture2D" uid="uid://jqa2b2hkvqq7" path="res://Assets/Inventory/2.png" id="3_vjweu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ruoq"]
+atlas = ExtResource("2_hcoa0")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt6fs"]
+atlas = ExtResource("3_vjweu")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vqigx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ruoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt6fs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_moowi"]
+radius = 3.0
+height = 10.0
+
+[node name="Skull" type="Node2D" unique_id=1500536410]
+script = ExtResource("1_6bgmt")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1276504499]
+position = Vector2(6, 5)
+scale = Vector2(-0.065, -0.065)
+color = Color(0.6745098, 0.22745098, 0, 1)
+energy = 1.15
+texture = ExtResource("2_vjweu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1283120005]
+position = Vector2(6, 5.9999995)
+scale = Vector2(0.025, 0.025)
+sprite_frames = SubResource("SpriteFrames_vqigx")
+autoplay = "default"
+frame_progress = 0.4714796
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1329100223]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2123380119]
+position = Vector2(6, 5)
+shape = SubResource("CapsuleShape2D_moowi")
+
+[node name="pickup_cooldown" type="Timer" parent="." unique_id=207660478]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="pickup_cooldown" to="." method="_on_pickup_cooldown_timeout"]

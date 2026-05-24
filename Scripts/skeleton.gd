@@ -1,19 +1,26 @@
 extends CharacterBody2D
 
+var health = 100
+signal skeley_damaged(damage:int)
+var dying = false
+
 var is_in_pursuit = false
-const speed = 25
+const speed = 50
 var target = null
 
 var attacking = false
 var cooldown = true
 var player_in_range = false
-signal damage
 @onready var attack_cooldown: Timer = $attack_cooldown
 
 @onready var skeley: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta):
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 
+	if dying:
+		return
 	if attacking:
 		move_and_slide()
 		return
@@ -36,6 +43,7 @@ func start_attack():
 	cooldown = false
 
 	if skeley.animation != "attack":
+		velocity.x = 0
 		skeley.play("attack")
 
 func chase_player():
@@ -56,11 +64,8 @@ func idle():
 	if skeley.animation != "idle":
 		skeley.play("idle")
 
-
 func _on_area_2d_body_entered(body):
-
 	if body.has_method("player"):
-
 		target = body
 		is_in_pursuit = true
 
@@ -80,17 +85,15 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 		if !player_in_range and !is_in_pursuit:
 			idle()
-
+	if skeley.animation == "death":
+		queue_free()
 
 func _on_enemy_hit_box_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_in_range = true
 
-
-
 func _on_attack_cooldown_timeout() -> void:
 	cooldown = true
-
 
 func _on_enemy_hit_box_body_exited(body):
 
@@ -100,8 +103,21 @@ func _on_enemy_hit_box_body_exited(body):
 		if !attacking and !is_in_pursuit:
 			idle()
 
-
 func _on_animated_sprite_2d_frame_changed() -> void:
 		if skeley.animation == "attack":
-			if skeley.frame == 7:
-				damage.emit()
+			if skeley.frame == 7 and target:
+				target.take_damage(10)
+
+func take_damage(amount):
+	if dying:
+		return
+
+	health -= amount
+	skeley_damaged.emit(amount)
+
+	if health <= 0:
+		dying = true
+		skeley.play("death")
+
+		
+			

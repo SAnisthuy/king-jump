@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://c6jcqf2bc6x3k" path="res://Scenes/player.tscn" id="1_uhnj4"]
 [ext_resource type="Script" uid="uid://dc166m104syeo" path="res://Scripts/level_2.gd" id="1_vcilj"]
 [ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="2_42uki"]
-[ext_resource type="Script" uid="uid://clnpyw48yurh7" path="res://Scripts/coins_needed2.gd" id="3_t7v2y"]
 [ext_resource type="Texture2D" uid="uid://cpklwvhhar0i2" path="res://Assets/maintileset/midground_/dungeon_.png" id="4_ait6c"]
 [ext_resource type="PackedScene" uid="uid://cglucfgauuum8" path="res://Scenes/enemy.tscn" id="4_vcilj"]
 [ext_resource type="Texture2D" uid="uid://ir1onf1h2012" path="res://Assets/maintileset/background_/desertDungeon_.png" id="5_42uki"]
 [ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="5_bl0du"]
 [ext_resource type="Texture2D" uid="uid://uscojrxquhxq" path="res://Assets/maintileset/objects_/staticObjects_.png" id="5_vcilj"]
 [ext_resource type="Texture2D" uid="uid://qhess0d4fiul" path="res://Assets/maintileset/background_/dungeon_.png" id="6_bl0du"]
+[ext_resource type="PackedScene" uid="uid://bbnx47h6fr5qc" path="res://Scenes/hotbar_ui.tscn" id="6_hj5x7"]
 [ext_resource type="PackedScene" uid="uid://qrj8wlmcg1as" path="res://Scenes/coin.tscn" id="8_hj5x7"]
 [ext_resource type="Texture2D" uid="uid://dfnaaulsprw7x" path="res://Assets/maintileset/midground_/desertDungeon_.png" id="8_t7v2y"]
 [ext_resource type="PackedScene" uid="uid://bbp0plbv7agbs" path="res://Scenes/platform.tscn" id="10_42uki"]
@@ -790,26 +790,10 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." unique_id=1732569539 instance=ExtResource("1_uhnj4")]
 position = Vector2(-472, -99)
 
-[node name="coinsNeeded" type="Label" parent="Player" unique_id=1052710489]
-z_index = 2
-offset_left = -136.0
-offset_top = -72.0
-offset_right = -79.0
-offset_bottom = -49.0
-theme_override_fonts/font = ExtResource("2_42uki")
-theme_override_font_sizes/font_size = 8
-text = "Coins needed:"
-script = ExtResource("3_t7v2y")
-metadata/_edit_use_anchors_ = true
-
-[node name="text" type="PointLight2D" parent="Player/coinsNeeded" unique_id=27156780]
-position = Vector2(27, 6)
-scale = Vector2(-0.265, -0.265)
-energy = 0.55
-texture = ExtResource("5_bl0du")
-
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=636274381]
 zoom = Vector2(4, 4)
+
+[node name="HotbarUI" parent="Player" unique_id=2133312155 instance=ExtResource("6_hj5x7")]
 
 [node name="Enemy" parent="." unique_id=1033144949 instance=ExtResource("4_vcilj")]
 position = Vector2(-383, -49)
@@ -1030,20 +1014,12 @@ theme_override_fonts/font = ExtResource("2_42uki")
 theme_override_font_sizes/font_size = 10
 text = "Left click to attack!"
 
-[connection signal="attacked" from="Player" to="Enemy" method="_on_player_attacked"]
-[connection signal="attacked" from="Player" to="Enemy2" method="_on_player_attacked"]
+[node name="Death countdown" type="Timer" parent="." unique_id=1505140350]
+one_shot = true
+
 [connection signal="death" from="Player" to="." method="_on_player_death"]
-[connection signal="coin_collected" from="Mapping/coins/coin" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="coin_collected" from="Mapping/coins/coin2" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="coin_collected" from="Mapping/coins/coin3" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="coin_collected" from="Mapping/coins/coin4" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="coin_collected" from="Mapping/coins/coin5" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="coin_collected" from="Mapping/coins/coin6" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="coin_collected" from="Mapping/coins/coin7" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="coin_collected" from="Mapping/coins/coin8" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="coin_collected" from="Mapping/coins/coin9" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="coin_collected" from="Mapping/coins/coin10" to="Player/coinsNeeded" method="_on_coin_coin_collected"]
-[connection signal="body_entered" from="Mapping/nextlevel" to="Player/coinsNeeded" method="_on_nextlevel_body_entered"]
+[connection signal="body_entered" from="Mapping/nextlevel" to="." method="_on_nextlevel_body_entered"]
+[connection signal="timeout" from="Death countdown" to="." method="_on_death_countdown_timeout"]
 
 [editable path="Enemy"]
 [editable path="Enemy2"]

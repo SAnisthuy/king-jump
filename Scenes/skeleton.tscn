@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://chnd6qlthtvwg" path="res://Assets/Sprites [Enemies]/Skeleton/Sprite Sheets/Skeleton Idle.png" id="3_v8sxu"]
 [ext_resource type="Texture2D" uid="uid://d20varqdi1tyy" path="res://Assets/Sprites [Enemies]/Skeleton/Sprite Sheets/Skeleton Walk.png" id="4_ks230"]
 [ext_resource type="Texture2D" uid="uid://ck5ggcj234gsv" path="res://Assets/Sprites [Enemies]/Skeleton/Sprite Sheets/Skeleton React.png" id="5_v8sxu"]
+[ext_resource type="Script" uid="uid://d1xnb6g6p57qf" path="res://Scripts/skeley_health.gd" id="7_ks230"]
+[ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="8_shq1q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_shq1q"]
 atlas = ExtResource("1_pegji")
@@ -358,7 +360,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i6aie")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 10.0
 }, {
@@ -466,21 +468,27 @@ animations = [{
 radius = 8.0
 height = 20.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v8sxu"]
-radius = 42.296574
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shq1q"]
+size = Vector2(107, 25)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ks230"]
-radius = 22.022715
+radius = 27.018513
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shq1q"]
+bg_color = Color(0.5686275, 0.3372549, 0.16470589, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbfmp"]
+bg_color = Color(0.972549, 0.105882354, 0.05490196, 1)
 
 [node name="Skeleton" type="CharacterBody2D" unique_id=982182177]
 script = ExtResource("1_5abox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1974149112]
 sprite_frames = SubResource("SpriteFrames_2beah")
-animation = &"attack"
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=280057326]
-position = Vector2(-4, 6)
+position = Vector2(2, 6)
 shape = SubResource("CapsuleShape2D_3b6x6")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=242090940]
@@ -488,20 +496,38 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1170386931]
-position = Vector2(-3, 0)
-shape = SubResource("CircleShape2D_v8sxu")
+position = Vector2(1.5, 4.5)
+shape = SubResource("RectangleShape2D_shq1q")
 
 [node name="enemy hit box" type="Area2D" parent="." unique_id=364138723]
 position = Vector2(-1, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy hit box" unique_id=1910741013]
-position = Vector2(-3, 4)
+position = Vector2(3, 2)
 shape = SubResource("CircleShape2D_ks230")
 
 [node name="attack_cooldown" type="Timer" parent="." unique_id=219771238]
 wait_time = 0.5
 one_shot = true
 
+[node name="Health" type="ProgressBar" parent="." unique_id=178137011]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 8.0
+offset_bottom = -12.0
+theme_override_styles/background = SubResource("StyleBoxFlat_shq1q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xbfmp")
+step = 1.0
+value = 100.0
+show_percentage = false
+script = ExtResource("7_ks230")
+
+[node name="glow" type="PointLight2D" parent="." unique_id=1179237291]
+color = Color(0, 0.41806513, 0.41831034, 1)
+texture = ExtResource("8_shq1q")
+texture_scale = 0.25
+
+[connection signal="skeley_damaged" from="." to="Health" method="_on_skeleton_skeley_damaged"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

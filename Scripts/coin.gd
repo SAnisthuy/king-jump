@@ -1,16 +1,11 @@
 extends Area2D
-signal coin_collected()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+var questions = preload("res://Scenes/quiz.tscn")
 
 func _on_body_entered(body: Node2D) -> void:
-	queue_free()
-	coin_collected.emit()
+	if body.has_method("player"):
+		var quiz_instance = questions.instantiate()
+		get_parent().add_child(quiz_instance)
+		get_tree().paused = true
+		queue_free()
+		Collectables.coins -= 1
