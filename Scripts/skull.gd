@@ -14,7 +14,8 @@ var lim_down = position.y - 5
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player") and pickup_available:
-		Collectables.skulls -= 1
+		if Collectables.skulls > 0:
+			Collectables.skulls -= 1
 		queue_free()
 	pass
 

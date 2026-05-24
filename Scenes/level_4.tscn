@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://codqi68ab1xlh"]
 
+[ext_resource type="Script" uid="uid://bbdb6557hj6c2" path="res://Scripts/level_4.gd" id="1_3v663"]
 [ext_resource type="PackedScene" uid="uid://cueljouuco7ur" path="res://Scenes/skeleton_hard.tscn" id="1_5eaas"]
 [ext_resource type="PackedScene" uid="uid://c6jcqf2bc6x3k" path="res://Scenes/player.tscn" id="2_5eaas"]
 [ext_resource type="PackedScene" uid="uid://bbnx47h6fr5qc" path="res://Scenes/hotbar_ui.tscn" id="2_gxyip"]
@@ -724,6 +725,7 @@ sources/4 = SubResource("TileSetAtlasSource_glsh0")
 size = Vector2(32, 15)
 
 [node name="Level 4" type="Node2D" unique_id=477148119]
+script = ExtResource("1_3v663")
 
 [node name="Player" parent="." unique_id=1732569539 instance=ExtResource("2_5eaas")]
 position = Vector2(-575, -447)

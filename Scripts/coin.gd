@@ -8,4 +8,5 @@ func _on_body_entered(body: Node2D) -> void:
 		get_parent().add_child(quiz_instance)
 		get_tree().paused = true
 		queue_free()
-		Collectables.coins -= 1
+		if Collectables.coins > 0:
+			Collectables.coins -= 1

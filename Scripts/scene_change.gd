@@ -14,3 +14,4 @@ func _on_countdown_timeout() -> void:
 	GameManager.player_health = 100
 	GameManager.curr_level += 1
 	Collectables.update_vals()
+	Inventory.clear()

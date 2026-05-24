@@ -1,6 +1,6 @@
 extends Node
 
-var levelDefs = [["sword"], ["sword"], ["sword"], ["sword", "spear", "shield"]]
+var levelDefs = [["sword"], ["sword"], ["sword", "spear"], ["sword", "spear", "shield"]]
 
 var inventory = [{"name": "sword"},
 	null,
