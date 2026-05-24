@@ -59,24 +59,26 @@ func chase_player():
 	var dist = target.position.x - position.x
 
 	skeley.flip_h = dist < 0
+	if !cant_move():
+		velocity.x = sign(dist) * speed
 
-	velocity.x = sign(dist) * speed
-
-	if skeley.animation != "chase":
-		skeley.play("chase")
-
+		if skeley.animation != "chase":
+			skeley.play("chase")
+	
+	else:
+		skeley.play("idle")
 func patrol():
 
 	velocity.x = direction * patrol_speed
 
-	skeley.flip_h = direction < 0
 
-	if wall_check.is_colliding():
+	var facing_left = direction < 0
+	
+	if skeley.flip_h != facing_left:
 		turn_around()
 
-	if !floor_check.is_colliding():
-		turn_around()
-
+	if cant_move(): turn_around()
+	
 	if skeley.animation != "walk":
 		skeley.play("walk")
 
@@ -145,5 +147,6 @@ func take_damage(amount):
 		dying = true
 		skeley.play("death")
 
-		
+func cant_move():
+	return wall_check.is_colliding() or !floor_check.is_colliding()
 			

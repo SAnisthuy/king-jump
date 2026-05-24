@@ -849,9 +849,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Skeleton_Hard" parent="Skeleys" unique_id=982182177 instance=ExtResource("13_j77fg")]
 position = Vector2(542, -194)
 
-[node name="Skeleton" parent="Skeleys" unique_id=617938915 instance=ExtResource("15_rybab")]
-position = Vector2(12, -193)
-
 [node name="Skeleton2" parent="Skeleys" unique_id=319519039 instance=ExtResource("15_rybab")]
 position = Vector2(-313, -224)
 
@@ -916,6 +913,9 @@ position = Vector2(670, -205)
 [node name="Shield" parent="." unique_id=250890429 instance=ExtResource("12_ki8bc")]
 position = Vector2(-380, -228.99998)
 scale = Vector2(1.755, 1.755)
+
+[node name="Skeleton_Hard" parent="." unique_id=1321683628 instance=ExtResource("13_j77fg")]
+position = Vector2(17, -191)
 
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="body_entered" from="Mapping/nextlevel" to="." method="_on_nextlevel_body_entered"]
