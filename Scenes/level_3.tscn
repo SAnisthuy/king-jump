@@ -820,6 +820,7 @@ scale = Vector2(0.3381269, 0.3381269)
 
 [node name="nextlevel" type="Area2D" parent="Mapping" unique_id=424283566]
 position = Vector2(957, -298)
+collision_mask = 2
 
 [node name="level changer" type="CollisionShape2D" parent="Mapping/nextlevel" unique_id=635044013]
 position = Vector2(-141, 128)
@@ -865,6 +866,7 @@ shape = SubResource("WorldBoundaryShape2D_fxnjf")
 
 [node name="Deathzone" type="Area2D" parent="Lower death handling" unique_id=1188491981]
 position = Vector2(2, 150)
+collision_mask = 2
 script = ExtResource("14_fxnjf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lower death handling/Deathzone" unique_id=662029228]

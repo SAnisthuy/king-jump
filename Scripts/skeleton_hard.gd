@@ -16,17 +16,17 @@ var attacking = false
 var cooldown = true
 var player_in_range = false
 @onready var attack_cooldown: Timer = $attack_cooldown
-@onready var wall_check: RayCast2D = $WallCheck
-@onready var floor_check: RayCast2D = $FloorCheck
+@onready var floor_check: RayCast2D = $Raycasts/FloorCheck
+@onready var wall_check: RayCast2D = $Raycasts/WallCheck
+@onready var raycasts: Node2D = $Raycasts
 @onready var skeley: AnimatedSprite2D = $AnimatedSprite2D
 
 var skull_scene = preload("res://Scenes/skull.tscn")
 
-
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
 	if dying:
 		return
 	if attacking:
@@ -57,35 +57,34 @@ func start_attack():
 func chase_player():
 
 	var dist = target.position.x - position.x
+	var dir = sign(dist)
 
-	skeley.flip_h = dist < 0
+	face_direction(dir)
 
-	velocity.x = sign(dist) * speed
+	if wall_check.is_colliding() or !floor_check.is_colliding():
+		velocity.x = 0
+
+		if skeley.animation != "idle":
+			skeley.play("idle")
+
+		return
+
+	velocity.x = dir * speed
 
 	if skeley.animation != "chase":
 		skeley.play("chase")
-
+	
 func patrol():
+
+	if wall_check.is_colliding() or !floor_check.is_colliding():
+		direction *= -1
+
+	face_direction(direction)
 
 	velocity.x = direction * patrol_speed
 
-	skeley.flip_h = direction < 0
-
-	if wall_check.is_colliding():
-		turn_around()
-
-	if !floor_check.is_colliding():
-		turn_around()
-
 	if skeley.animation != "walk":
 		skeley.play("walk")
-
-func turn_around():
-
-	direction *= -1
-
-	floor_check.target_position.x *= -1
-	wall_check.target_position.x *= -1
 
 func _on_area_2d_body_entered(body):
 	if body.has_method("player"):
@@ -145,5 +144,11 @@ func take_damage(amount):
 		dying = true
 		skeley.play("death")
 
-		
-			
+func face_direction(dir):
+
+	if dir < 0:
+		skeley.flip_h = true
+		raycasts.scale.x = -1
+	else:
+		skeley.flip_h = false
+		raycasts.scale.x = 1

@@ -19,7 +19,7 @@ var selected_slot = 0
 func add_item(item_data):
 	for i in range(inventory.size()):
 		if inventory[i] == null:
-			inventory[i] = item_data
+			inventory[i] = item_data.duplicate()
 			return true
 	return false
 

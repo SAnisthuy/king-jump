@@ -7,7 +7,6 @@ func _ready() -> void:
 
 func _on_player_death() -> void:
 	GameManager.player_health = 0
-	Inventory.clear()
 	if !timed:
 		timed = true
 		death_timer.start()
@@ -15,6 +14,7 @@ func _on_player_death() -> void:
 func _on_death_timer_timeout() -> void:
 	GameManager.player_health = 100
 	Collectables.update_vals()
+	Inventory.clear()
 	get_tree().reload_current_scene()
 
 func _on_nextlevel_body_entered(body: Node2D) -> void:

@@ -262,15 +262,8 @@ texture = ExtResource("2_oftb3")
 sources/0 = SubResource("TileSetAtlasSource_f88a4")
 sources/1 = SubResource("TileSetAtlasSource_rh4x5")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1w1i"]
-size = Vector2(16, 64)
-
 [node name="Fake Wall" type="StaticBody2D" unique_id=1121596117]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1805180680]
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 3, 0, 0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 3, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
 tile_set = SubResource("TileSet_vht1v")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=682891137]
-position = Vector2(8, 32)
-shape = SubResource("RectangleShape2D_u1w1i")

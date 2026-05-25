@@ -444,6 +444,7 @@ bg_color = Color(0.5686275, 0.3372549, 0.16470589, 0)
 bg_color = Color(0.50715435, 0.0003385517, 0.5513008, 1)
 
 [node name="Skeleton_Hard" type="CharacterBody2D" unique_id=982182177]
+collision_layer = 4
 script = ExtResource("1_4ys7i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1974149112]
@@ -466,6 +467,7 @@ shape = SubResource("RectangleShape2D_shq1q")
 
 [node name="enemy hit box" type="Area2D" parent="." unique_id=364138723]
 position = Vector2(-1, -1)
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy hit box" unique_id=1910741013]
 position = Vector2(3, -9)
@@ -493,10 +495,12 @@ color = Color(0.43448606, 0.00073996215, 0.5606473, 1)
 texture = ExtResource("8_gjns4")
 texture_scale = 0.25
 
-[node name="WallCheck" type="RayCast2D" parent="." unique_id=1196727921]
+[node name="Raycasts" type="Node2D" parent="." unique_id=1100391206]
+
+[node name="WallCheck" type="RayCast2D" parent="Raycasts" unique_id=1196727921]
 target_position = Vector2(19, 0)
 
-[node name="FloorCheck" type="RayCast2D" parent="." unique_id=760475860]
+[node name="FloorCheck" type="RayCast2D" parent="Raycasts" unique_id=760475860]
 position = Vector2(2, 1)
 target_position = Vector2(7, 17)
 

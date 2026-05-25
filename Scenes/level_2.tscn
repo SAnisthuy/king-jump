@@ -886,6 +886,7 @@ position = Vector2(-138, -45)
 scale = Vector2(0.18971974, 0.18971974)
 
 [node name="nextlevel" type="Area2D" parent="Mapping" unique_id=1450411725]
+collision_mask = 2
 metadata/_edit_lock_ = true
 
 [node name="level changer" type="CollisionShape2D" parent="Mapping/nextlevel" unique_id=685549155]

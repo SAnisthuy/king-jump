@@ -10,7 +10,7 @@ func _physics_process(delta):
 func _on_body_entered(body: Node2D) -> void:
 	for thing in get_overlapping_bodies():
 		if thing.has_method("enemy"):
-			thing.take_damage(10)
+			thing.take_damage(30)
 	if body.has_method("player"):
 		return
 	queue_free()
