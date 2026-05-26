@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://becjek1f7nn7v"]
+
+[ext_resource type="Script" uid="uid://bgkb3hoh0xyo8" path="res://Scripts/spear_collectable.gd" id="1_i4w2o"]
+[ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="2_1qmmw"]
+[ext_resource type="Texture2D" uid="uid://b1ox2m3bof4b0" path="res://Assets/Inventory/spear.png" id="3_i4w2o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t4qxn"]
+radius = 10.440307
+
+[node name="Spear" type="Node2D" unique_id=1500536410]
+script = ExtResource("1_i4w2o")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1276504499]
+position = Vector2(6, 5)
+scale = Vector2(0.11, 0.11)
+color = Color(0.7626909, 0.5385478, 7.70092e-07, 1)
+energy = 1.15
+texture = ExtResource("2_1qmmw")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=53343537]
+position = Vector2(6.04, 4.965)
+scale = Vector2(0.655, 0.655)
+texture = ExtResource("3_i4w2o")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1329100223]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2123380119]
+position = Vector2(6, 5)
+shape = SubResource("CircleShape2D_t4qxn")
+
+[node name="pickup_cooldown" type="Timer" parent="." unique_id=207660478]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="pickup_cooldown" to="." method="_on_pickup_cooldown_timeout"]

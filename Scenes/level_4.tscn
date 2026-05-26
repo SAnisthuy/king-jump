@@ -733,7 +733,7 @@ size = Vector2(32, 15)
 script = ExtResource("1_3v663")
 
 [node name="Player" parent="." unique_id=1732569539 instance=ExtResource("2_5eaas")]
-position = Vector2(-590, -446)
+position = Vector2(80, -256)
 
 [node name="HotbarUI" parent="Player" unique_id=2133312155 instance=ExtResource("2_gxyip")]
 
@@ -775,7 +775,7 @@ color = Color(0.41188416, 0.027061785, 0.059562184, 1)
 [node name="Enemies" type="Node" parent="." unique_id=2086238200]
 
 [node name="Gollux" parent="Enemies" unique_id=521648196 instance=ExtResource("18_cxe20")]
-position = Vector2(-312, -74)
+position = Vector2(288, -240.00002)
 
 [node name="Skeletons E" type="Node" parent="Enemies" unique_id=1654986388]
 

@@ -22,8 +22,8 @@ var direction = -1
 
 signal golly_damaged(amount: int)
 
-var patrolSpeed = 60
-var chaseSpeed = 160
+var patrolSpeed = 50
+var chaseSpeed = 100
 
 var cooldown = true
 
@@ -123,7 +123,7 @@ func enemy(): pass
 func _on_golly_frame_changed() -> void:
 	if golly.animation.begins_with("attack"):
 		if golly.frame == 6 and attack and target != null:
-			target.take_damage(15)
+			target.take_damage(50)
 
 
 func _on_cooldown_timer_timeout() -> void:
