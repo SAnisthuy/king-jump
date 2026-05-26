@@ -1,6 +1,10 @@
 extends Node
 
-var required = [null, {"skulls": null, "coins": 4}, {"skulls": null, "coins": 5}, {"skulls": 1, "coins": 3}, {"coins": 1, "skulls": 1}]
+var required = [null, 
+{"skulls": null, "coins": 4}, # Level 1
+{"skulls": null, "coins": 5}, # level 2
+{"skulls": 1, "coins": 3},  # Level 3
+{"coins": 12, "skulls": 3}]	# Level 4
 
 
 var coins = required[GameManager.curr_level]["coins"]
