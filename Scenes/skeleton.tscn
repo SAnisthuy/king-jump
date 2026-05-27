@@ -475,7 +475,7 @@ size = Vector2(107, 25)
 radius = 27.018513
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shq1q"]
-bg_color = Color(0.5686275, 0.3372549, 0.16470589, 0)
+bg_color = Color(0.79265505, 0.5194161, 0.4673661, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbfmp"]
 bg_color = Color(0.972549, 0.105882354, 0.05490196, 1)

@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bu3rynq4e8j0r" path="res://Scripts/deathzone2.gd" id="14_fxnjf"]
 [ext_resource type="PackedScene" uid="uid://btse7qdsbnfg6" path="res://Scenes/skeleton.tscn" id="15_rybab"]
 [ext_resource type="PackedScene" uid="uid://dttrhqrns5k2w" path="res://Scenes/torches.tscn" id="15_xjeco"]
+[ext_resource type="PackedScene" uid="uid://cgqr5wr3nmv03" path="res://Scenes/chest.tscn" id="18_nbwsh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ki8bc"]
 texture = ExtResource("6_s80er")
@@ -918,6 +919,9 @@ scale = Vector2(1.755, 1.755)
 
 [node name="Skeleton_Hard" parent="." unique_id=1321683628 instance=ExtResource("13_j77fg")]
 position = Vector2(17, -191)
+
+[node name="Chest" parent="." unique_id=1044129040 instance=ExtResource("18_nbwsh")]
+position = Vector2(-158, -221.00002)
 
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="body_entered" from="Mapping/nextlevel" to="." method="_on_nextlevel_body_entered"]

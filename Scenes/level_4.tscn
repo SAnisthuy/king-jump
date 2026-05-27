@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://qrj8wlmcg1as" path="res://Scenes/coin.tscn" id="16_b8ytw"]
 [ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="17_mbnb1"]
 [ext_resource type="PackedScene" uid="uid://cukrepkuivqig" path="res://Scenes/gollux.tscn" id="18_cxe20"]
+[ext_resource type="PackedScene" uid="uid://bbp0plbv7agbs" path="res://Scenes/platform.tscn" id="18_fmsuk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o5257"]
 texture = ExtResource("5_mbnb1")
@@ -729,11 +730,49 @@ sources/4 = SubResource("TileSetAtlasSource_glsh0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfb3u"]
 size = Vector2(32, 15)
 
+[sub_resource type="Animation" id="Animation_3oae0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-680, -395)]
+}
+
+[sub_resource type="Animation" id="Animation_a51ki"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-680, -395), Vector2(-680, -135)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6xecf"]
+_data = {
+&"RESET": SubResource("Animation_3oae0"),
+&"new_animation": SubResource("Animation_a51ki")
+}
+
 [node name="Level 4" type="Node2D" unique_id=477148119]
 script = ExtResource("1_3v663")
 
 [node name="Player" parent="." unique_id=1732569539 instance=ExtResource("2_5eaas")]
-position = Vector2(-566, -448)
+position = Vector2(90, -258)
 
 [node name="HotbarUI" parent="Player" unique_id=2133312155 instance=ExtResource("2_gxyip")]
 
@@ -774,7 +813,7 @@ color = Color(0.499286, 0.18478796, 0.20562652, 1)
 [node name="Enemies" type="Node" parent="." unique_id=2086238200]
 
 [node name="Gollux" parent="Enemies" unique_id=521648196 instance=ExtResource("18_cxe20")]
-position = Vector2(305.00003, -93)
+position = Vector2(325, -250)
 
 [node name="Skeletons E" type="Node" parent="Enemies" unique_id=1654986388]
 
@@ -881,6 +920,14 @@ scale = Vector2(-0.1866891, -0.1866891)
 [node name="wedge5" parent="Platforms/Wedges" unique_id=2144647691 instance=ExtResource("11_54c2w")]
 position = Vector2(-37, -199.99998)
 scale = Vector2(-0.1866891, -0.1866891)
+
+[node name="platform" parent="Platforms" unique_id=1050125833 instance=ExtResource("18_fmsuk")]
+position = Vector2(-680, -395)
+scale = Vector2(0.065, 0.065)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/platform" unique_id=1244766785]
+libraries/ = SubResource("AnimationLibrary_6xecf")
+autoplay = &"new_animation"
 
 [node name="Coin" type="Node" parent="." unique_id=486129383]
 

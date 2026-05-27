@@ -703,6 +703,7 @@ position = Vector2(1, 34)
 target_position = Vector2(43, 33)
 
 [node name="cooldown_timer" type="Timer" parent="." unique_id=1000858355]
+wait_time = 2.0
 
 [node name="health" type="ProgressBar" parent="." unique_id=60583625]
 offset_left = -20.0

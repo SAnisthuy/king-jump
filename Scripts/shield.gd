@@ -8,12 +8,10 @@ func _ready() -> void:
 	pickup_cooldown.start()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("player") and pickup_available:
+	if body.has_method("player") and pickup_available and Inventory.add_item({"name": "shield", "health": 5}):
 		queue_free()
-		Inventory.add_item({
-	"name": "shield",
-	"health": 5
-})
+	pass
+
 
 
 func _on_pickup_cooldown_timeout() -> void:

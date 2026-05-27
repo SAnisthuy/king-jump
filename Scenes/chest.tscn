@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://cgqr5wr3nmv03"]
+
+[ext_resource type="Script" uid="uid://1ly20nw0tsb7" path="res://Scripts/chest.gd" id="1_cjfl1"]
+[ext_resource type="Texture2D" uid="uid://bfd3pssrlxmip" path="res://Assets/Inventory/Animated Chests/Chests.png" id="2_bagqn"]
+[ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="3_bagqn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmguq"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq33m"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6qf6"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25pds"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uovm1"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrmno"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k15qg"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1puaa"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed36l"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un233"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0i6c"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isy45"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(48, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jrwr"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(96, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irijg"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(144, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl3qt"]
+atlas = ExtResource("2_bagqn")
+region = Rect2(192, 32, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhimo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmguq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq33m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6qf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25pds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uovm1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrmno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k15qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1puaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed36l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un233")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0i6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isy45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jrwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irijg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl3qt")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqn7c"]
+size = Vector2(71, 22)
+
+[node name="Chest" type="Area2D" unique_id=1044129040]
+scale = Vector2(0.8, 0.8)
+collision_mask = 2
+script = ExtResource("1_cjfl1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1866697571]
+sprite_frames = SubResource("SpriteFrames_qhimo")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.7236299
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1866523227]
+position = Vector2(-6.5, 5)
+shape = SubResource("RectangleShape2D_cqn7c")
+
+[node name="cooldown" type="Timer" parent="." unique_id=2042967734]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1113602297]
+position = Vector2(-8.749999, 6.2499995)
+scale = Vector2(0.49, 0.49)
+color = Color(1, 1, 0.54509807, 1)
+texture = ExtResource("3_bagqn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

@@ -730,13 +730,14 @@ position = Vector2(-81, 64)
 position = Vector2(-205, -8)
 
 [node name="Label" type="Label" parent="." unique_id=1451818988]
-offset_left = -371.0
-offset_top = 67.0
-offset_right = -104.0
-offset_bottom = 110.66667
+offset_left = -368.0
+offset_top = 51.0
+offset_right = -40.0
+offset_bottom = 118.0
 theme_override_fonts/font = ExtResource("2_wrinw")
 text = "Dont fall...
-Collect all the coins to move on"
+Collect all the coins and reach 
+the double doors to move on"
 
 [connection signal="body_entered" from="mapping/nextlevel" to="." method="_on_nextlevel_body_entered"]
 [connection signal="body_entered" from="mapping/Deathzone" to="Player" method="_on_area_2d_body_entered"]

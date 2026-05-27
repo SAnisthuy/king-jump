@@ -45,6 +45,7 @@ func _process(delta: float):
 		selected_slot = 3
 	
 	update_selection()
+	update_item_health()
 
 func update_selection():
 	for i in range(slots.size()):
@@ -57,4 +58,17 @@ func update_selection():
 func get_selected_item():
 	return inventory[selected_slot]
 		
-		
+func update_item_health():
+	for i in range(slots.size()):
+		if inventory[i] == null or i == 0:
+			var health = slots[i].get_node("item_health")
+			health.visible = false
+		else:
+			var health = slots[i].get_node("item_health")
+			if inventory[i]["health"] < 5:
+				health.visible = true
+				health.value = inventory[i]["health"] * 20
+			else:
+				health.visible = false
+			
+			

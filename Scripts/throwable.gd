@@ -5,6 +5,8 @@ var dir: float
 
 func _physics_process(delta):
 	position += Vector2.RIGHT.rotated(dir) * speed * delta
+	position.y += 20 * delta
+	
 
 
 func _on_body_entered(body: Node2D) -> void:

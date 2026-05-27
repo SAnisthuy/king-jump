@@ -437,8 +437,8 @@ size = Vector2(242, 43)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ks230"]
 radius = 26.019224
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shq1q"]
-bg_color = Color(0.5686275, 0.3372549, 0.16470589, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ys7i"]
+bg_color = Color(0.8327245, 0.4581067, 0.65311, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbfmp"]
 bg_color = Color(0.50715435, 0.0003385517, 0.5513008, 1)
@@ -482,7 +482,7 @@ offset_left = -16.0
 offset_top = -16.0
 offset_right = 8.0
 offset_bottom = -12.0
-theme_override_styles/background = SubResource("StyleBoxFlat_shq1q")
+theme_override_styles/background = SubResource("StyleBoxFlat_4ys7i")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xbfmp")
 step = 1.0
 value = 100.0

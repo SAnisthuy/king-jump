@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://n6e6ju8dhufj" path="res://Scripts/hotbar_ui.gd" id="1_tbcuq"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbcuq"]
+bg_color = Color(0.6155709, 0.49486238, 0.38906908, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8qfg"]
+bg_color = Color(0.87601763, 0.27127624, 0.21065876, 1)
+
 [node name="HotbarUI" type="CanvasLayer" unique_id=2133312155]
 script = ExtResource("1_tbcuq")
 
@@ -25,6 +31,18 @@ grow_vertical = 2
 expand_mode = 2
 stretch_mode = 5
 
+[node name="item_health" type="ProgressBar" parent="Slots/Slot1" unique_id=258728277]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 54.0
+offset_right = 54.0
+offset_bottom = 60.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tbcuq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u8qfg")
+step = 1.0
+value = 100.0
+show_percentage = false
+
 [node name="Slot2" type="Panel" parent="Slots" unique_id=1180720579]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -38,6 +56,18 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 2
 stretch_mode = 5
+
+[node name="item_health" type="ProgressBar" parent="Slots/Slot2" unique_id=2072313994]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 54.0
+offset_right = 54.0
+offset_bottom = 60.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tbcuq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u8qfg")
+step = 1.0
+value = 50.0
+show_percentage = false
 
 [node name="Slot3" type="Panel" parent="Slots" unique_id=297106360]
 custom_minimum_size = Vector2(64, 64)
@@ -53,6 +83,18 @@ grow_vertical = 2
 expand_mode = 2
 stretch_mode = 5
 
+[node name="item_health" type="ProgressBar" parent="Slots/Slot3" unique_id=1767913359]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 54.0
+offset_right = 53.0
+offset_bottom = 60.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tbcuq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u8qfg")
+step = 1.0
+value = 50.0
+show_percentage = false
+
 [node name="Slot4" type="Panel" parent="Slots" unique_id=663473564]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -66,3 +108,15 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 2
 stretch_mode = 5
+
+[node name="item_health" type="ProgressBar" parent="Slots/Slot4" unique_id=908601563]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 54.0
+offset_right = 55.0
+offset_bottom = 60.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tbcuq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u8qfg")
+step = 1.0
+value = 50.0
+show_percentage = false

@@ -3,11 +3,15 @@ extends CharacterBody2D
 @onready var golly: AnimatedSprite2D = $golly
 @onready var hitbox: Area2D = $hitbox
 
+var shield_scene = preload("res://Scenes/shield.tscn")
+
 var chase = false
 var attack = false
 var heal = false
-var damage = false
+var damage = 100
 var dying = false
+
+var curr_attacking = false
 
 var health = 100
 
@@ -37,6 +41,9 @@ func _physics_process(delta: float) -> void:
 		raycasts.scale.x = 1
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	if curr_attacking: 
+		move_and_slide()
+		return
 	if attack:
 		attacking()
 	elif chase:
@@ -72,7 +79,6 @@ func patrolling():
 		
 	
 func attacking():
-
 	if cooldown:
 		cooldown = false
 		cooldown_timer.start()
@@ -81,6 +87,8 @@ func attacking():
 
 		var attacks = ["attack1", "attack2"]
 		var chosen = attacks.pick_random()
+		if chosen == "attack1": damage = 25
+		else: damage = 50
 
 		golly.play(chosen)
 	
@@ -94,6 +102,10 @@ func take_damage(amount):
 	golly_damaged.emit(25)
 
 	if health <= 0:
+		var shield = shield_scene.instantiate()
+		get_parent().add_child(shield)
+		shield.scale = Vector2(1.755, 1.755)
+		shield.global_position = Vector2(global_position.x, global_position.y+6)
 		queue_free()
 
 
@@ -123,7 +135,7 @@ func enemy(): pass
 func _on_golly_frame_changed() -> void:
 	if golly.animation.begins_with("attack"):
 		if golly.frame == 6 and attack and target != null:
-			target.take_damage(50)
+			target.take_damage(damage)
 
 
 func _on_cooldown_timer_timeout() -> void:
@@ -131,6 +143,8 @@ func _on_cooldown_timer_timeout() -> void:
 
 
 func _on_golly_animation_finished() -> void:
+	if golly.animation.begins_with("attack"):
+		curr_attacking = false
 	if chase:
 		chasing()
 	else:
