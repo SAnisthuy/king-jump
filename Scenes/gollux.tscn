@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cwe75x2tjf5lv" path="res://Assets/Sprites [Enemies]/Gollux/gollux_idle.png" id="6_cusjs"]
 [ext_resource type="Texture2D" uid="uid://be4m88jlaqon7" path="res://Assets/Sprites [Enemies]/Gollux/gollux_move.png" id="7_1mtfk"]
 [ext_resource type="Script" uid="uid://clshy4se675vl" path="res://Scripts/golly_health.gd" id="8_hhkp4"]
+[ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="9_uc2pa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w6wf6"]
 atlas = ExtResource("2_hhkp4")
@@ -715,6 +716,12 @@ step = 1.0
 value = 100.0
 show_percentage = false
 script = ExtResource("8_hhkp4")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1634237388]
+position = Vector2(0, 35.555557)
+scale = Vector2(0.61, 0.61)
+color = Color(0.93103015, 0, 0.24690253, 1)
+texture = ExtResource("9_uc2pa")
 
 [connection signal="golly_damaged" from="." to="health" method="_on_gollux_golly_damaged"]
 [connection signal="animation_finished" from="golly" to="." method="_on_golly_animation_finished"]
