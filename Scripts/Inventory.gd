@@ -8,6 +8,8 @@ var inventory = [{"name": "sword"},
 	null
 ]
 
+var items = [{"spear": preload("res://Scenes/spear.tscn")}]
+
 var item_map = {"shield": 0, "spear": 1, "sword": 2}
 
 var item_info = [{"name": "shield","health": 5},
