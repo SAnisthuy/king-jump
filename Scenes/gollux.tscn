@@ -723,6 +723,10 @@ scale = Vector2(0.61, 0.61)
 color = Color(0.93103015, 0, 0.24690253, 1)
 texture = ExtResource("9_uc2pa")
 
+[node name="damage_cooldown" type="Timer" parent="." unique_id=1162528406]
+wait_time = 0.15
+one_shot = true
+
 [connection signal="golly_damaged" from="." to="health" method="_on_gollux_golly_damaged"]
 [connection signal="animation_finished" from="golly" to="." method="_on_golly_animation_finished"]
 [connection signal="frame_changed" from="golly" to="." method="_on_golly_frame_changed"]
@@ -731,3 +735,4 @@ texture = ExtResource("9_uc2pa")
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="cooldown_timer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="damage_cooldown" to="." method="_on_damage_cooldown_timeout"]

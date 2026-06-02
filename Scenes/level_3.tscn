@@ -914,8 +914,7 @@ position = Vector2(522, -225)
 position = Vector2(670, -205)
 
 [node name="Shield" parent="." unique_id=250890429 instance=ExtResource("12_ki8bc")]
-position = Vector2(-380, -228.99998)
-scale = Vector2(1.755, 1.755)
+position = Vector2(-390, -230)
 
 [node name="Skeleton_Hard" parent="." unique_id=1321683628 instance=ExtResource("13_j77fg")]
 position = Vector2(17, -191)

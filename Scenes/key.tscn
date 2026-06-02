@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bmuccparw87he"]
+
+[ext_resource type="Script" uid="uid://bl64x8dqndr56" path="res://Scripts/key.gd" id="1_udxw8"]
+[ext_resource type="Texture2D" uid="uid://p58sgvemtrrw" path="res://Assets/Inventory/key.png" id="2_brn0f"]
+[ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="3_brn0f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lc1k7"]
+radius = 23.021729
+
+[node name="key" type="Area2D" unique_id=2141460900]
+scale = Vector2(0.26, 0.26)
+script = ExtResource("1_udxw8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=97826553]
+texture = ExtResource("2_brn0f")
+region_rect = Rect2(47.82597, 31.662855, 16.17403, 16.337145)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=785488879]
+shape = SubResource("CircleShape2D_lc1k7")
+
+[node name="cooldown" type="Timer" parent="." unique_id=80120830]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=184900338]
+scale = Vector2(0.33, 0.33)
+color = Color(1, 1, 0.22352941, 1)
+texture = ExtResource("3_brn0f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

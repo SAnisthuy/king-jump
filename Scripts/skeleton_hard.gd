@@ -20,6 +20,7 @@ var player_in_range = false
 @onready var wall_check: RayCast2D = $Raycasts/WallCheck
 @onready var raycasts: Node2D = $Raycasts
 @onready var skeley: AnimatedSprite2D = $AnimatedSprite2D
+@onready var damage_cooldown: Timer = $damage_cooldown
 
 var skull_scene = preload("res://Scenes/skull.tscn")
 
@@ -143,6 +144,9 @@ func take_damage(amount):
 	if health <= 0:
 		dying = true
 		skeley.play("death")
+	
+	skeley.modulate = Color(18.892, 18.892, 18.892, 1.0)
+	damage_cooldown.start()
 
 func face_direction(dir):
 
@@ -152,3 +156,7 @@ func face_direction(dir):
 	else:
 		skeley.flip_h = false
 		raycasts.scale.x = 1
+
+
+func _on_damage_cooldown_timeout() -> void:
+	skeley.modulate = Color(1.0, 1.0, 1.0, 1.0)

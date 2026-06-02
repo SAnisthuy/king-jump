@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://qj35wt00jpa0" path="res://Assets/Sprites [Enemies]/Skeleton/Sprite Sheets/Skeleton Attack.png" id="1_pegji"]
 [ext_resource type="Texture2D" uid="uid://d3hu0mobt3nhp" path="res://Assets/Sprites [Enemies]/Skeleton/Sprite Sheets/Skeleton Dead.png" id="2_5abox"]
 [ext_resource type="Texture2D" uid="uid://chnd6qlthtvwg" path="res://Assets/Sprites [Enemies]/Skeleton/Sprite Sheets/Skeleton Idle.png" id="3_v8sxu"]
+[ext_resource type="Texture2D" uid="uid://cseoxvg38kwou" path="res://Assets/Sprites [Enemies]/Skeleton/Sprite Sheets/Skeleton Hit.png" id="3_xbfmp"]
 [ext_resource type="Texture2D" uid="uid://d20varqdi1tyy" path="res://Assets/Sprites [Enemies]/Skeleton/Sprite Sheets/Skeleton Walk.png" id="4_ks230"]
 [ext_resource type="Texture2D" uid="uid://ck5ggcj234gsv" path="res://Assets/Sprites [Enemies]/Skeleton/Sprite Sheets/Skeleton React.png" id="5_v8sxu"]
 [ext_resource type="Script" uid="uid://d1xnb6g6p57qf" path="res://Scripts/skeley_health.gd" id="7_ks230"]
@@ -80,6 +81,38 @@ region = Rect2(688, 0, 43, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_di62f"]
 atlas = ExtResource("1_pegji")
 region = Rect2(731, 0, 43, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edrlr"]
+atlas = ExtResource("3_xbfmp")
+region = Rect2(0, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvb6a"]
+atlas = ExtResource("3_xbfmp")
+region = Rect2(30, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnmp8"]
+atlas = ExtResource("3_xbfmp")
+region = Rect2(60, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pspbd"]
+atlas = ExtResource("3_xbfmp")
+region = Rect2(90, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh5c3"]
+atlas = ExtResource("3_xbfmp")
+region = Rect2(120, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6agp4"]
+atlas = ExtResource("3_xbfmp")
+region = Rect2(150, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bmnp"]
+atlas = ExtResource("3_xbfmp")
+region = Rect2(180, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6mll"]
+atlas = ExtResource("3_xbfmp")
+region = Rect2(210, 0, 30, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vjh88"]
 atlas = ExtResource("2_5abox")
@@ -316,6 +349,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_edrlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvb6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnmp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pspbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh5c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6agp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bmnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6mll")
+}],
+"loop": false,
+"name": &"damage",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vjh88")
 }, {
 "duration": 1.0,
@@ -485,7 +547,9 @@ script = ExtResource("1_5abox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1974149112]
 sprite_frames = SubResource("SpriteFrames_2beah")
-animation = &"death"
+animation = &"damage"
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=280057326]
 position = Vector2(2, 6)
@@ -529,6 +593,10 @@ color = Color(0, 0.41806513, 0.41831034, 1)
 texture = ExtResource("8_shq1q")
 texture_scale = 0.25
 
+[node name="damage_cooldown" type="Timer" parent="." unique_id=1375404241]
+wait_time = 0.15
+one_shot = true
+
 [connection signal="skeley_damaged" from="." to="Health" method="_on_skeleton_skeley_damaged"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
@@ -537,3 +605,4 @@ texture_scale = 0.25
 [connection signal="body_entered" from="enemy hit box" to="." method="_on_enemy_hit_box_body_entered"]
 [connection signal="body_exited" from="enemy hit box" to="." method="_on_enemy_hit_box_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="damage_cooldown" to="." method="_on_damage_cooldown_timeout"]

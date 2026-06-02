@@ -13,20 +13,26 @@ var target = null
 var attacking = false
 var cooldown = true
 var player_in_range = false
+
+
+@onready var damage_cooldown: Timer = $damage_cooldown
+
 @onready var attack_cooldown: Timer = $attack_cooldown
 
 @onready var skeley: AnimatedSprite2D = $AnimatedSprite2D
 
+
+
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
 	if dying:
 		return
+	
 	if attacking:
 		move_and_slide()
 		return
-
 
 	if player_in_range and cooldown:
 		start_attack()
@@ -117,14 +123,15 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 func take_damage(amount):
 	if dying:
 		return
-
-	health -= amount
-	skeley_damaged.emit(amount)
-
+	
+	health -= 25
+	skeley_damaged.emit(25)
 	if health <= 0:
 		dying = true
 		if skeley.animation != "death":
 			skeley.play("death")
+	skeley.modulate = Color(18.892, 18.892, 18.892, 1.0)
+	damage_cooldown.start()
 
-		
-			
+func _on_damage_cooldown_timeout() -> void:
+	skeley.modulate = Color(1.0, 1.0, 1.0, 1.0)

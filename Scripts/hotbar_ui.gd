@@ -15,7 +15,8 @@ var item_texture  = {
 	"bow": preload("res://Assets/Inventory/bow.png"),
 	"shield": preload("res://Assets/Inventory/shield.png"),
 	"spear": preload("res://Assets/Inventory/spear.png"),
-	"sword": preload("res://Assets/Inventory/32 Free Weapon Icons/Icons/sword.png")
+	"sword": preload("res://Assets/Inventory/32 Free Weapon Icons/Icons/sword.png"),
+	"key": preload("res://Assets/Inventory/key.png")
 }
 
 func update_hotbar():
@@ -60,7 +61,7 @@ func get_selected_item():
 		
 func update_item_health():
 	for i in range(slots.size()):
-		if inventory[i] == null or i == 0:
+		if inventory[i] == null:
 			var health = slots[i].get_node("item_health")
 			health.visible = false
 		else:

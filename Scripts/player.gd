@@ -8,6 +8,7 @@ var dying = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $"player hitbox"
 @onready var spear: Marker2D = $spear
+@onready var damage_cooldown: Timer = $damage_cooldown
 
 func _physics_process(delta: float) -> void:
 	SPEED = 100
@@ -25,9 +26,15 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 	
+	if Input.is_action_just_pressed("drop"):
+		var dropped_item = Inventory.drop_item(Inventory.selected_slot)
+		if dropped_item != null:
+			get_parent().add_child(dropped_item)
+			dropped_item.global_position = Vector2(global_position.x, global_position.y)
+	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-			
+		
 	elif Input.is_action_just_pressed("attack"):
 		if holding_shield():
 			pass
@@ -71,7 +78,6 @@ func _physics_process(delta: float) -> void:
 		direction = -1
 		animated_sprite_2d.flip_h = true
 		velocity.x = direction * SPEED
-		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if holding_shield():	
@@ -113,9 +119,11 @@ func take_damage(amount:int):
 		item["health"] -= 1
 		if item["health"] <= 0:
 			Inventory.inventory[Inventory.selected_slot] = null
-	else: 
+	else:
 		GameManager.player_health -= amount
-
+		animated_sprite_2d.modulate = Color(18.892, 18.892, 18.892, 1.0)
+		damage_cooldown.start()
+		
 func holding_shield():
 
 	var item = Inventory.inventory[Inventory.selected_slot]
@@ -130,3 +138,7 @@ func holding_spear():
 func holding_sword():
 	var item = Inventory.inventory[Inventory.selected_slot]
 	return item != null and item["name"] == "sword"
+
+
+func _on_damage_cooldown_timeout() -> void:
+	animated_sprite_2d.modulate = Color(1.0, 1.0, 1.0, 1.0)

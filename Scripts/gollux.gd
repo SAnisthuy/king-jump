@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var golly: AnimatedSprite2D = $golly
 @onready var hitbox: Area2D = $hitbox
 
-var shield_scene = preload("res://Scenes/shield.tscn")
+var key_scene = preload("res://Scenes/key.tscn")
 
 var chase = false
 var attack = false
@@ -21,6 +21,7 @@ var target = null
 @onready var floorcheck: RayCast2D = $raycasts/floorcheck
 @onready var raycasts: Node2D = $raycasts
 @onready var cooldown_timer: Timer = $cooldown_timer
+@onready var damage_cooldown: Timer = $damage_cooldown
 
 var direction = -1
 
@@ -52,7 +53,6 @@ func _physics_process(delta: float) -> void:
 		patrolling()
 	move_and_slide()
 	
-
 func chasing():
 	var dist = target.position.x - position.x
 	direction = sign(dist)
@@ -75,8 +75,7 @@ func patrolling():
 		direction *= -1
 	velocity.x = direction * patrolSpeed
 	if golly.animation != "move":
-		golly.play("move")
-		
+		golly.play("move")		
 	
 func attacking():
 	if cooldown:
@@ -91,8 +90,6 @@ func attacking():
 		else: damage = 50
 
 		golly.play(chosen)
-	
-
 
 func take_damage(amount):
 	if dying:
@@ -102,12 +99,13 @@ func take_damage(amount):
 	golly_damaged.emit(25)
 
 	if health <= 0:
-		var shield = shield_scene.instantiate()
-		get_parent().add_child(shield)
-		shield.scale = Vector2(1.755, 1.755)
-		shield.global_position = Vector2(global_position.x, global_position.y+6)
+		var key = key_scene.instantiate()
+		get_parent().add_child(key)
+		key.global_position = Vector2(global_position.x, global_position.y+20)
 		queue_free()
-
+	
+	golly.modulate = Color(18.892, 18.892, 18.892, 1.0)
+	damage_cooldown.start()
 
 func is_colliding():
 	return wallcheck.is_colliding() or !floorcheck.is_colliding()
@@ -137,10 +135,8 @@ func _on_golly_frame_changed() -> void:
 		if golly.frame == 6 and attack and target != null:
 			target.take_damage(damage)
 
-
 func _on_cooldown_timer_timeout() -> void:
 	cooldown = true
-
 
 func _on_golly_animation_finished() -> void:
 	if golly.animation.begins_with("attack"):
@@ -149,3 +145,6 @@ func _on_golly_animation_finished() -> void:
 		chasing()
 	else:
 		patrolling()
+
+func _on_damage_cooldown_timeout() -> void:
+	golly.modulate = Color(1.0, 1.0, 1.0, 1.0)
