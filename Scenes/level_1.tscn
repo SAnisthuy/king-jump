@@ -607,6 +607,7 @@ distance = -256.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wowpa"]
 
 [node name="Level 1" type="Node2D" unique_id=1482271114]
+position = Vector2(2, 0)
 script = ExtResource("1_uy8f0")
 
 [node name="Player" parent="." unique_id=1331434805 instance=ExtResource("1_xrdnt")]
