@@ -438,7 +438,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gysh"]
-size = Vector2(11, 17)
+size = Vector2(11, 16)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkybt"]
 bg_color = Color(0.38160297, 0.181672, 0.06396194, 1)
@@ -476,8 +476,7 @@ animation = &"attack2"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1521626952]
-visible = false
-position = Vector2(-2.5, 3.5)
+position = Vector2(-2.5, 4)
 shape = SubResource("RectangleShape2D_0gysh")
 
 [node name="health" type="ProgressBar" parent="." unique_id=1997858370]
@@ -499,7 +498,6 @@ color = Color(1, 1, 0.8392157, 1)
 texture = ExtResource("8_8erm5")
 
 [node name="player hitbox" type="Area2D" parent="." unique_id=1195490525]
-visible = false
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player hitbox" unique_id=294426843]
@@ -529,6 +527,9 @@ one_shot = true
 [node name="damage_cooldown" type="Timer" parent="." unique_id=1557872430]
 wait_time = 0.15
 one_shot = true
+
+[node name="target point" type="Node2D" parent="." unique_id=1976052622]
+position = Vector2(-1, 7)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

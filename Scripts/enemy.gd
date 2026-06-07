@@ -10,19 +10,14 @@ var attacking  = false
 func _ready() -> void:
 	sprite.play("idle")
 
-
-
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		play_in_range = true
 		try_attack()
 
-
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
 		play_in_range  = false
-
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite.animation.begins_with("attack"):
@@ -63,4 +58,4 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if sprite.frame == 4 and sprite.animation.begins_with("attack"):
 		for body in hitbox.get_overlapping_bodies():
 			if body.has_method("player"):
-				body.take_damage(25)
+				body.take_damage(10)

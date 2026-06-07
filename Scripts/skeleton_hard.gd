@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 100
+var health = 200
 signal skeley_damaged(damage:int)
 var dying = false
 
@@ -138,12 +138,13 @@ func take_damage(amount):
 	if dying:
 		return
 
-	health -= 25
-	skeley_damaged.emit(25)
+	health -= amount
+	skeley_damaged.emit(amount)
 
 	if health <= 0:
 		dying = true
 		skeley.play("death")
+		return
 	
 	skeley.modulate = Color(18.892, 18.892, 18.892, 1.0)
 	damage_cooldown.start()
@@ -156,7 +157,6 @@ func face_direction(dir):
 	else:
 		skeley.flip_h = false
 		raycasts.scale.x = 1
-
 
 func _on_damage_cooldown_timeout() -> void:
 	skeley.modulate = Color(1.0, 1.0, 1.0, 1.0)

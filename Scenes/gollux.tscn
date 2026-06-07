@@ -470,7 +470,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ktc7j")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack2",
 "speed": 10.0
 }, {
@@ -654,7 +654,7 @@ animations = [{
 size = Vector2(68.88889, 61.66667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7dsh"]
-size = Vector2(625, 193.33334)
+size = Vector2(625, 117.77779)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hnvp"]
 radius = 84.903145
@@ -673,7 +673,7 @@ script = ExtResource("1_cjcee")
 
 [node name="golly" type="AnimatedSprite2D" parent="." unique_id=583308945]
 sprite_frames = SubResource("SpriteFrames_27k3o")
-animation = &"attack1"
+animation = &"attack2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1802252757]
 position = Vector2(1.1111089, 33.611115)
@@ -683,7 +683,7 @@ shape = SubResource("RectangleShape2D_hhkp4")
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection" unique_id=26185019]
-position = Vector2(2.2222223, 34.444447)
+position = Vector2(2.2222223, 32.222225)
 shape = SubResource("RectangleShape2D_i7dsh")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=871502327]

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cv53sqrv7x68r"]
+
+[ext_resource type="Script" uid="uid://c65vbkvvc0frl" path="res://Scripts/skull_throwable.gd" id="1_kwmwd"]
+[ext_resource type="Texture2D" uid="uid://ckquiw3bnbbps" path="res://Assets/Inventory/1.png" id="2_kwmwd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kwmwd"]
+radius = 4.0
+
+[node name="CharacterBody2D" type="Area2D" unique_id=1631236154]
+collision_mask = 7
+script = ExtResource("1_kwmwd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=33981464]
+position = Vector2(0, -13.000001)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("2_kwmwd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=310783167]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_kwmwd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -47,6 +47,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func start_attack():
+	if dying: return
 	attacking = true
 	cooldown = false
 
@@ -66,6 +67,8 @@ func chase_player():
 		skeley.play("walk")
 
 func idle():
+	if dying:
+		return
 
 	velocity.x = 0
 
@@ -124,14 +127,15 @@ func take_damage(amount):
 	if dying:
 		return
 	
-	health -= 25
-	skeley_damaged.emit(25)
+	health -= amount
+	skeley_damaged.emit(amount)
 	if health <= 0:
 		dying = true
 		if skeley.animation != "death":
 			skeley.play("death")
-	skeley.modulate = Color(18.892, 18.892, 18.892, 1.0)
-	damage_cooldown.start()
+	else:
+		skeley.modulate = Color(18.892, 18.892, 18.892, 1.0)
+		damage_cooldown.start()
 
 func _on_damage_cooldown_timeout() -> void:
 	skeley.modulate = Color(1.0, 1.0, 1.0, 1.0)

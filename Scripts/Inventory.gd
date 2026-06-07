@@ -36,3 +36,9 @@ func drop_item(slot_num):
 		var item_name = inventory[slot_num]["name"]
 		inventory[slot_num] = null
 		return items[item_name].instantiate()
+
+func remove_item(name):
+	for i in range(inventory.size()):
+		if inventory[i] != null:
+			if inventory[i]["name"] == name:
+				inventory[i] = null

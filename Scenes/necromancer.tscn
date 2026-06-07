@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://bjap3wtbeyh3w"]
 
 [ext_resource type="Texture2D" uid="uid://dd40ey3bbsov2" path="res://Assets/Sprites [Enemies]/Necromancer/Attack/spr_NecromancerAttackWithEffect_strip47.png" id="1_41wvu"]
+[ext_resource type="Script" uid="uid://bwjlip4wa5awt" path="res://Scripts/necromancer.gd" id="1_wdw8x"]
 [ext_resource type="Texture2D" uid="uid://bf6s1yteyole4" path="res://Assets/Sprites [Enemies]/Necromancer/Death/spr_NecromancerDeath_strip52.png" id="2_wdw8x"]
 [ext_resource type="Texture2D" uid="uid://dxrigu8ta6qy4" path="res://Assets/Sprites [Enemies]/Necromancer/Idle/spr_NecromancerIdle_strip50.png" id="3_xwdgr"]
 [ext_resource type="Texture2D" uid="uid://c5m0q2ckw7h5f" path="res://Assets/Sprites [Enemies]/Necromancer/Jump/spr_NecromancerIdle_strip50.png" id="4_mjnvx"]
 [ext_resource type="Texture2D" uid="uid://bou12b8nj4gpi" path="res://Assets/Sprites [Enemies]/Necromancer/Walk/spr_NecromancerWalk_strip10.png" id="5_v001x"]
+[ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="7_xwdgr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hh3is"]
 atlas = ExtResource("1_41wvu")
@@ -138,58 +140,6 @@ region = Rect2(3968, 0, 128, 128)
 atlas = ExtResource("1_41wvu")
 region = Rect2(4096, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sh7dl"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(4224, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ldr7i"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(4352, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fvp5f"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(4480, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n8kuv"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(4608, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_estst"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(4736, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ojw1j"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(4864, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4j7to"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(4992, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sd7r7"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(5120, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1kjeo"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(5248, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gvh72"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(5376, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ib0b3"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(5504, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_451pk"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(5632, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7471"]
-atlas = ExtResource("1_41wvu")
-region = Rect2(5760, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfr1h"]
 atlas = ExtResource("1_41wvu")
 region = Rect2(5888, 0, 128, 128)
@@ -321,34 +271,6 @@ region = Rect2(2880, 0, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qsdi3"]
 atlas = ExtResource("2_wdw8x")
 region = Rect2(2976, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_12334"]
-atlas = ExtResource("2_wdw8x")
-region = Rect2(3072, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t625o"]
-atlas = ExtResource("2_wdw8x")
-region = Rect2(3168, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d1c14"]
-atlas = ExtResource("2_wdw8x")
-region = Rect2(3264, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ef6h1"]
-atlas = ExtResource("2_wdw8x")
-region = Rect2(3360, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bs56x"]
-atlas = ExtResource("2_wdw8x")
-region = Rect2(3456, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mxq11"]
-atlas = ExtResource("2_wdw8x")
-region = Rect2(3552, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rkrg"]
-atlas = ExtResource("2_wdw8x")
-region = Rect2(3648, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqjn0"]
 atlas = ExtResource("2_wdw8x")
@@ -793,45 +715,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_dhkk4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sh7dl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ldr7i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fvp5f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n8kuv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_estst")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ojw1j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4j7to")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sd7r7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1kjeo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gvh72")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ib0b3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_451pk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n7471")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_pfr1h")
 }],
 "loop": false,
@@ -936,27 +819,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_qsdi3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_12334")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t625o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d1c14")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ef6h1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bs56x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mxq11")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6rkrg")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_hqjn0")
 }, {
 "duration": 1.0,
@@ -997,7 +859,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1231,9 +1093,68 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwdgr"]
+size = Vector2(33, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdw8x"]
+size = Vector2(352, 102)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdw8x"]
+bg_color = Color(1, 0.47412336, 0.61326104, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwdgr"]
+bg_color = Color(0.8039216, 0, 0.4, 1)
+
 [node name="necromancer" type="CharacterBody2D" unique_id=916766111]
+script = ExtResource("1_wdw8x")
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=949126470]
 sprite_frames = SubResource("SpriteFrames_6gp41")
-animation = &"walk"
-frame_progress = 0.75926566
+animation = &"death"
+autoplay = "idle"
+frame = 44
+frame_progress = 1.0
+
+[node name="collision box" type="CollisionShape2D" parent="." unique_id=1294666212]
+position = Vector2(2.5, -8.5)
+shape = SubResource("RectangleShape2D_xwdgr")
+
+[node name="detection" type="Area2D" parent="." unique_id=914682582]
+
+[node name="detect box" type="CollisionShape2D" parent="detection" unique_id=1776218406]
+position = Vector2(1, -5)
+shape = SubResource("RectangleShape2D_wdw8x")
+
+[node name="attack cooldown" type="Timer" parent="." unique_id=1135515050]
+wait_time = 5.0
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1837741191]
+position = Vector2(11, -26)
+
+[node name="health" type="ProgressBar" parent="." unique_id=669771079]
+offset_left = -10.0
+offset_top = 21.0
+offset_right = 13.0
+offset_bottom = 25.0
+theme_override_styles/background = SubResource("StyleBoxFlat_wdw8x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xwdgr")
+max_value = 600.0
+step = 1.0
+value = 600.0
+show_percentage = false
+
+[node name="damage" type="Timer" parent="." unique_id=2097068374]
+wait_time = 0.2
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1718984792]
+position = Vector2(0, -6.9999995)
+scale = Vector2(0.365, 0.365)
+color = Color(0.88697106, 0.0008719367, 0.9248857, 1)
+texture = ExtResource("7_xwdgr")
+
+[connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="frame_changed" from="sprite" to="." method="_on_sprite_frame_changed"]
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]
+[connection signal="timeout" from="attack cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="damage" to="." method="_on_damage_timeout"]

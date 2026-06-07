@@ -34,6 +34,9 @@ var cooldown = true
 
 
 func _physics_process(delta: float) -> void: 
+	if curr_attacking: 
+		move_and_slide()
+		return
 	if direction < 0:
 		golly.flip_h = true
 		raycasts.scale.x = -1
@@ -42,9 +45,6 @@ func _physics_process(delta: float) -> void:
 		raycasts.scale.x = 1
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	if curr_attacking: 
-		move_and_slide()
-		return
 	if attack:
 		attacking()
 	elif chase:
@@ -79,6 +79,7 @@ func patrolling():
 	
 func attacking():
 	if cooldown:
+		curr_attacking = true
 		cooldown = false
 		cooldown_timer.start()
 
@@ -141,10 +142,5 @@ func _on_cooldown_timer_timeout() -> void:
 func _on_golly_animation_finished() -> void:
 	if golly.animation.begins_with("attack"):
 		curr_attacking = false
-	if chase:
-		chasing()
-	else:
-		patrolling()
-
 func _on_damage_cooldown_timeout() -> void:
 	golly.modulate = Color(1.0, 1.0, 1.0, 1.0)
