@@ -26,6 +26,7 @@
 [ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="17_mbnb1"]
 [ext_resource type="PackedScene" uid="uid://cukrepkuivqig" path="res://Scenes/gollux.tscn" id="18_cxe20"]
 [ext_resource type="PackedScene" uid="uid://bbp0plbv7agbs" path="res://Scenes/platform.tscn" id="18_fmsuk"]
+[ext_resource type="PackedScene" uid="uid://bmuccparw87he" path="res://Scenes/key.tscn" id="27_2a174"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2a174"]
 size = Vector2(52, 21)
@@ -1429,7 +1430,8 @@ theme_override_font_sizes/font_size = 5
 text = "You are still missing required items..."
 
 [node name="necromancer" parent="Mapping" unique_id=916766111 instance=ExtResource("15_nqprj")]
-position = Vector2(224, -369)
+position = Vector2(224, -376)
+motion_mode = 1
 
 [node name="Spear" parent="Mapping" unique_id=1500536410 instance=ExtResource("16_dt3rr")]
 position = Vector2(375, -345)
@@ -1635,7 +1637,10 @@ scale = Vector2(0.36, 0.36)
 [node name="Lighting" type="Node" parent="." unique_id=1966527907]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Lighting" unique_id=775860392]
-color = Color(0.64875114, 0.25758126, 0.2804526, 1)
+color = Color(1, 0.5268214, 0.4528324, 1)
+
+[node name="key" parent="Lighting" unique_id=2141460900 instance=ExtResource("27_2a174")]
+position = Vector2(216, -144)
 
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="body_entered" from="Mapping/doorBoss/Area2D" to="Mapping/doorBoss" method="_on_area_2d_body_entered"]

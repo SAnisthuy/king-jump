@@ -139,6 +139,5 @@ func holding_sword():
 	var item = Inventory.inventory[Inventory.selected_slot]
 	return item != null and item["name"] == "sword"
 
-
 func _on_damage_cooldown_timeout() -> void:
 	animated_sprite_2d.modulate = Color(1.0, 1.0, 1.0, 1.0)

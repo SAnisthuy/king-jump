@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 100
 const JUMP_VELOCITY = -400.0
 
 #player related stuff
@@ -14,29 +14,36 @@ var dying = false
 
 var cooldown = true
 
+var dir = 1
 @onready var damage: Timer = $damage
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var health: ProgressBar = $health
 @onready var attack_cooldown: Timer = $"attack cooldown"
 @onready var detection: Area2D = $detection
+@onready var collision: RayCast2D = $collision
 
 
 var throwable = preload("res://Scenes/skull_throwable.tscn")
 
 func _physics_process(delta: float) -> void:
-
+	if Input.is_action_just_pressed("slot_4"):
+		print(sprite.animation)
+		print(attacking)
 	if attacking or dying:
 		return
 	if player_in_range and cooldown:
 		if sprite.animation != "attack":
 			sprite.play("attack")
+			attacking = true
+		return
+	if cooldown == false and player_in_range:
+		move()
+		move_and_slide()
+		return
 	else:
 		sprite.play("idle")
 
-func attack():
-	attacking = true
-
-	
+func attack():	
 	throw_skull()
 	
 	cooldown = false
@@ -99,3 +106,23 @@ func death():
 	for body in detection.get_overlapping_bodies():
 		if body.has_method("enemy"):
 			body.take_damage(1000)
+
+func move():
+	if player != null:
+		var dist = player.position.x - position.x
+		dir = sign(dist)
+		velocity.x = dir * SPEED
+		face_direction()
+		sprite.play("walk")
+		if collision.is_colliding():
+			if !collision.get_collider().has_method("player") or !collision.get_collider().has_method("enemy"):
+				dir *= -1
+
+	
+func face_direction():
+	if dir < 0:
+		sprite.flip_h = true
+		collision.scale.x = -1
+	else:
+		sprite.flip_h = false
+		collision.scale.x = 1

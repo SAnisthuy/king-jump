@@ -5,7 +5,6 @@ var body: Node2D
 var direction = null
 
 var skeley = preload("res://Scenes/skeleton.tscn")
-var skeley_hard = preload("res://Scenes/skeleton_hard.tscn")
 
 func _ready():
 	if body:
@@ -22,11 +21,7 @@ func _physics_process(delta):
 		
 		
 func spawn_skeleton():
-	var skull = null
-	if randf() <= 0.25:
-		skull = skeley_hard.instantiate()
-	else:
-		skull = skeley.instantiate()
+	var skull = skeley.instantiate()
 	get_parent().add_child(skull)
 	skull.global_position = Vector2(global_position.x, global_position.y - 10)
 	queue_free()

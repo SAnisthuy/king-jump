@@ -1097,7 +1097,7 @@ animations = [{
 size = Vector2(33, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdw8x"]
-size = Vector2(352, 102)
+size = Vector2(352, 112)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdw8x"]
 bg_color = Color(1, 0.47412336, 0.61326104, 1)
@@ -1106,14 +1106,14 @@ bg_color = Color(1, 0.47412336, 0.61326104, 1)
 bg_color = Color(0.8039216, 0, 0.4, 1)
 
 [node name="necromancer" type="CharacterBody2D" unique_id=916766111]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_wdw8x")
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=949126470]
 sprite_frames = SubResource("SpriteFrames_6gp41")
-animation = &"death"
+animation = &"walk"
 autoplay = "idle"
-frame = 44
-frame_progress = 1.0
 
 [node name="collision box" type="CollisionShape2D" parent="." unique_id=1294666212]
 position = Vector2(2.5, -8.5)
@@ -1149,8 +1149,11 @@ wait_time = 0.2
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1718984792]
 position = Vector2(0, -6.9999995)
 scale = Vector2(0.365, 0.365)
-color = Color(0.88697106, 0.0008719367, 0.9248857, 1)
+color = Color(0.9843137, 0.6, 1, 1)
 texture = ExtResource("7_xwdgr")
+
+[node name="collision" type="RayCast2D" parent="." unique_id=357204904]
+target_position = Vector2(32, 0)
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="frame_changed" from="sprite" to="." method="_on_sprite_frame_changed"]
