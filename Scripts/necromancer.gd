@@ -43,9 +43,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		sprite.play("idle")
 
-func attack():	
-	throw_skull()
-	
+func attack():
+	if health.value < (health.max_value / 2):	
+		throw_skull()
 	cooldown = false
 	attack_cooldown.start()
 
@@ -118,7 +118,6 @@ func move():
 			if !collision.get_collider().has_method("player") or !collision.get_collider().has_method("enemy"):
 				dir *= -1
 
-	
 func face_direction():
 	if dir < 0:
 		sprite.flip_h = true

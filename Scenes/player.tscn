@@ -531,6 +531,10 @@ one_shot = true
 [node name="target point" type="Node2D" parent="." unique_id=1976052622]
 position = Vector2(-1, 7)
 
+[node name="coyote time" type="Timer" parent="." unique_id=1061398763]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="dead" from="health" to="." method="_on_health_dead"]
@@ -538,3 +542,4 @@ position = Vector2(-1, 7)
 [connection signal="body_exited" from="player hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="spear/Timer" to="spear" method="_on_timer_timeout"]
 [connection signal="timeout" from="damage_cooldown" to="." method="_on_damage_cooldown_timeout"]
+[connection signal="timeout" from="coyote time" to="." method="_on_coyote_time_timeout"]

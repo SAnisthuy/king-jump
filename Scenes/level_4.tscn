@@ -20,9 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://cglucfgauuum8" path="res://Scenes/enemy.tscn" id="12_3v663"]
 [ext_resource type="Script" uid="uid://d2o1nf6johwwi" path="res://Scripts/level_block.gd" id="12_6xecf"]
 [ext_resource type="Script" uid="uid://jvqpsu438gxs" path="res://Scenes/Fake walls/fake_wall1.gd" id="13_gxyip"]
-[ext_resource type="PackedScene" uid="uid://bjap3wtbeyh3w" path="res://Scenes/necromancer.tscn" id="15_nqprj"]
 [ext_resource type="PackedScene" uid="uid://qrj8wlmcg1as" path="res://Scenes/coin.tscn" id="16_b8ytw"]
 [ext_resource type="PackedScene" uid="uid://becjek1f7nn7v" path="res://Scenes/spear.tscn" id="16_dt3rr"]
+[ext_resource type="PackedScene" uid="uid://bc1u2lqu83mat" path="res://Scenes/necromancer2.tscn" id="17_2a174"]
 [ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="17_mbnb1"]
 [ext_resource type="PackedScene" uid="uid://cukrepkuivqig" path="res://Scenes/gollux.tscn" id="18_cxe20"]
 [ext_resource type="PackedScene" uid="uid://bbp0plbv7agbs" path="res://Scenes/platform.tscn" id="18_fmsuk"]
@@ -1429,14 +1429,13 @@ theme_override_fonts/font = ExtResource("17_mbnb1")
 theme_override_font_sizes/font_size = 5
 text = "You are still missing required items..."
 
-[node name="necromancer" parent="Mapping" unique_id=916766111 instance=ExtResource("15_nqprj")]
-position = Vector2(224, -376)
-motion_mode = 1
-
 [node name="Spear" parent="Mapping" unique_id=1500536410 instance=ExtResource("16_dt3rr")]
 position = Vector2(375, -345)
 
 [node name="Enemies" type="Node" parent="." unique_id=2086238200]
+
+[node name="necromancer" parent="Enemies" unique_id=916766111 instance=ExtResource("17_2a174")]
+position = Vector2(216, -376)
 
 [node name="Gollux" parent="Enemies" unique_id=521648196 instance=ExtResource("18_cxe20")]
 position = Vector2(296, -96)

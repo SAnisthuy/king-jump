@@ -34,10 +34,14 @@ func clear():
 func drop_item(slot_num):
 	if slot_num != 0 and inventory[slot_num] != null:
 		var item_name = inventory[slot_num]["name"]
+		var health_data = inventory[slot_num]["health"]
 		inventory[slot_num] = null
-		return items[item_name].instantiate()
-
+		var removed_item =  items[item_name].instantiate()
+		removed_item.health = health_data
+		return removed_item
+		
 func remove_item(name):
+	inventory[selected_slot] = null
 	for i in range(inventory.size()):
 		if inventory[i] != null:
 			if inventory[i]["name"] == name:

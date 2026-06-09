@@ -5,16 +5,25 @@ var JUMP_VELOCITY = -250
 var attacking = false
 var dying = false
 
+var can_jump = true
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $"player hitbox"
 @onready var spear: Marker2D = $spear
 @onready var damage_cooldown: Timer = $damage_cooldown
+@onready var coyote_time: Timer = $"coyote time"
 
 func _physics_process(delta: float) -> void:
+	GameManager.player_pos = global_position
 	SPEED = 100
 	var direction = 1
+	
+	if can_jump == false and is_on_floor():
+		can_jump = true
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
 	if holding_shield():
 		JUMP_VELOCITY = -100
 	if !holding_shield():
@@ -31,9 +40,12 @@ func _physics_process(delta: float) -> void:
 		if dropped_item != null:
 			get_parent().add_child(dropped_item)
 			dropped_item.global_position = Vector2(global_position.x, global_position.y)
+		
+	if Input.is_action_just_pressed("jump") and can_jump:
+		jump()
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if (is_on_floor() == false) and can_jump and coyote_time.is_stopped():
+		coyote_time.start()
 		
 	elif Input.is_action_just_pressed("attack"):
 		if holding_shield():
@@ -107,6 +119,10 @@ func damage_enemy():
 		if body.has_method("enemy"):
 			body.take_damage(50)
 
+func jump():
+	velocity.y = JUMP_VELOCITY
+	can_jump = false
+
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite_2d.animation.begins_with("attack"):
 		if animated_sprite_2d.frame == 2:
@@ -141,3 +157,6 @@ func holding_sword():
 
 func _on_damage_cooldown_timeout() -> void:
 	animated_sprite_2d.modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+func _on_coyote_time_timeout() -> void:
+	can_jump = false
