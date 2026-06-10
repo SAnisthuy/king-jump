@@ -48,6 +48,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func start_attack():
+	if dying: return
 	attacking = true
 	cooldown = false
 
@@ -56,7 +57,7 @@ func start_attack():
 		skeley.play("attack")
 
 func chase_player():
-
+	if dying: return
 	var dist = target.position.x - position.x
 	var dir = sign(dist)
 
@@ -76,7 +77,7 @@ func chase_player():
 		skeley.play("chase")
 	
 func patrol():
-
+	if dying: return
 	if wall_check.is_colliding() or !floor_check.is_colliding():
 		direction *= -1
 
@@ -88,11 +89,13 @@ func patrol():
 		skeley.play("walk")
 
 func _on_area_2d_body_entered(body):
+	if dying: return
 	if body.has_method("player"):
 		target = body
 		is_in_pursuit = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
+	if dying: return
 	if body == target:
 		target = null
 		is_in_pursuit = false
@@ -115,6 +118,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		queue_free()
 
 func _on_enemy_hit_box_body_entered(body: Node2D) -> void:
+	if dying: return
 	if body.has_method("player"):
 		player_in_range = true
 
@@ -124,6 +128,8 @@ func _on_attack_cooldown_timeout() -> void:
 func _on_enemy_hit_box_body_exited(body):
 
 	if body.has_method("player"):
+		if dying:
+			return
 		player_in_range = false
 
 		if !attacking and !is_in_pursuit:

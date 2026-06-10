@@ -607,7 +607,6 @@ distance = -256.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wowpa"]
 
 [node name="Level 1" type="Node2D" unique_id=1482271114]
-position = Vector2(2, 0)
 script = ExtResource("1_uy8f0")
 
 [node name="Player" parent="." unique_id=1331434805 instance=ExtResource("1_xrdnt")]
@@ -618,6 +617,7 @@ collision_layer = 2
 
 [node name="coinsNeeded2" type="Label" parent="Player" unique_id=1250685786]
 z_index = 2
+texture_filter = 2
 offset_left = -136.0
 offset_top = -72.0
 offset_right = -79.0
@@ -731,6 +731,7 @@ position = Vector2(-81, 64)
 position = Vector2(-205, -8)
 
 [node name="Label" type="Label" parent="." unique_id=1451818988]
+texture_filter = 2
 offset_left = -368.0
 offset_top = 51.0
 offset_right = -40.0

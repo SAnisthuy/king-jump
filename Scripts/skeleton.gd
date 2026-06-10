@@ -3,7 +3,6 @@ extends CharacterBody2D
 var spear_scene =  preload("res://Scenes/spear.tscn")
 
 var health = 100
-signal skeley_damaged(damage:int)
 var dying = false
 
 var is_in_pursuit = false
@@ -14,6 +13,7 @@ var attacking = false
 var cooldown = true
 var player_in_range = false
 
+@onready var health_bar: ProgressBar = $Health
 
 @onready var damage_cooldown: Timer = $damage_cooldown
 
@@ -128,7 +128,8 @@ func take_damage(amount):
 		return
 	
 	health -= amount
-	skeley_damaged.emit(amount)
+	health_bar.value = health
+	
 	if health <= 0:
 		dying = true
 		if skeley.animation != "death":

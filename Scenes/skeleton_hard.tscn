@@ -597,6 +597,7 @@ texture_scale = 0.25
 [node name="Raycasts" type="Node2D" parent="." unique_id=1100391206]
 
 [node name="WallCheck" type="RayCast2D" parent="Raycasts" unique_id=1196727921]
+position = Vector2(0, 5)
 target_position = Vector2(19, 0)
 
 [node name="FloorCheck" type="RayCast2D" parent="Raycasts" unique_id=760475860]

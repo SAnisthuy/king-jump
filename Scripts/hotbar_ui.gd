@@ -44,7 +44,11 @@ func _process(delta: float):
 		selected_slot = 2
 	if Input.is_action_just_pressed("slot_4"):
 		selected_slot = 3
-	
+	if Input.is_action_just_pressed("scroll down"):
+		selected_slot = (selected_slot + 1) % slots.size()
+	if Input.is_action_just_pressed("scroll up"):
+		selected_slot = (selected_slot - 1 + slots.size()) % slots.size()
+		
 	update_selection()
 	update_item_health()
 

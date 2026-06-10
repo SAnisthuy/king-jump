@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://biq8i8slnsg2e" path="res://Scripts/level_3.gd" id="1_j77fg"]
 [ext_resource type="PackedScene" uid="uid://c6jcqf2bc6x3k" path="res://Scenes/player.tscn" id="1_xjeco"]
-[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="2_j77fg"]
 [ext_resource type="PackedScene" uid="uid://bbnx47h6fr5qc" path="res://Scenes/hotbar_ui.tscn" id="3_ki8bc"]
 [ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="4_nbwsh"]
 [ext_resource type="Texture2D" uid="uid://cpklwvhhar0i2" path="res://Assets/maintileset/midground_/dungeon_.png" id="6_s80er"]
@@ -832,17 +831,6 @@ position = Vector2(-127, 112.999985)
 scale = Vector2(0.425, 0.425)
 shadow_enabled = true
 texture = ExtResource("4_nbwsh")
-
-[node name="Label" type="Label" parent="." unique_id=1115683222]
-visible = false
-offset_left = -590.0
-offset_top = -104.0
-offset_right = -474.0
-offset_bottom = -88.666664
-theme_override_fonts/font = ExtResource("2_j77fg")
-theme_override_font_sizes/font_size = 10
-text = "Left click to attack!"
-metadata/_edit_use_anchors_ = true
 
 [node name="death_timer" type="Timer" parent="." unique_id=967576075]
 

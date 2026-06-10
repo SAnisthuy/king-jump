@@ -41,7 +41,6 @@ func drop_item(slot_num):
 		return removed_item
 		
 func remove_item(name):
-	inventory[selected_slot] = null
 	for i in range(inventory.size()):
 		if inventory[i] != null:
 			if inventory[i]["name"] == name:
