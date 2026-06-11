@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="King Jump"
-run/main_scene="uid://6sywbrjkf4v"
+run/main_scene="uid://887n6dbye0fr"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

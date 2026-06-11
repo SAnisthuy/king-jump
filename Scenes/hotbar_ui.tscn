@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://n6e6ju8dhufj" path="res://Scripts/hotbar_ui.gd" id="1_tbcuq"]
 [ext_resource type="Texture2D" uid="uid://dgg3uoxws0ktc" path="res://Scenes/Main menue/reload_97168.png" id="2_k6xqg"]
+[ext_resource type="Script" uid="uid://c1qf4efbf2wnb" path="res://Scenes/Main menue/buttons_manager.gd" id="2_mqua7"]
 [ext_resource type="Texture2D" uid="uid://c53irkuxv3nrd" path="res://Scenes/Main menue/exit_13409973.png" id="3_mqua7"]
 [ext_resource type="Texture2D" uid="uid://bkmrqcath8yap" path="res://Scenes/Main menue/setting new.png" id="4_fo5m2"]
 
@@ -25,6 +26,9 @@ bg_color = Color(0.87601763, 0.27127624, 0.21065876, 1)
 
 [node name="HotbarUI" type="CanvasLayer" unique_id=2133312155]
 script = ExtResource("1_tbcuq")
+
+[node name="Buttons manager" type="Node2D" parent="." unique_id=820280899]
+script = ExtResource("2_mqua7")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2002980271]
 anchors_preset = 1
@@ -180,4 +184,6 @@ step = 1.0
 value = 50.0
 show_percentage = false
 
-[node name="Buttons" type="Node2D" parent="." unique_id=820280899]
+[connection signal="pressed" from="HBoxContainer/Restart" to="Buttons manager" method="_on_restart_pressed"]
+[connection signal="pressed" from="HBoxContainer/Settings" to="Buttons manager" method="_on_settings_pressed"]
+[connection signal="pressed" from="HBoxContainer/Quit" to="Buttons manager" method="_on_quit_pressed"]

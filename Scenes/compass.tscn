@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://887n6dbye0fr"]
+
+[ext_resource type="Texture2D" uid="uid://cfjhg40txjvn5" path="res://Assets/Compass/compass 1.svg" id="2_58hix"]
+[ext_resource type="Texture2D" uid="uid://ceq2sm0csdr04" path="res://Assets/Compass/compass 2.svg" id="3_ywfbt"]
+
+[node name="Compass" type="Node2D" unique_id=990067149]
+
+[node name="Node" type="Node2D" parent="." unique_id=643680552]
+position = Vector2(680, 328)
+scale = Vector2(0.25, 0.25)
+
+[node name="background" type="Sprite2D" parent="Node" unique_id=930627930]
+position = Vector2(-8, -63.999996)
+scale = Vector2(0.7487786, 0.7487786)
+texture = ExtResource("2_58hix")
+
+[node name="pin" type="Sprite2D" parent="Node" unique_id=902729912]
+scale = Vector2(0.46, 0.46)
+texture = ExtResource("3_ywfbt")
+offset = Vector2(0, -253.1)
