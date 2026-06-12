@@ -40,8 +40,8 @@ func drop_item(slot_num):
 		removed_item.health = health_data
 		return removed_item
 		
-func remove_item(name):
+func remove_item(item_name):
 	for i in range(inventory.size()):
 		if inventory[i] != null:
-			if inventory[i]["name"] == name:
+			if inventory[i]["name"] == item_name:
 				inventory[i] = null

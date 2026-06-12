@@ -32,7 +32,7 @@ func update_hotbar():
 func _ready():
 	pass
 
-func _process(delta: float):
+func _process(_delta: float):
 	
 	update_hotbar()
 	

@@ -12,6 +12,9 @@ var can_jump = true
 @onready var spear: Marker2D = $spear
 @onready var damage_cooldown: Timer = $damage_cooldown
 @onready var coyote_time: Timer = $"coyote time"
+@onready var attack_sfx: AudioStreamPlayer = $attackSFX
+
+
 
 func _physics_process(delta: float) -> void:
 	GameManager.player_pos = global_position
@@ -60,6 +63,7 @@ func _physics_process(delta: float) -> void:
 		else: pass
 		
 	elif Input.is_action_pressed("forward"):
+		
 		if Input.is_action_pressed("sprint"):
 			if holding_shield():
 				pass
@@ -99,7 +103,7 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	_on_health_dead()
 
 func player(): #makes sure player is recognizable to others
@@ -127,6 +131,8 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite_2d.animation.begins_with("attack"):
 		if animated_sprite_2d.frame == 2:
 			damage_enemy()
+			attack_sfx.play()
+
 
 func take_damage(amount:int):
 	

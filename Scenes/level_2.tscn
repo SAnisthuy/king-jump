@@ -768,14 +768,17 @@ size = Vector2(32, 15)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_q0ycs"]
 polygon = PackedVector2Array(-143, 86, -96, 86, -96, 121, -146, 121, -176, 121, -176, 127, -64, 127, -64, 44, -144, 47, -143, 85)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ijtdf"]
+polygon = PackedVector2Array(237.58545, -223.61047, -223.61084, -223.61047, -223.61084, -223.61047, 237.58545, -223.61047)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yvrk7"]
-polygon = PackedVector2Array(-920.1992, -410.35913, -957.5044, 335.7484, -335.74854, -360.61865, 335.74854, -373.0537, 1044.5508, 286.00793, 907.7644, -410.35913)
+polygon = PackedVector2Array(-932.6343, -348.1836, -957.5044, 335.7484, -348.1836, -373.0537, 335.74854, -373.0537, 1044.5508, 286.00793, 907.7644, -360.61865)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hj5x7"]
 polygon = PackedVector2Array(-540, 164, -448, 164, -448, 174, -541, 175)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fhuy1"]
-polygon = PackedVector2Array(-591, 75, -530, 75, -530, 79, -591, 79)
+polygon = PackedVector2Array(-591, 79, -530, 79, -530, 79, -591, 79)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_i6dbo"]
 polygon = PackedVector2Array(-431, -27, -336, -26, -336, -17, -431, -17)
@@ -906,7 +909,7 @@ occluder = SubResource("OccluderPolygon2D_q0ycs")
 [node name="Lighting" type="Node" parent="Mapping" unique_id=1531562511]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Mapping/Lighting" unique_id=769749690]
-color = Color(0.32934043, 0.3024246, 0.22167918, 1)
+color = Color(0.22300482, 0.19378662, 0.390625, 1)
 
 [node name="Lamp" type="Sprite2D" parent="Mapping/Lighting" unique_id=683359391]
 position = Vector2(-380.99994, 7.6293945e-06)
@@ -933,6 +936,22 @@ position = Vector2(-0.0009765625, -0.000108291795)
 scale = Vector2(5.2562222, 5.2562222)
 shadow_enabled = true
 texture = ExtResource("5_bl0du")
+
+[node name="Lamp6" type="Sprite2D" parent="Mapping/Lighting" unique_id=724801561]
+position = Vector2(-416.99997, 95)
+scale = Vector2(0.071553014, 0.071553014)
+texture = ExtResource("15_q0ycs")
+region_enabled = true
+region_rect = Rect2(347.9026, 0, 355.83557, 458.07886)
+
+[node name="PointLight2D" type="PointLight2D" parent="Mapping/Lighting/Lamp6" unique_id=1325389955]
+position = Vector2(13.975102, -1.666027e-06)
+scale = Vector2(5.2562222, 5.2562222)
+shadow_enabled = true
+texture = ExtResource("5_bl0du")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Mapping/Lighting/Lamp6" unique_id=218143732]
+occluder = SubResource("OccluderPolygon2D_ijtdf")
 
 [node name="Lamp3" type="Sprite2D" parent="Mapping/Lighting" unique_id=190144236]
 position = Vector2(-457.99997, 191)
@@ -983,7 +1002,6 @@ region_rect = Rect2(709.2213, 516.0004, 793.1217, 743.2209)
 [node name="PointLight2D" type="PointLight2D" parent="Mapping/Lighting/Big light" unique_id=1977292969]
 position = Vector2(12.435089, 174.09177)
 scale = Vector2(10.515, 10.515)
-energy = 2.01
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 18.0

@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="8_8erm5"]
 [ext_resource type="Texture2D" uid="uid://b1ox2m3bof4b0" path="res://Assets/Inventory/spear.png" id="14_7dp3o"]
 [ext_resource type="Script" uid="uid://esq3y7arbjkj" path="res://Scripts/spear.gd" id="15_h4iuc"]
+[ext_resource type="AudioStream" uid="uid://b1cjaimrpumvm" path="res://Audio/SFX/Sword Hit 1.wav" id="16_fd4e3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypfnu"]
 atlas = ExtResource("2_3smsa")
@@ -455,7 +456,6 @@ size = Vector2(19, 2)
 [node name="Player" type="CharacterBody2D" unique_id=1732569539]
 collision_layer = 3
 collision_mask = 7
-collision_priority = 0.0
 script = ExtResource("1_vgqql")
 
 [node name="coinsNeeded" type="Label" parent="." unique_id=1488474412]
@@ -472,7 +472,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=73788332]
 sprite_frames = SubResource("SpriteFrames_p1odr")
-animation = &"attack2"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1521626952]
@@ -532,8 +532,11 @@ one_shot = true
 position = Vector2(-1, 7)
 
 [node name="coyote time" type="Timer" parent="." unique_id=1061398763]
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true
+
+[node name="attackSFX" type="AudioStreamPlayer" parent="." unique_id=1995217685]
+stream = ExtResource("16_fd4e3")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://bbnx47h6fr5qc"]
 
 [ext_resource type="Script" uid="uid://n6e6ju8dhufj" path="res://Scripts/hotbar_ui.gd" id="1_tbcuq"]
-[ext_resource type="Texture2D" uid="uid://dgg3uoxws0ktc" path="res://Scenes/Main menue/reload_97168.png" id="2_k6xqg"]
 [ext_resource type="Script" uid="uid://c1qf4efbf2wnb" path="res://Scenes/Main menue/buttons_manager.gd" id="2_mqua7"]
-[ext_resource type="Texture2D" uid="uid://c53irkuxv3nrd" path="res://Scenes/Main menue/exit_13409973.png" id="3_mqua7"]
-[ext_resource type="Texture2D" uid="uid://bkmrqcath8yap" path="res://Scenes/Main menue/setting new.png" id="4_fo5m2"]
+[ext_resource type="Texture2D" uid="uid://c2u4tln7flvfl" path="res://Scenes/Main menue/menue icons/6.svg" id="3_suigy"]
+[ext_resource type="Texture2D" uid="uid://cfbqixqnr7l24" path="res://Scenes/Main menue/menue icons/4.svg" id="4_5vurm"]
+[ext_resource type="Texture2D" uid="uid://5mqd5cqjxqen" path="res://Scenes/Main menue/menue icons/5.svg" id="5_j4l73"]
+[ext_resource type="Script" uid="uid://da00so1jtto5e" path="res://Scripts/compass.gd" id="6_6w6hs"]
+[ext_resource type="Texture2D" uid="uid://c1vmu8i7lq0uk" path="res://Assets/Compass/compass/1.svg" id="7_suigy"]
+[ext_resource type="Texture2D" uid="uid://yklnmuxrurrp" path="res://Assets/Compass/compass/3.svg" id="8_5vurm"]
+[ext_resource type="Texture2D" uid="uid://dqec5wepclbv2" path="res://Assets/Compass/compass/2.svg" id="9_j4l73"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6xqg"]
 bg_color = Color(0.21568628, 0.101960786, 0.08235294, 0.39215687)
@@ -23,6 +27,9 @@ bg_color = Color(0.6155709, 0.49486238, 0.38906908, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8qfg"]
 bg_color = Color(0.87601763, 0.27127624, 0.21065876, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_suigy"]
+radius = 909.7751
 
 [node name="HotbarUI" type="CanvasLayer" unique_id=2133312155]
 script = ExtResource("1_tbcuq")
@@ -45,7 +52,7 @@ theme_override_constants/separation = 0
 [node name="Restart" type="Button" parent="HBoxContainer" unique_id=692609302]
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-theme_override_icons/icon = ExtResource("2_k6xqg")
+theme_override_icons/icon = ExtResource("3_suigy")
 theme_override_styles/normal = SubResource("StyleBoxFlat_k6xqg")
 icon_alignment = 1
 expand_icon = true
@@ -57,7 +64,7 @@ layout_mode = 2
 [node name="Settings" type="Button" parent="HBoxContainer" unique_id=703306969]
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-theme_override_icons/icon = ExtResource("4_fo5m2")
+theme_override_icons/icon = ExtResource("4_5vurm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_k6xqg")
 icon_alignment = 1
 expand_icon = true
@@ -69,7 +76,7 @@ layout_mode = 2
 [node name="Quit" type="Button" parent="HBoxContainer" unique_id=1906826696]
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-theme_override_icons/icon = ExtResource("3_mqua7")
+theme_override_icons/icon = ExtResource("5_j4l73")
 theme_override_styles/normal = SubResource("StyleBoxFlat_k6xqg")
 icon_alignment = 1
 expand_icon = true
@@ -184,6 +191,37 @@ step = 1.0
 value = 50.0
 show_percentage = false
 
+[node name="compass" type="Node2D" parent="." unique_id=1788862092]
+modulate = Color(0.67058825, 0.6509804, 0.4745098, 0.72156864)
+position = Vector2(1072, 577)
+scale = Vector2(0.065, 0.065)
+script = ExtResource("6_6w6hs")
+
+[node name="bg" type="Sprite2D" parent="compass" unique_id=1375003441]
+texture = ExtResource("7_suigy")
+
+[node name="Node2D" type="Node2D" parent="compass" unique_id=213547396]
+
+[node name="pin" type="Sprite2D" parent="compass/Node2D" unique_id=872910449]
+position = Vector2(0, -2.0009766)
+rotation = 1.5707964
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("8_5vurm")
+offset = Vector2(83.045, -191.135)
+
+[node name="over" type="Sprite2D" parent="compass" unique_id=1580873676]
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("9_j4l73")
+
+[node name="Area2D" type="Area2D" parent="compass" unique_id=1407318341]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="compass/Area2D" unique_id=413809229]
+position = Vector2(-0.00018882751, 0)
+shape = SubResource("CircleShape2D_suigy")
+debug_color = Color(2.9841065e-06, 0.65492725, 0.7636424, 0.41960785)
+
 [connection signal="pressed" from="HBoxContainer/Restart" to="Buttons manager" method="_on_restart_pressed"]
 [connection signal="pressed" from="HBoxContainer/Settings" to="Buttons manager" method="_on_settings_pressed"]
 [connection signal="pressed" from="HBoxContainer/Quit" to="Buttons manager" method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="compass/Area2D" to="compass" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="compass/Area2D" to="compass" method="_on_area_2d_mouse_exited"]

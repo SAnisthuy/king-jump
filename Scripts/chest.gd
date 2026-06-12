@@ -16,11 +16,11 @@ func _ready() -> void:
 	for i in range(randi_range(1, 3)):
 		picked.append(all_items.pick_random())
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Interact") and in_range and !opening:
 		chest_sprite.play("open")
 		opening = true
-
+ 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		in_range = true

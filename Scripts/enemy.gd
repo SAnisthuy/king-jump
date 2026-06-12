@@ -50,7 +50,7 @@ func _on_timer_timeout() -> void:
 func enemy():
 	pass
 
-func take_damage(amount):
+func take_damage(_amount):
 	queue_free()
 
 

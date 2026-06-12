@@ -6,7 +6,7 @@ var piackable = false
 func _ready() -> void:
 	cooldown.start()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if in_range and piackable:
 		if Inventory.add_item({"name": "key", "health": 5}):
 			queue_free()

@@ -1646,6 +1646,9 @@ color = Color(0.2775187, 0.20377061, 0.0048957397, 1)
 visible = false
 position = Vector2(216, -144)
 
+[node name="Node2D" type="Node2D" parent="." unique_id=878605949]
+position = Vector2(184, -175)
+
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="body_entered" from="Mapping/doorBoss/Area2D" to="Mapping/doorBoss" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Mapping/nextlevel" to="Mapping/nextlevel" method="_on_body_entered"]

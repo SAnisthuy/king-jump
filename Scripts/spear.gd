@@ -5,7 +5,7 @@ extends Marker2D
 var spear_path = preload("res://Scenes/throwable.tscn")
 var cooldown = false
 
-func _process(delta):
+func _process(_delta):
 	visible = holding_spear()
 	look_at(get_global_mouse_position())
 	

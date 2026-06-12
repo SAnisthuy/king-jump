@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="King Jump"
-run/main_scene="uid://887n6dbye0fr"
+run/main_scene="uid://6sywbrjkf4v"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://0rpes03nwane"
 
 [autoload]
 
@@ -21,6 +25,7 @@ GameManager="*uid://ckvssg6org2q6"
 Inventory="*uid://b7kqvqq76wuf3"
 Collectables="*uid://g6rj0wcvf30r"
 Questions="*uid://discbje8v37cc"
+BackgroundMusic="*uid://cf4q5yltwkw35"
 
 [input]
 
