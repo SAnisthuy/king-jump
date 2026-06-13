@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dw6qpfoyu10rt" path="res://Assets/Lighting/tochas.png" id="1_d3pbh"]
 [ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="2_fa2wh"]
+[ext_resource type="AudioStream" uid="uid://c2jqwgvrd6qx7" path="res://Audio/SFX/soundreality-fire-crackling-sound-499636.mp3" id="3_fa2wh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5qha"]
 atlas = ExtResource("1_d3pbh")
@@ -58,3 +59,8 @@ scale = Vector2(0.09, 0.09)
 color = Color(0.561748, 0.25489786, 1.92523e-07, 1)
 energy = 1.75
 texture = ExtResource("2_fa2wh")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1435507195]
+stream = ExtResource("3_fa2wh")
+autoplay = true
+max_distance = 50.0

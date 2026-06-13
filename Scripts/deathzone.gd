@@ -1,11 +1,12 @@
-extends Node2D
+extends Area2D
 @onready var timer: Timer = $Timer
 
-func _on_body_entered(_body: Node2D) -> void:
-	GameManager.player_health = 0
-	timer.start()
+const restart_scene = preload("res://Scenes/restart_menue.tscn")
 
-func _on_timer_timeout() -> void:
-	GameManager.player_health = 100
-	Collectables.update_vals()
-	get_tree().reload_current_scene()
+var triggered = false
+
+func _on_body_entered(_body: Node2D) -> void:
+	if triggered:
+		return
+	triggered = true
+	GameManager.player_health = 0

@@ -1,5 +1,7 @@
 extends Node
 
+var correct:bool
+
 var questions = [
   {
 	"question": "What is the purpose of persuasive writing?",
@@ -505,5 +507,3 @@ var questions = [
 
 func get_question():
 	return questions.pick_random()
-
-var correct = null

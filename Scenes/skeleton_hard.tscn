@@ -8,6 +8,16 @@
 [ext_resource type="Texture2D" uid="uid://dowfoctxcprwt" path="res://Assets/Sprites [Enemies]/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_01_Yellow_Walk.png" id="6_18or4"]
 [ext_resource type="Script" uid="uid://d1xnb6g6p57qf" path="res://Scripts/skeley_health.gd" id="7_0jw7g"]
 [ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="8_gjns4"]
+[ext_resource type="AudioStream" uid="uid://c1x2snfkx2hxb" path="res://Audio/SFX/Skeleton/Skeleton_hurt1.ogg" id="9_h4l1e"]
+[ext_resource type="AudioStream" uid="uid://b3ym041pcjwnk" path="res://Audio/SFX/Skeleton/Skeleton_hurt2.ogg" id="10_snnpv"]
+[ext_resource type="AudioStream" uid="uid://b4vqbe06y2rkw" path="res://Audio/SFX/Skeleton/Skeleton_hurt3.ogg" id="11_mq6gy"]
+[ext_resource type="AudioStream" uid="uid://dlcfv0lcbxg20" path="res://Audio/SFX/Skeleton/Skeleton_hurt4.ogg" id="12_dvx0u"]
+[ext_resource type="AudioStream" uid="uid://coxtr3gcifjx7" path="res://Audio/SFX/Skeleton/Skeleton_death.ogg" id="13_sca0h"]
+[ext_resource type="AudioStream" uid="uid://d1x67riqp4rsp" path="res://Audio/SFX/Skeleton/Skeleton_step1.ogg" id="14_a13qn"]
+[ext_resource type="AudioStream" uid="uid://dmtc332txm5ia" path="res://Audio/SFX/Skeleton/Skeleton_step2.ogg" id="15_pbtfg"]
+[ext_resource type="AudioStream" uid="uid://1htljxyybq7m" path="res://Audio/SFX/Skeleton/Skeleton_step3.ogg" id="16_cllpr"]
+[ext_resource type="AudioStream" uid="uid://cj33tjrw0hnq6" path="res://Audio/SFX/Skeleton/Skeleton_step4.ogg" id="17_5t5vw"]
+[ext_resource type="AudioStream" uid="uid://b2x1aj6j44qfl" path="res://Audio/SFX/spear-throw.mp3" id="21_upl1x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wiw4k"]
 atlas = ExtResource("2_4ys7i")
@@ -539,6 +549,20 @@ bg_color = Color(0.8327245, 0.4581067, 0.65311, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbfmp"]
 bg_color = Color(0.50715435, 0.0003385517, 0.5513008, 1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_njj1d"]
+streams_count = 4
+stream_0/stream = ExtResource("9_h4l1e")
+stream_1/stream = ExtResource("10_snnpv")
+stream_2/stream = ExtResource("11_mq6gy")
+stream_3/stream = ExtResource("12_dvx0u")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4nblo"]
+streams_count = 4
+stream_0/stream = ExtResource("14_a13qn")
+stream_1/stream = ExtResource("15_pbtfg")
+stream_2/stream = ExtResource("16_cllpr")
+stream_3/stream = ExtResource("17_5t5vw")
+
 [node name="Skeleton_Hard" type="CharacterBody2D" unique_id=982182177]
 collision_layer = 4
 script = ExtResource("1_4ys7i")
@@ -547,9 +571,7 @@ script = ExtResource("1_4ys7i")
 position = Vector2(3.295, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_2beah")
-animation = &"respawn"
-frame = 12
-frame_progress = 1.0
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=280057326]
 position = Vector2(2, 6)
@@ -607,6 +629,23 @@ target_position = Vector2(7, 17)
 [node name="damage_cooldown" type="Timer" parent="." unique_id=713377764]
 wait_time = 0.15
 one_shot = true
+
+[node name="Audio stuff" type="Node" parent="." unique_id=1619983990]
+
+[node name="hurt" type="AudioStreamPlayer" parent="Audio stuff" unique_id=964554259]
+stream = SubResource("AudioStreamRandomizer_njj1d")
+
+[node name="death" type="AudioStreamPlayer" parent="Audio stuff" unique_id=1746971231]
+stream = ExtResource("13_sca0h")
+volume_db = -10.0
+
+[node name="walk" type="AudioStreamPlayer2D" parent="Audio stuff" unique_id=429019391]
+stream = SubResource("AudioStreamRandomizer_4nblo")
+max_distance = 250.0
+
+[node name="attack" type="AudioStreamPlayer" parent="Audio stuff" unique_id=1814916313]
+stream = ExtResource("21_upl1x")
+volume_db = -5.0
 
 [connection signal="skeley_damaged" from="." to="Health" method="_on_skeleton_skeley_damaged"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

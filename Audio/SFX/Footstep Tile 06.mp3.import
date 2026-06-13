@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://banji6igr7huk"
+path="res://.godot/imported/Footstep Tile 06.mp3-33f47672a08894f81931e9757b1adbd8.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Footstep Tile 06.mp3"
+dest_files=["res://.godot/imported/Footstep Tile 06.mp3-33f47672a08894f81931e9757b1adbd8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

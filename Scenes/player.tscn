@@ -15,7 +15,16 @@
 [ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="8_8erm5"]
 [ext_resource type="Texture2D" uid="uid://b1ox2m3bof4b0" path="res://Assets/Inventory/spear.png" id="14_7dp3o"]
 [ext_resource type="Script" uid="uid://esq3y7arbjkj" path="res://Scripts/spear.gd" id="15_h4iuc"]
-[ext_resource type="AudioStream" uid="uid://b1cjaimrpumvm" path="res://Audio/SFX/Sword Hit 1.wav" id="16_fd4e3"]
+[ext_resource type="AudioStream" uid="uid://bepipnl1nmne0" path="res://Audio/SFX/sword-slash.mp3" id="16_wpjfl"]
+[ext_resource type="AudioStream" uid="uid://bo21vkhmtwweq" path="res://Audio/SFX/Footstep Tile 01.mp3" id="17_qqcod"]
+[ext_resource type="AudioStream" uid="uid://45hthqn1y74s" path="res://Audio/SFX/Footstep Tile 03.mp3" id="18_wpjfl"]
+[ext_resource type="AudioStream" uid="uid://b1vkokeg1lb4" path="res://Audio/SFX/Footstep Tile 04.mp3" id="19_bi64h"]
+[ext_resource type="AudioStream" uid="uid://ckjjue6lb8xnh" path="res://Audio/SFX/Footstep Tile 05.mp3" id="20_2ijsl"]
+[ext_resource type="AudioStream" uid="uid://banji6igr7huk" path="res://Audio/SFX/Footstep Tile 06.mp3" id="21_p1odr"]
+[ext_resource type="AudioStream" uid="uid://x506yo6e5qqh" path="res://Audio/SFX/Footstep Tile 07.mp3" id="22_0gysh"]
+[ext_resource type="AudioStream" uid="uid://w5cp41qwthrj" path="res://Audio/SFX/player-hit-ground.mp3" id="23_bi64h"]
+[ext_resource type="AudioStream" uid="uid://cnp5rfqs26nvu" path="res://Audio/SFX/damage.mp3" id="24_2ijsl"]
+[ext_resource type="AudioStream" uid="uid://b2x1aj6j44qfl" path="res://Audio/SFX/spear-throw.mp3" id="25_p1odr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypfnu"]
 atlas = ExtResource("2_3smsa")
@@ -453,6 +462,15 @@ radius = 18.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4iuc"]
 size = Vector2(19, 2)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vfarp"]
+streams_count = 6
+stream_0/stream = ExtResource("17_qqcod")
+stream_1/stream = ExtResource("18_wpjfl")
+stream_2/stream = ExtResource("19_bi64h")
+stream_3/stream = ExtResource("20_2ijsl")
+stream_4/stream = ExtResource("21_p1odr")
+stream_5/stream = ExtResource("22_0gysh")
+
 [node name="Player" type="CharacterBody2D" unique_id=1732569539]
 collision_layer = 3
 collision_mask = 7
@@ -472,7 +490,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=73788332]
 sprite_frames = SubResource("SpriteFrames_p1odr")
-animation = &"walk"
+animation = &"death"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1521626952]
@@ -536,11 +554,28 @@ wait_time = 0.1
 one_shot = true
 
 [node name="attackSFX" type="AudioStreamPlayer" parent="." unique_id=1995217685]
-stream = ExtResource("16_fd4e3")
+stream = ExtResource("16_wpjfl")
+
+[node name="walkSFX" type="AudioStreamPlayer" parent="." unique_id=689852935]
+stream = SubResource("AudioStreamRandomizer_vfarp")
+bus = &"SFX"
+
+[node name="groundImpactSFX" type="AudioStreamPlayer" parent="." unique_id=117189132]
+stream = ExtResource("23_bi64h")
+volume_db = -30.0
+bus = &"SFX"
+
+[node name="damageSFX" type="AudioStreamPlayer" parent="." unique_id=1282497098]
+stream = ExtResource("24_2ijsl")
+bus = &"SFX"
+
+[node name="spearSFX" type="AudioStreamPlayer" parent="." unique_id=1340975492]
+stream = ExtResource("25_p1odr")
+pitch_scale = 0.83
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="dead" from="health" to="." method="_on_health_dead"]
 [connection signal="body_entered" from="player hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="spear/Timer" to="spear" method="_on_timer_timeout"]

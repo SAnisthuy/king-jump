@@ -22,6 +22,11 @@ var player_in_range = false
 @onready var skeley: AnimatedSprite2D = $AnimatedSprite2D
 @onready var damage_cooldown: Timer = $damage_cooldown
 
+@onready var hurtSFX: AudioStreamPlayer = $"Audio stuff/hurt"
+@onready var deathSFX: AudioStreamPlayer = $"Audio stuff/death"
+@onready var walkSFX: AudioStreamPlayer2D = $"Audio stuff/walk"
+@onready var attackSFX: AudioStreamPlayer = $"Audio stuff/attack"
+
 var skull_scene = preload("res://Scenes/skull.tscn")
 
 func _physics_process(delta):
@@ -136,10 +141,17 @@ func _on_enemy_hit_box_body_exited(body):
 			patrol()
 
 func _on_animated_sprite_2d_frame_changed() -> void:
-		if skeley.animation == "attack":
-			if skeley.frame == 7 and player_in_range and target != null:
-				target.take_damage(25)
-
+	if skeley.animation == "attack":
+		if skeley.frame == 4:
+			attackSFX.play()
+		if skeley.frame == 7 and player_in_range and target != null:
+			target.take_damage(25)
+	if skeley.animation == "chase" or skeley.animation == "walk":
+		if skeley.frame in [1, 5]:
+			walkSFX.play()
+	if skeley.animation == "death" and skeley.frame == 3:
+		deathSFX.play()
+			
 func take_damage(amount):
 	if dying:
 		return
@@ -147,11 +159,13 @@ func take_damage(amount):
 	health -= amount
 	skeley_damaged.emit(amount)
 
+
 	if health <= 0:
 		dying = true
 		skeley.play("death")
 		return
 	
+	hurtSFX.play()	
 	skeley.modulate = Color(18.892, 18.892, 18.892, 1.0)
 	damage_cooldown.start()
 

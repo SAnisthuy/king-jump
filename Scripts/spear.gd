@@ -3,6 +3,7 @@ extends Marker2D
 @onready var timer: Timer = $Timer
 
 var spear_path = preload("res://Scenes/throwable.tscn")
+@onready var spear_sfx: AudioStreamPlayer = $"../spearSFX"
 var cooldown = false
 
 func _process(_delta):
@@ -19,6 +20,7 @@ func fire():
 		spear.rotation = global_rotation
 	
 		get_tree().current_scene.add_child(spear)
+		spear_sfx.play()
 		cooldown = true
 		#take health off the spear
 		var item = Inventory.inventory[Inventory.selected_slot]

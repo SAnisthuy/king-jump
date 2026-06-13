@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bwlc3r5u7t2n1" path="res://Scripts/quiz.gd" id="1_y1tew"]
 [ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="2_fdxuh"]
+[ext_resource type="AudioStream" uid="uid://b87oxakh0l3vt" path="res://Audio/Music/good_kahoot_music.mp3" id="3_fdxuh"]
+[ext_resource type="AudioStream" uid="uid://coxbna4xrt16o" path="res://Audio/Music/kahoot.mp3" id="4_bu0r6"]
+[ext_resource type="AudioStream" uid="uid://5ydn1hfn6pgt" path="res://Audio/SFX/liecio-collect-points-190037.mp3" id="5_pkwmv"]
+[ext_resource type="AudioStream" uid="uid://cnp5rfqs26nvu" path="res://Audio/SFX/damage.mp3" id="6_schtj"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pkwmv"]
+streams_count = 2
+stream_0/stream = ExtResource("3_fdxuh")
+stream_1/stream = ExtResource("4_bu0r6")
 
 [node name="Quiz" type="Node2D" unique_id=1492942479]
 script = ExtResource("1_y1tew")
@@ -65,6 +74,22 @@ text = "Answer 3"
 custom_minimum_size = Vector2(502.175, 156)
 layout_mode = 2
 text = "Answer 4"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2133616689]
+stream = SubResource("AudioStreamRandomizer_pkwmv")
+autoplay = true
+bus = &"Music"
+
+[node name="collectionSFX" type="AudioStreamPlayer" parent="." unique_id=1004531288]
+stream = ExtResource("5_pkwmv")
+bus = &"SFX"
+
+[node name="damageSFX" type="AudioStreamPlayer" parent="." unique_id=711358986]
+stream = ExtResource("6_schtj")
+bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="." unique_id=282567973]
+wait_time = 0.5
 
 [connection signal="pressed" from="CanvasLayer/GridContainer/Answer1" to="." method="_on_answer_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/GridContainer/Answer2" to="." method="_on_answer_2_pressed"]

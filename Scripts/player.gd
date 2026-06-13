@@ -1,31 +1,46 @@
 extends CharacterBody2D
-signal death
 var SPEED = 100
 var JUMP_VELOCITY = -250
 var attacking = false
 var dying = false
 
 var can_jump = true
+var in_air = false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $"player hitbox"
 @onready var spear: Marker2D = $spear
 @onready var damage_cooldown: Timer = $damage_cooldown
 @onready var coyote_time: Timer = $"coyote time"
-@onready var attack_sfx: AudioStreamPlayer = $attackSFX
 
+@onready var attack_sfx: AudioStreamPlayer = $attackSFX
+@onready var walk_sfx: AudioStreamPlayer = $walkSFX
+@onready var ground_impact_sfx: AudioStreamPlayer = $groundImpactSFX
+@onready var damage_sfx: AudioStreamPlayer = $damageSFX
+
+var restart_screen = preload("res://Scenes/restart_menue.tscn")
 
 
 func _physics_process(delta: float) -> void:
+	if GameManager.player_health == 0 and !dying:
+		_on_health_dead()
+		damage_sfx.play()
+		return
 	GameManager.player_pos = global_position
 	SPEED = 100
 	var direction = 1
-	
 	if can_jump == false and is_on_floor():
 		can_jump = true
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		in_air = true
+	
+	#if in_air and is_on_floor():
+		#print(velocity.y )
+		#ground_impact_sfx.play()
+		#in_air = false
+		
 	
 	if holding_shield():
 		JUMP_VELOCITY = -100
@@ -55,11 +70,13 @@ func _physics_process(delta: float) -> void:
 			pass
 		if holding_spear():
 			spear.fire()
+			
 		if holding_sword():
 			attacking = true
 			var my_list = ["attack1", "attack2"]
 			var attack = my_list.pick_random()
 			animated_sprite_2d.play(attack)
+			attack_sfx.play()
 		else: pass
 		
 	elif Input.is_action_pressed("forward"):
@@ -112,11 +129,17 @@ func player(): #makes sure player is recognizable to others
 func _on_health_dead():
 	dying = true
 	animated_sprite_2d.play("death")
-	death.emit()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation.begins_with("attack"):
 		attacking = false
+	if animated_sprite_2d.animation == "death":
+		if GameManager.auto_restart:
+			get_tree().reload_current_scene()
+		else:
+			var inst_res = restart_screen.instantiate()
+			get_tree().root.add_child(inst_res)
+			get_tree().paused = true
 
 func damage_enemy():
 	for body in hitbox.get_overlapping_bodies():
@@ -131,7 +154,13 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite_2d.animation.begins_with("attack"):
 		if animated_sprite_2d.frame == 2:
 			damage_enemy()
-			attack_sfx.play()
+	
+	if animated_sprite_2d.animation == "walk":
+		if animated_sprite_2d.frame == 1 or animated_sprite_2d.frame == 3:
+			walk_sfx.play()
+	if animated_sprite_2d.animation == "sprint":
+		if animated_sprite_2d.frame == 2 or animated_sprite_2d.frame == 5:
+			walk_sfx.play()
 
 
 func take_damage(amount:int):
@@ -143,8 +172,11 @@ func take_damage(amount:int):
 			Inventory.inventory[Inventory.selected_slot] = null
 	else:
 		GameManager.player_health -= amount
+		if GameManager.player_health <= 0:
+			_on_health_dead()
 		animated_sprite_2d.modulate = Color(18.892, 18.892, 18.892, 1.0)
 		damage_cooldown.start()
+		damage_sfx.play()
 		
 func holding_shield():
 
