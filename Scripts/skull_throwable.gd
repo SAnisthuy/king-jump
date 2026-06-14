@@ -20,12 +20,13 @@ func _physics_process(delta):
 	position += direction * speed * delta
 		
 		
-func spawn_skeleton():
-	var skull = skeley.instantiate()
-	get_parent().add_child(skull)
-	skull.global_position = Vector2(global_position.x, global_position.y - 10)
-	queue_free()
-
 func _on_body_entered(body_detected):
 	if body_detected.has_method("player"):
-		spawn_skeleton()
+		var pos = global_position
+		call_deferred("_spawn_skeleton_deferred", pos)
+		queue_free()
+
+func _spawn_skeleton_deferred(pos):
+	var skull = skeley.instantiate()
+	get_parent().add_child(skull)
+	skull.global_position = pos + Vector2(0, -10)

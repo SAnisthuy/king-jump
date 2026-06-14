@@ -7,7 +7,17 @@ extends CharacterBody2D
 @onready var damage: Timer = $damage
 @onready var range_atack: Timer = $"range atack"
 
+#Audio
+@onready var attack_2: AudioStreamPlayer = $audio/Attack2
+@onready var attack_1: AudioStreamPlayer2D = $audio/Attack1
+@onready var deathSFX: AudioStreamPlayer = $audio/death
+@onready var walkSFX: AudioStreamPlayer = $audio/walk
+@onready var ambiance: AudioStreamPlayer = $audio/ambiance
+
+
 var throwable = preload("res://Scenes/skull_throwable.tscn")
+var end_scene = preload("res://Scenes/end_scene.tscn")
+
 # variables
 
 const SPEED = 0.8 # inversely related to velocity
@@ -74,6 +84,7 @@ func range_attack():
 	range_atack.start()
 	attack_available_r = false
 	sprite.play("spawn")
+	attack_2.play()
 	
 func melee_attack():
 	velocity = Vector2.ZERO
@@ -120,6 +131,7 @@ func enter_phase_two():
 func death():
 	dying = true
 	sprite.play("death")
+	deathSFX.play()
 
 # Necessary functions
 func enemy(): pass
@@ -159,18 +171,28 @@ func _on_sprite_animation_finished() -> void:
 	if sprite.animation == "jump":
 		sprite.play("idle")
 	if sprite.animation == "death":
+		get_tree().change_scene_to_packed(end_scene)
 		queue_free()
+		
 func _on_attack_cooldown_timeout() -> void:
 	attack_available_m = true
 
 func _on_sprite_frame_changed() -> void:
 	if sprite == null:
 		return
-	if sprite.animation == "attack" and sprite.frame == 6 and in_range_attack:
-		player.take_damage(20)
-
+	if sprite.animation == "attack" and sprite.frame == 6:
+		if in_range_attack:
+			player.take_damage(20)
+		attack_1.play()
+	if sprite.animation == "walk" and sprite.frame in [0, 5]:
+		walkSFX.play()
+		
 func _on_damage_timeout() -> void:
 	sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _on_range_atack_timeout() -> void:
 	attack_available_r = true
+
+
+func _on_ambiance_time_timeout() -> void:
+	ambiance.play()

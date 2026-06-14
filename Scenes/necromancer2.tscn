@@ -9,6 +9,19 @@
 [ext_resource type="Texture2D" uid="uid://dvd0q50pbbhv" path="res://Assets/Sprites [Enemies]/Necromancer/Spawn/spr_NecromancerSpawn_strip20.png" id="7_ksc5t"]
 [ext_resource type="Texture2D" uid="uid://bou12b8nj4gpi" path="res://Assets/Sprites [Enemies]/Necromancer/Walk/spr_NecromancerWalk_strip10.png" id="8_bs5n1"]
 [ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="9_7m25h"]
+[ext_resource type="AudioStream" uid="uid://cuvrq8edux1tk" path="res://Audio/SFX/Necromancer/fireball.mp3" id="10_028aq"]
+[ext_resource type="AudioStream" uid="uid://dfkwu31sxmyrt" path="res://Audio/SFX/Necromancer/crash.mp3" id="11_s6qrw"]
+[ext_resource type="AudioStream" uid="uid://b6v3nbmwnmufs" path="res://Audio/SFX/Necromancer/necromancer-death.mp3" id="12_8i5gb"]
+[ext_resource type="AudioStream" uid="uid://d1x67riqp4rsp" path="res://Audio/SFX/Skeleton/Skeleton_step1.ogg" id="13_bs5n1"]
+[ext_resource type="AudioStream" uid="uid://dmtc332txm5ia" path="res://Audio/SFX/Skeleton/Skeleton_step2.ogg" id="14_7m25h"]
+[ext_resource type="AudioStream" uid="uid://1htljxyybq7m" path="res://Audio/SFX/Skeleton/Skeleton_step3.ogg" id="15_m2wx0"]
+[ext_resource type="AudioStream" uid="uid://cj33tjrw0hnq6" path="res://Audio/SFX/Skeleton/Skeleton_step4.ogg" id="16_8hv70"]
+[ext_resource type="AudioStream" uid="uid://cu1ic7vg8mtk1" path="res://Audio/SFX/Necromancer/magic-1.mp3" id="17_14dm7"]
+[ext_resource type="AudioStream" uid="uid://c6k6113oc5vf0" path="res://Audio/SFX/Necromancer/magic-2.mp3" id="18_hpdx1"]
+[ext_resource type="AudioStream" uid="uid://cr7aimkhtsy1q" path="res://Audio/SFX/Necromancer/magic-3.mp3" id="19_54f3q"]
+[ext_resource type="AudioStream" uid="uid://cwv1hxv30wy2s" path="res://Audio/SFX/Necromancer/magic-4.mp3" id="20_crry3"]
+[ext_resource type="AudioStream" uid="uid://xjfrebqqjevr" path="res://Audio/SFX/Necromancer/magic-5.mp3" id="21_c1gc4"]
+[ext_resource type="AudioStream" uid="uid://dtl0hbwa214p4" path="res://Audio/SFX/Necromancer/magic-6.mp3" id="22_cg4is"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pnhd5"]
 atlas = ExtResource("2_028aq")
@@ -1454,6 +1467,23 @@ bg_color = Color(0.8039216, 0, 0.4, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4tfpn"]
 size = Vector2(138, 112)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nnkr8"]
+streams_count = 4
+stream_0/stream = ExtResource("13_bs5n1")
+stream_1/stream = ExtResource("14_7m25h")
+stream_2/stream = ExtResource("15_m2wx0")
+stream_3/stream = ExtResource("16_8hv70")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oquog"]
+playback_mode = 2
+streams_count = 6
+stream_0/stream = ExtResource("17_14dm7")
+stream_1/stream = ExtResource("18_hpdx1")
+stream_2/stream = ExtResource("19_54f3q")
+stream_3/stream = ExtResource("20_crry3")
+stream_4/stream = ExtResource("21_c1gc4")
+stream_5/stream = ExtResource("22_cg4is")
+
 [node name="necromancer" type="CharacterBody2D" unique_id=916766111]
 collision_layer = 4
 motion_mode = 1
@@ -1461,10 +1491,8 @@ script = ExtResource("1_4tfpn")
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=949126470]
 sprite_frames = SubResource("SpriteFrames_6gp41")
-animation = &"attack"
+animation = &"walk"
 autoplay = "idle"
-frame = 8
-frame_progress = 1.0
 
 [node name="collision box" type="CollisionShape2D" parent="." unique_id=1294666212]
 position = Vector2(2.5, -8.5)
@@ -1516,6 +1544,34 @@ shape = SubResource("RectangleShape2D_4tfpn")
 wait_time = 5.0
 one_shot = true
 
+[node name="audio" type="Node" parent="." unique_id=290499208]
+
+[node name="Attack2" type="AudioStreamPlayer" parent="audio" unique_id=102206474]
+stream = ExtResource("10_028aq")
+bus = &"SFX"
+
+[node name="Attack1" type="AudioStreamPlayer2D" parent="audio" unique_id=2115032339]
+stream = ExtResource("11_s6qrw")
+max_distance = 1000.0
+
+[node name="death" type="AudioStreamPlayer" parent="audio" unique_id=829075745]
+stream = ExtResource("12_8i5gb")
+volume_db = -10.0
+
+[node name="walk" type="AudioStreamPlayer" parent="audio" unique_id=490400645]
+stream = SubResource("AudioStreamRandomizer_nnkr8")
+volume_db = -10.0
+
+[node name="ambiance" type="AudioStreamPlayer" parent="audio" unique_id=2092748737]
+stream = SubResource("AudioStreamRandomizer_oquog")
+volume_db = -10.0
+autoplay = true
+bus = &"SFX"
+
+[node name="ambianceTIME" type="Timer" parent="audio" unique_id=221490479]
+wait_time = 3.0
+autostart = true
+
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="frame_changed" from="sprite" to="." method="_on_sprite_frame_changed"]
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
@@ -1525,3 +1581,5 @@ one_shot = true
 [connection signal="body_entered" from="attack range" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="attack range" to="." method="_on_attack_range_body_exited"]
 [connection signal="timeout" from="range atack" to="." method="_on_range_atack_timeout"]
+[connection signal="finished" from="audio/ambiance" to="." method="_on_ambiance_finished"]
+[connection signal="timeout" from="audio/ambianceTIME" to="." method="_on_ambiance_time_timeout"]

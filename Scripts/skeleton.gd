@@ -29,7 +29,6 @@ var player_in_range = false
 @onready var attackSFX: AudioStreamPlayer = $"Audio stuff/attack"
 
 
-
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -63,8 +62,7 @@ func start_attack():
 		skeley.play("attack")
 
 func chase_player():
-
-	var dist = target.position.x - position.x
+	var dist = target.global_position.x - global_position.x
 
 	skeley.flip_h = dist < 0
 
