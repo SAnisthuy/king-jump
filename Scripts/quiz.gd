@@ -49,10 +49,10 @@ func initialize():
 	
 func check_answer(choice: int):
 	var answers = [answer_1, answer_2, answer_3, answer_4]
+	if Collectables.coins > 0:
+		Collectables.coins -= 1
 	if correct == choice:
 		player_correct = true
-		if Collectables.coins > 0:
-			Collectables.coins -= 1
 	else:
 		player_correct = false
 		GameManager.player_health -= 20

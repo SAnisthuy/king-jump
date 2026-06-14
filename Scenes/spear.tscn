@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bgkb3hoh0xyo8" path="res://Scripts/spear_collectable.gd" id="1_i4w2o"]
 [ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="2_1qmmw"]
 [ext_resource type="Texture2D" uid="uid://b1ox2m3bof4b0" path="res://Assets/Inventory/spear.png" id="3_i4w2o"]
+[ext_resource type="AudioStream" uid="uid://bwjxqqjdvc22l" path="res://Audio/SFX/Items/item_equip.mp3" id="4_t4qxn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4qxn"]
 radius = 10.440307
@@ -31,6 +32,10 @@ shape = SubResource("CircleShape2D_t4qxn")
 
 [node name="pickup_cooldown" type="Timer" parent="." unique_id=207660478]
 one_shot = true
+
+[node name="equipSFX" type="AudioStreamPlayer" parent="." unique_id=1418638279]
+stream = ExtResource("4_t4qxn")
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="pickup_cooldown" to="." method="_on_pickup_cooldown_timeout"]

@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://dmwytktishphk"]
+
+[ext_resource type="Script" uid="uid://casbyy6ohm8oq" path="res://Scenes/Info boxes/info_box.gd" id="1_0cjc2"]
+[ext_resource type="Texture2D" uid="uid://c6bg45gk654nx" path="res://Assets/Info boxes/hard skeley.svg" id="1_qwovd"]
+[ext_resource type="Texture2D" uid="uid://b4esr46e1husq" path="res://Assets/Sprites [Enemies]/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_01_Yellow_Attack2.png" id="2_0cjc2"]
+[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="3_w8qnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncy8d"]
+atlas = ExtResource("2_0cjc2")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko1g1"]
+atlas = ExtResource("2_0cjc2")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwbgk"]
+atlas = ExtResource("2_0cjc2")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an1fs"]
+atlas = ExtResource("2_0cjc2")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt0xu"]
+atlas = ExtResource("2_0cjc2")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbmhh"]
+atlas = ExtResource("2_0cjc2")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltb5w"]
+atlas = ExtResource("2_0cjc2")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8043"]
+atlas = ExtResource("2_0cjc2")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghnqt"]
+atlas = ExtResource("2_0cjc2")
+region = Rect2(768, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_15oud"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncy8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ko1g1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwbgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_an1fs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt0xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbmhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltb5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8043")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghnqt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Skeley Hard" type="CanvasLayer" unique_id=1583278061]
+script = ExtResource("1_0cjc2")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1801635800]
+modulate = Color(1, 1, 1, 0.9019608)
+
+[node name="EasySkeley" type="Sprite2D" parent="Node2D" unique_id=1406201588]
+texture_filter = 2
+position = Vector2(388, 311)
+texture = ExtResource("1_qwovd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D" unique_id=2096941546]
+position = Vector2(540, 301)
+scale = Vector2(3.4985077, 3.7198057)
+sprite_frames = SubResource("SpriteFrames_15oud")
+autoplay = "default"
+frame_progress = 0.91428345
+
+[node name="Button" type="Button" parent="." unique_id=1390427072]
+offset_left = 474.0
+offset_top = 501.0
+offset_right = 639.0
+offset_bottom = 543.0
+theme_override_fonts/font = ExtResource("3_w8qnm")
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

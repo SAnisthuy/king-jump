@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b0lwgh2e0o4qe" path="res://Scripts/shield.gd" id="1_afmmn"]
 [ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="2_v0uwj"]
 [ext_resource type="Texture2D" uid="uid://cixivyqbyvqru" path="res://Assets/Inventory/shield.png" id="3_kxn5r"]
+[ext_resource type="AudioStream" uid="uid://bwjxqqjdvc22l" path="res://Audio/SFX/Items/item_equip.mp3" id="4_v0uwj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d18dt"]
 radius = 6.0
@@ -34,6 +35,10 @@ shape = SubResource("CapsuleShape2D_d18dt")
 
 [node name="pickup_cooldown" type="Timer" parent="." unique_id=1212712720]
 one_shot = true
+
+[node name="equipSFX" type="AudioStreamPlayer" parent="." unique_id=491950775]
+stream = ExtResource("4_v0uwj")
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="pickup_cooldown" to="." method="_on_pickup_cooldown_timeout"]

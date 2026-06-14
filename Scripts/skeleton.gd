@@ -146,13 +146,13 @@ func take_damage(amount):
 	
 	health -= amount
 	health_bar.value = health
+	hurtSFX.play()
 	
 	if health <= 0:
 		dying = true
 		if skeley.animation != "death":
 			skeley.play("death")
 	else:
-		hurtSFX.play()
 		skeley.modulate = Color(18.892, 18.892, 18.892, 1.0)
 		damage_cooldown.start()
 

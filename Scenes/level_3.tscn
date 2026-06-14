@@ -16,7 +16,8 @@
 [ext_resource type="Script" uid="uid://bu3rynq4e8j0r" path="res://Scripts/deathzone2.gd" id="14_fxnjf"]
 [ext_resource type="PackedScene" uid="uid://btse7qdsbnfg6" path="res://Scenes/skeleton.tscn" id="15_rybab"]
 [ext_resource type="PackedScene" uid="uid://dttrhqrns5k2w" path="res://Scenes/torches.tscn" id="15_xjeco"]
-[ext_resource type="PackedScene" uid="uid://cgqr5wr3nmv03" path="res://Scenes/chest.tscn" id="18_nbwsh"]
+[ext_resource type="Script" uid="uid://cfqbgv24mdvry" path="res://Scenes/Info boxes/skeley_warrior.gd" id="18_kgmqw"]
+[ext_resource type="Script" uid="uid://ddxku67to4t3g" path="res://Scenes/Info boxes/skeley_knight_hard.gd" id="18_nbwsh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ki8bc"]
 texture = ExtResource("6_s80er")
@@ -772,6 +773,9 @@ distance = 23.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n4vm5"]
 distance = -388.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s80er"]
+size = Vector2(20, 33.5)
+
 [node name="Level 3" type="Node2D" unique_id=1880418931]
 script = ExtResource("1_j77fg")
 
@@ -831,8 +835,6 @@ position = Vector2(-127, 112.999985)
 scale = Vector2(0.425, 0.425)
 shadow_enabled = true
 texture = ExtResource("4_nbwsh")
-
-[node name="death_timer" type="Timer" parent="." unique_id=967576075]
 
 [node name="Skeleys" type="Node" parent="." unique_id=1077208761]
 
@@ -907,10 +909,24 @@ position = Vector2(-390, -230)
 [node name="Skeleton_Hard" parent="." unique_id=1321683628 instance=ExtResource("13_j77fg")]
 position = Vector2(17, -191)
 
-[node name="Chest" parent="." unique_id=1044129040 instance=ExtResource("18_nbwsh")]
-position = Vector2(-158, -221.00002)
+[node name="Info box" type="Node" parent="." unique_id=1422963172]
 
-[connection signal="death" from="Player" to="." method="_on_player_death"]
+[node name="Skeley_warrior" type="Area2D" parent="Info box" unique_id=320022337]
+script = ExtResource("18_kgmqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Info box/Skeley_warrior" unique_id=286133880]
+position = Vector2(-400, -224)
+shape = SubResource("RectangleShape2D_s80er")
+
+[node name="sksley_knight" type="Area2D" parent="Info box" unique_id=466145896]
+position = Vector2(332, 0)
+script = ExtResource("18_nbwsh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Info box/sksley_knight" unique_id=512121733]
+position = Vector2(-400, -224)
+shape = SubResource("RectangleShape2D_s80er")
+
 [connection signal="body_entered" from="Mapping/nextlevel" to="." method="_on_nextlevel_body_entered"]
-[connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]
 [connection signal="body_entered" from="Lower death handling/Deathzone" to="Lower death handling/Deathzone" method="_on_body_entered"]
+[connection signal="body_entered" from="Info box/Skeley_warrior" to="Info box/Skeley_warrior" method="_on_body_entered"]
+[connection signal="body_entered" from="Info box/sksley_knight" to="Info box/sksley_knight" method="_on_body_entered"]

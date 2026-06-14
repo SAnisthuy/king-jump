@@ -682,7 +682,7 @@ script = ExtResource("1_5abox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1974149112]
 sprite_frames = SubResource("SpriteFrames_2beah")
-animation = &"death"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=280057326]
 position = Vector2(2, 6)

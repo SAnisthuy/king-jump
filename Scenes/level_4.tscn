@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://cukrepkuivqig" path="res://Scenes/gollux.tscn" id="18_cxe20"]
 [ext_resource type="PackedScene" uid="uid://bbp0plbv7agbs" path="res://Scenes/platform.tscn" id="18_fmsuk"]
 [ext_resource type="PackedScene" uid="uid://bmuccparw87he" path="res://Scenes/key.tscn" id="27_2a174"]
+[ext_resource type="Script" uid="uid://d2dr2kvrxrrnu" path="res://Scenes/Info boxes/gollux_call.gd" id="28_sw1t4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2a174"]
 size = Vector2(52, 21)
@@ -1336,11 +1337,14 @@ _data = {
 &"new_animation": SubResource("Animation_a51ki")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vef0"]
+size = Vector2(14, 36)
+
 [node name="Level 4" type="Node2D" unique_id=477148119]
 script = ExtResource("1_3v663")
 
 [node name="Player" parent="." unique_id=1732569539 instance=ExtResource("2_5eaas")]
-position = Vector2(-584, -448)
+position = Vector2(175, -62)
 
 [node name="HotbarUI" parent="Player" unique_id=2133312155 instance=ExtResource("2_gxyip")]
 
@@ -1635,8 +1639,6 @@ scale = Vector2(0.36, 0.36)
 position = Vector2(-480, -265)
 scale = Vector2(0.36, 0.36)
 
-[node name="death_timer" type="Timer" parent="." unique_id=1442893692]
-
 [node name="Lighting" type="Node" parent="." unique_id=1966527907]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Lighting" unique_id=775860392]
@@ -1649,9 +1651,17 @@ position = Vector2(216, -144)
 [node name="Node2D" type="Node2D" parent="." unique_id=878605949]
 position = Vector2(184, -175)
 
-[connection signal="death" from="Player" to="." method="_on_player_death"]
+[node name="info box" type="Node" parent="." unique_id=1225500984]
+
+[node name="Area2D" type="Area2D" parent="info box" unique_id=657909020]
+script = ExtResource("28_sw1t4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="info box/Area2D" unique_id=1151430512]
+position = Vector2(216, -83)
+shape = SubResource("RectangleShape2D_6vef0")
+
 [connection signal="body_entered" from="Mapping/doorBoss/Area2D" to="Mapping/doorBoss" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Mapping/nextlevel" to="Mapping/nextlevel" method="_on_body_entered"]
 [connection signal="body_entered" from="Mapping/LevelBlock/Area2D" to="Mapping/LevelBlock" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Mapping/LevelBlock/Area2D" to="Mapping/LevelBlock" method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]
+[connection signal="body_entered" from="info box/Area2D" to="info box/Area2D" method="_on_body_entered"]

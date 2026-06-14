@@ -25,6 +25,8 @@
 [ext_resource type="AudioStream" uid="uid://w5cp41qwthrj" path="res://Audio/SFX/player-hit-ground.mp3" id="23_bi64h"]
 [ext_resource type="AudioStream" uid="uid://cnp5rfqs26nvu" path="res://Audio/SFX/damage.mp3" id="24_2ijsl"]
 [ext_resource type="AudioStream" uid="uid://b2x1aj6j44qfl" path="res://Audio/SFX/spear-throw.mp3" id="25_p1odr"]
+[ext_resource type="AudioStream" uid="uid://bmra8eafhntts" path="res://Audio/SFX/Items/itembreak.mp3" id="26_0gysh"]
+[ext_resource type="AudioStream" uid="uid://c28kpjqnytd3n" path="res://Audio/SFX/Items/shield-block.mp3" id="26_vfarp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypfnu"]
 atlas = ExtResource("2_3smsa")
@@ -490,7 +492,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=73788332]
 sprite_frames = SubResource("SpriteFrames_p1odr")
-animation = &"death"
+animation = &"s_idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1521626952]
@@ -542,12 +544,12 @@ position = Vector2(14, 9)
 [node name="Timer" type="Timer" parent="spear" unique_id=547088742]
 one_shot = true
 
+[node name="target point" type="Node2D" parent="." unique_id=1976052622]
+position = Vector2(-1, 7)
+
 [node name="damage_cooldown" type="Timer" parent="." unique_id=1557872430]
 wait_time = 0.15
 one_shot = true
-
-[node name="target point" type="Node2D" parent="." unique_id=1976052622]
-position = Vector2(-1, 7)
 
 [node name="coyote time" type="Timer" parent="." unique_id=1061398763]
 wait_time = 0.1
@@ -555,6 +557,7 @@ one_shot = true
 
 [node name="attackSFX" type="AudioStreamPlayer" parent="." unique_id=1995217685]
 stream = ExtResource("16_wpjfl")
+bus = &"SFX"
 
 [node name="walkSFX" type="AudioStreamPlayer" parent="." unique_id=689852935]
 stream = SubResource("AudioStreamRandomizer_vfarp")
@@ -573,6 +576,13 @@ bus = &"SFX"
 stream = ExtResource("25_p1odr")
 pitch_scale = 0.83
 bus = &"SFX"
+
+[node name="blockSFX" type="AudioStreamPlayer" parent="." unique_id=1924515549]
+stream = ExtResource("26_vfarp")
+bus = &"SFX"
+
+[node name="breakSFX" type="AudioStreamPlayer" parent="." unique_id=154968778]
+stream = ExtResource("26_0gysh")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

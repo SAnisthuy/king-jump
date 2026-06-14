@@ -17,12 +17,14 @@ var in_air = false
 @onready var walk_sfx: AudioStreamPlayer = $walkSFX
 @onready var ground_impact_sfx: AudioStreamPlayer = $groundImpactSFX
 @onready var damage_sfx: AudioStreamPlayer = $damageSFX
+@onready var block_sfx: AudioStreamPlayer = $blockSFX
+@onready var break_sfx: AudioStreamPlayer = $breakSFX
 
 var restart_screen = preload("res://Scenes/restart_menue.tscn")
 
 
 func _physics_process(delta: float) -> void:
-	if GameManager.player_health == 0 and !dying:
+	if GameManager.player_health <= 0 and !dying:
 		_on_health_dead()
 		damage_sfx.play()
 		return
@@ -35,12 +37,6 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		in_air = true
-	
-	#if in_air and is_on_floor():
-		#print(velocity.y )
-		#ground_impact_sfx.play()
-		#in_air = false
-		
 	
 	if holding_shield():
 		JUMP_VELOCITY = -100
@@ -129,11 +125,14 @@ func player(): #makes sure player is recognizable to others
 func _on_health_dead():
 	dying = true
 	animated_sprite_2d.play("death")
-
+	Inventory.clear()
+	
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation.begins_with("attack"):
 		attacking = false
 	if animated_sprite_2d.animation == "death":
+		GameManager.player_health = 100
+		Collectables.update_vals()
 		if GameManager.auto_restart:
 			get_tree().reload_current_scene()
 		else:
@@ -162,7 +161,6 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		if animated_sprite_2d.frame == 2 or animated_sprite_2d.frame == 5:
 			walk_sfx.play()
 
-
 func take_damage(amount:int):
 	
 	if holding_shield():
@@ -170,6 +168,9 @@ func take_damage(amount:int):
 		item["health"] -= 1
 		if item["health"] <= 0:
 			Inventory.inventory[Inventory.selected_slot] = null
+			break_sfx.play()
+		else:
+			block_sfx.play()
 	else:
 		GameManager.player_health -= amount
 		if GameManager.player_health <= 0:

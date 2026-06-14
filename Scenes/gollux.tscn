@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://be4m88jlaqon7" path="res://Assets/Sprites [Enemies]/Gollux/gollux_move.png" id="7_1mtfk"]
 [ext_resource type="Script" uid="uid://clshy4se675vl" path="res://Scripts/golly_health.gd" id="8_hhkp4"]
 [ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="9_uc2pa"]
+[ext_resource type="AudioStream" uid="uid://bqe3odyjsiy4f" path="res://Audio/SFX/gollux/attack.ogg" id="10_ysx1c"]
+[ext_resource type="AudioStream" uid="uid://dbbw2m6gt1egq" path="res://Audio/SFX/gollux/walk.mp3" id="11_cusjs"]
+[ext_resource type="AudioStream" uid="uid://by3d2e0slibgh" path="res://Audio/SFX/gollux/hurt.mp3" id="12_cusjs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w6wf6"]
 atlas = ExtResource("2_hhkp4")
@@ -673,7 +676,7 @@ script = ExtResource("1_cjcee")
 
 [node name="golly" type="AnimatedSprite2D" parent="." unique_id=583308945]
 sprite_frames = SubResource("SpriteFrames_27k3o")
-animation = &"attack2"
+animation = &"chase"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1802252757]
 position = Vector2(1.1111089, 33.611115)
@@ -726,6 +729,20 @@ texture = ExtResource("9_uc2pa")
 [node name="damage_cooldown" type="Timer" parent="." unique_id=1162528406]
 wait_time = 0.15
 one_shot = true
+
+[node name="attackSFX" type="AudioStreamPlayer" parent="." unique_id=454472711]
+stream = ExtResource("10_ysx1c")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="walkSFX" type="AudioStreamPlayer" parent="." unique_id=25861583]
+stream = ExtResource("11_cusjs")
+bus = &"SFX"
+
+[node name="hurtSFX" type="AudioStreamPlayer" parent="." unique_id=1099948831]
+stream = ExtResource("12_cusjs")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="golly_damaged" from="." to="health" method="_on_gollux_golly_damaged"]
 [connection signal="animation_finished" from="golly" to="." method="_on_golly_animation_finished"]

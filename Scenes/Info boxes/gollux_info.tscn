@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://dj4uuyroe0mdy"]
+
+[ext_resource type="Script" uid="uid://casbyy6ohm8oq" path="res://Scenes/Info boxes/info_box.gd" id="1_kgf5i"]
+[ext_resource type="Texture2D" uid="uid://cx7whkcerv7w" path="res://Assets/Info boxes/Gollux_info.png" id="2_bv0ou"]
+[ext_resource type="Texture2D" uid="uid://dxtoj4si872w5" path="res://Assets/Sprites [Enemies]/Gollux/gollux_attack_A.png" id="3_eko5u"]
+[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="4_dbhcp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7akf2"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(0, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0rjg"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(384, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7sk7"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(768, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8iqv"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(1152, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hudiu"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(1536, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faodt"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(1920, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_darpf"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(2304, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb2hs"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(2688, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e24cs"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(3072, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k66hk"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(3456, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maf0w"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(3840, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4t7r"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(4224, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pnll"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(4608, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb0xi"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(4992, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33n1g"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(5376, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jkjg"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(5760, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gx8i"]
+atlas = ExtResource("3_eko5u")
+region = Rect2(6144, 0, 384, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gi4qs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7akf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0rjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7sk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8iqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hudiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faodt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_darpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb2hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e24cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k66hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maf0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4t7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pnll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb0xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33n1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jkjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gx8i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Gollux_info" type="CanvasLayer" unique_id=2050614168]
+script = ExtResource("1_kgf5i")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=268978846]
+modulate = Color(1, 1, 1, 0.9019608)
+
+[node name="EasySkeley" type="Sprite2D" parent="Node2D" unique_id=846283064]
+texture_filter = 2
+position = Vector2(388, 311)
+texture = ExtResource("2_bv0ou")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D" unique_id=1548110044]
+position = Vector2(546, 197.00002)
+scale = Vector2(3.4985077, 3.7198057)
+sprite_frames = SubResource("SpriteFrames_gi4qs")
+autoplay = "default"
+frame_progress = 0.006511951
+
+[node name="Button" type="Button" parent="." unique_id=529975484]
+offset_left = 474.0
+offset_top = 501.0
+offset_right = 639.0
+offset_bottom = 543.0
+theme_override_fonts/font = ExtResource("4_dbhcp")
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

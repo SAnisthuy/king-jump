@@ -26,6 +26,6 @@ func spawn_skeleton():
 	skull.global_position = Vector2(global_position.x, global_position.y - 10)
 	queue_free()
 
-func _on_body_entered(body):
-	if body.has_method("player"):
+func _on_body_entered(body_detected):
+	if body_detected.has_method("player"):
 		spawn_skeleton()

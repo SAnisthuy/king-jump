@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bbp0plbv7agbs" path="res://Scenes/platform.tscn" id="10_42uki"]
 [ext_resource type="PackedScene" uid="uid://wso63606crth" path="res://Scenes/wedge.tscn" id="11_t7v2y"]
 [ext_resource type="Texture2D" uid="uid://duiyvy53c5c44" path="res://Assets/Lighting/floor lamps, candelabra, chandeliers.png" id="15_q0ycs"]
+[ext_resource type="Script" uid="uid://buqhyhf1w56pv" path="res://Scenes/Info boxes/enemy_call.gd" id="16_hj5x7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7v2y"]
 texture = ExtResource("4_ait6c")
@@ -786,12 +787,15 @@ polygon = PackedVector2Array(-431, -27, -336, -26, -336, -17, -431, -17)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e2piv"]
 polygon = PackedVector2Array(-239, -41, -145, -41, -145, -31, -239, -32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvrk7"]
+size = Vector2(15, 33.75)
+
 [node name="level_2" type="Node2D" unique_id=1958864349]
 script = ExtResource("1_vcilj")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=1732569539 instance=ExtResource("1_uhnj4")]
-position = Vector2(-472, -99)
+position = Vector2(-533, -132)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=636274381]
 zoom = Vector2(4, 4)
@@ -1035,12 +1039,17 @@ theme_override_font_sizes/font_size = 10
 text = "Left click to attack!"
 metadata/_edit_use_anchors_ = true
 
-[node name="Death countdown" type="Timer" parent="." unique_id=1505140350]
-one_shot = true
+[node name="Info box" type="Node" parent="." unique_id=1013411883]
 
-[connection signal="death" from="Player" to="." method="_on_player_death"]
+[node name="enemy" type="Area2D" parent="Info box" unique_id=1081141800]
+script = ExtResource("16_hj5x7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Info box/enemy" unique_id=1687452880]
+position = Vector2(-471.5, -97.125)
+shape = SubResource("RectangleShape2D_yvrk7")
+
 [connection signal="body_entered" from="Mapping/nextlevel" to="." method="_on_nextlevel_body_entered"]
-[connection signal="timeout" from="Death countdown" to="." method="_on_death_countdown_timeout"]
+[connection signal="body_entered" from="Info box/enemy" to="Info box/enemy" method="_on_body_entered"]
 
 [editable path="Enemy"]
 [editable path="Enemy2"]

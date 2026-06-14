@@ -2,6 +2,7 @@ extends Node2D
 
 var pickup_available = false
 @onready var pickup_cooldown: Timer = $pickup_cooldown
+@onready var collect_sfx: AudioStreamPlayer = $collectSFX
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +17,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player") and pickup_available:
 		if Collectables.skulls > 0:
 			Collectables.skulls -= 1
+		collect_sfx.play()
+		await collect_sfx.finished
 		queue_free()
 	pass
 

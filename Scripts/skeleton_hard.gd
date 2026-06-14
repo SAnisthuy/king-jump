@@ -144,7 +144,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if skeley.animation == "attack":
 		if skeley.frame == 4:
 			attackSFX.play()
-		if skeley.frame == 7 and player_in_range and target != null:
+		if skeley.frame == 5 and player_in_range and target != null:
 			target.take_damage(25)
 	if skeley.animation == "chase" or skeley.animation == "walk":
 		if skeley.frame in [1, 5]:
@@ -159,13 +159,13 @@ func take_damage(amount):
 	health -= amount
 	skeley_damaged.emit(amount)
 
+	hurtSFX.play()	
 
 	if health <= 0:
 		dying = true
 		skeley.play("death")
 		return
 	
-	hurtSFX.play()	
 	skeley.modulate = Color(18.892, 18.892, 18.892, 1.0)
 	damage_cooldown.start()
 
