@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dxrigu8ta6qy4" path="res://Assets/Sprites [Enemies]/Necromancer/Idle/spr_NecromancerIdle_strip50.png" id="4_1cs0q"]
 [ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="4_ayxne"]
 [ext_resource type="PackedScene" uid="uid://dttrhqrns5k2w" path="res://Scenes/torches.tscn" id="4_bmxip"]
+[ext_resource type="AudioStream" uid="uid://qfo3tf14fnoh" path="res://Audio/SFX/UI/button-click.mp3" id="11_1cs0q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_252l6"]
 atlas = ExtResource("2_5ikna")
@@ -1016,6 +1017,10 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_ayxne")
 theme_override_font_sizes/font_size = 44
 text = "Quit"
+
+[node name="buttonSFX" type="AudioStreamPlayer" parent="." unique_id=2114652598]
+stream = ExtResource("11_1cs0q")
+bus = &"SFX"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

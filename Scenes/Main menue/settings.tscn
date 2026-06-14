@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://b4doi1m2t85ca"]
+
+[ext_resource type="Script" uid="uid://d4gs4fxl654x6" path="res://Scenes/Main menue/settings.gd" id="1_wgo6p"]
+[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="2_qc78q"]
+
+[node name="Settings" type="CanvasLayer" unique_id=929638946]
+script = ExtResource("1_wgo6p")
+
+[node name="Control" type="Control" parent="." unique_id=588693917]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 99.55554
+offset_top = 56.0
+offset_right = -99.55554
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1106180533]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.69411767)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect" unique_id=875040019]
+custom_minimum_size = Vector2(16.845, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -82.5
+offset_right = 288.0
+offset_bottom = 82.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Heading" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=1098578243]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qc78q")
+theme_override_font_sizes/font_size = 61
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Main Audio" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=1353814080]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qc78q")
+text = "Main"
+horizontal_alignment = 1
+
+[node name="main" type="HSlider" parent="Control/ColorRect/VBoxContainer" unique_id=616800934]
+layout_mode = 2
+value = 100.0
+tick_count = 10
+
+[node name="Music" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=903932669]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qc78q")
+text = "Music"
+horizontal_alignment = 1
+
+[node name="music" type="HSlider" parent="Control/ColorRect/VBoxContainer" unique_id=48273318]
+layout_mode = 2
+value = 100.0
+tick_count = 10
+
+[node name="SFX" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=217368183]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qc78q")
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="sfx" type="HSlider" parent="Control/ColorRect/VBoxContainer" unique_id=310278650]
+layout_mode = 2
+step = 10.0
+value = 100.0
+tick_count = 10
+
+[node name="seperator" type="Control" parent="Control/ColorRect/VBoxContainer" unique_id=716815771]
+custom_minimum_size = Vector2(0, 10.075)
+layout_mode = 2
+
+[node name="exit" type="Button" parent="Control/ColorRect/VBoxContainer" unique_id=723656724]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qc78q")
+text = "Exit"
+
+[connection signal="drag_ended" from="Control/ColorRect/VBoxContainer/main" to="." method="_on_main_drag_ended"]
+[connection signal="drag_ended" from="Control/ColorRect/VBoxContainer/music" to="." method="_on_music_drag_ended"]
+[connection signal="drag_ended" from="Control/ColorRect/VBoxContainer/sfx" to="." method="_on_sfx_drag_ended"]
+[connection signal="pressed" from="Control/ColorRect/VBoxContainer/exit" to="." method="_on_exit_pressed"]

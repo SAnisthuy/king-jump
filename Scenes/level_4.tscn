@@ -1344,7 +1344,7 @@ size = Vector2(14, 36)
 script = ExtResource("1_3v663")
 
 [node name="Player" parent="." unique_id=1732569539 instance=ExtResource("2_5eaas")]
-position = Vector2(120, -342)
+position = Vector2(-584, -448)
 
 [node name="HotbarUI" parent="Player" unique_id=2133312155 instance=ExtResource("2_gxyip")]
 

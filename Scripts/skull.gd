@@ -17,8 +17,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player") and pickup_available:
 		if Collectables.skulls > 0:
 			Collectables.skulls -= 1
-		collect_sfx.play()
-		await collect_sfx.finished
+		GlobalAudios.collect_play()
 		queue_free()
 	pass
 

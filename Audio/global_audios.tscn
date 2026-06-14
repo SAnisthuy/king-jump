@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://coif6c7awh1vg"]
+
+[ext_resource type="Script" uid="uid://cvnouidv67hxu" path="res://Audio/global_audio.gd" id="1_870vq"]
+[ext_resource type="AudioStream" uid="uid://qfo3tf14fnoh" path="res://Audio/SFX/UI/button-click.mp3" id="2_bbb0c"]
+[ext_resource type="AudioStream" uid="uid://5ydn1hfn6pgt" path="res://Audio/SFX/liecio-collect-points-190037.mp3" id="3_bbb0c"]
+
+[node name="Global Audios" type="Node" unique_id=1221035648]
+script = ExtResource("1_870vq")
+
+[node name="button_click" type="AudioStreamPlayer" parent="." unique_id=380578763]
+stream = ExtResource("2_bbb0c")
+
+[node name="collectSFX" type="AudioStreamPlayer" parent="." unique_id=1850161630]
+stream = ExtResource("3_bbb0c")
