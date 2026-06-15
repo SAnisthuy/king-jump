@@ -24,7 +24,7 @@ var target = null
 @onready var damage_cooldown: Timer = $damage_cooldown
 
 @onready var attack_sfx: AudioStreamPlayer = $attackSFX
-@onready var walk_sfx: AudioStreamPlayer = $walkSFX
+@onready var walk_sfx: AudioStreamPlayer2D = $walkSFX
 @onready var hurt_sfx: AudioStreamPlayer = $hurtSFX
 
 var direction = -1
@@ -138,14 +138,14 @@ func enemy(): pass
 
 func _on_golly_frame_changed() -> void:
 	if golly.animation.begins_with("attack"):
-		if golly.frame == 6 and attack and target != null:
+		if golly.frame == 6:
 			attack_sfx.play()
-			target.take_damage(damage)
+			if target != null and attack:
+				target.take_damage(damage)
 	elif golly.animation == "chase" or golly.animation == "move":
 		if golly.frame == 6:
 			walk_sfx.play()
 		
-
 func _on_cooldown_timer_timeout() -> void:
 	cooldown = true
 

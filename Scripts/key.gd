@@ -9,6 +9,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if in_range and piackable:
 		if Inventory.add_item({"name": "key", "health": 5}):
+			GlobalAudios.collect_key_play()
 			queue_free()
 
 func _on_body_entered(body: Node2D) -> void:

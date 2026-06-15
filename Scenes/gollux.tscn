@@ -735,8 +735,10 @@ stream = ExtResource("10_ysx1c")
 volume_db = -5.0
 bus = &"SFX"
 
-[node name="walkSFX" type="AudioStreamPlayer" parent="." unique_id=25861583]
+[node name="walkSFX" type="AudioStreamPlayer2D" parent="." unique_id=1280911902]
 stream = ExtResource("11_cusjs")
+volume_db = 20.0
+max_distance = 1000.0
 bus = &"SFX"
 
 [node name="hurtSFX" type="AudioStreamPlayer" parent="." unique_id=1099948831]
