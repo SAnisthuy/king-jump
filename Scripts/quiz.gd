@@ -41,7 +41,7 @@ func close():
 
 func initialize():
 	var answers = [answer_1, answer_2, answer_3, answer_4]
-	var QandA = Questions.get_question()
+	var QandA = shuffle_question(Questions.get_question())
 	question.text = str(QandA["question"])
 	for i in range(4):
 		answers[i].text = str(QandA["answers"][i])
@@ -65,9 +65,33 @@ func check_answer(choice: int):
 	
 	close()
 
+func shuffle_question(q):
+	var pairs = []
+
+	for i in range(q["answers"].size()):
+		pairs.append({
+			"text": q["answers"][i],
+			"is_correct": i == q["correct"]
+		})
+
+	pairs.shuffle()
+
+	var new_answers = []
+	var new_correct = 0
+
+	for i in range(pairs.size()):
+		new_answers.append(pairs[i]["text"])
+		if pairs[i]["is_correct"]:
+			new_correct = i
+
+	return {
+		"question": q["question"],
+		"answers": new_answers,
+		"correct": new_correct
+	}
+
 func _on_answer_1_pressed() -> void:
 	check_answer(1)
-
 
 func _on_answer_2_pressed() -> void:
 	check_answer(2)
