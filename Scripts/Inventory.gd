@@ -1,6 +1,6 @@
 extends Node2D
 
-var levelDefs = [["sword"], ["sword"], ["sword", "spear"], ["sword", "spear", "shield"]]
+var levelDefs = [["sword"], ["sword"], ["sword", "spear"], ["sword", "spear", "shield"], ["sword", "spear", "shield"]]
 
 var inventory = [{"name": "sword", "health": 5},
 	null,

@@ -3,6 +3,7 @@ extends Area2D
 
 var in_range = false
 var piackable = false
+var health = 5
 func _ready() -> void:
 	cooldown.start()
 

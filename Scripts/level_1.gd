@@ -7,3 +7,8 @@ func _on_nextlevel_body_entered(_body: Node2D) -> void:
 		change()
 func change():
 	get_tree().call_deferred("change_scene_to_packed", scene_change)
+func _ready() -> void:
+	GameManager.player_health = 100
+	GameManager.curr_level = 1
+	Collectables.update_vals()
+	Inventory.clear()

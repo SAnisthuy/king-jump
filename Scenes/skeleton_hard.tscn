@@ -641,7 +641,9 @@ volume_db = -10.0
 
 [node name="walk" type="AudioStreamPlayer2D" parent="Audio stuff" unique_id=429019391]
 stream = SubResource("AudioStreamRandomizer_4nblo")
+volume_db = 10.0
 max_distance = 20.0
+bus = &"SFX"
 
 [node name="attack" type="AudioStreamPlayer" parent="Audio stuff" unique_id=1814916313]
 stream = ExtResource("21_upl1x")

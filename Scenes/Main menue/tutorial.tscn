@@ -1,9 +1,13 @@
 [gd_scene format=4 uid="uid://b7k4x2bis0gj8"]
 
+[ext_resource type="Script" uid="uid://b7xsve7yr50qf" path="res://Scenes/Main menue/tutorial.gd" id="1_bhc6h"]
 [ext_resource type="Texture2D" uid="uid://qhess0d4fiul" path="res://Assets/maintileset/background_/dungeon_.png" id="1_rng8g"]
 [ext_resource type="Texture2D" uid="uid://cpklwvhhar0i2" path="res://Assets/maintileset/midground_/dungeon_.png" id="2_63ran"]
 [ext_resource type="Texture2D" uid="uid://uscojrxquhxq" path="res://Assets/maintileset/objects_/staticObjects_.png" id="3_codsk"]
 [ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="4_ifthc"]
+[ext_resource type="Texture2D" uid="uid://c1vmu8i7lq0uk" path="res://Assets/Compass/compass/1.svg" id="5_ifthc"]
+[ext_resource type="Texture2D" uid="uid://ceq2sm0csdr04" path="res://Assets/Compass/compass 2.svg" id="6_ifthc"]
+[ext_resource type="Script" uid="uid://bl8shyinyvb8s" path="res://Scenes/Main menue/arrow.gd" id="7_bhc6h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhc6h"]
 texture = ExtResource("1_rng8g")
@@ -401,7 +405,98 @@ sources/0 = SubResource("TileSetAtlasSource_bhc6h")
 sources/1 = SubResource("TileSetAtlasSource_nhi4k")
 sources/2 = SubResource("TileSetAtlasSource_phdi3")
 
+[sub_resource type="Animation" id="Animation_ifthc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Press Enter:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scene 1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scene 2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nhi4k"]
+resource_name = "Transition"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scene 1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scene 2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.1333333, 2.1333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bhc6h"]
+resource_name = "text"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Press Enter:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nhi4k"]
+_data = {
+&"RESET": SubResource("Animation_ifthc"),
+&"Transition": SubResource("Animation_nhi4k"),
+&"text": SubResource("Animation_bhc6h")
+}
+
 [node name="Tutorial" type="CanvasLayer" unique_id=1795256251]
+script = ExtResource("1_bhc6h")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1876648168]
 modulate = Color(0.158764, 0.25809243, 0.11794058, 1)
@@ -409,7 +504,7 @@ scale = Vector2(4.505, 4.505)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAADAAMAAAAAAAAAAAALAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAEAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAANAAQAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_erxjo")
 
-[node name="Control" type="Control" parent="." unique_id=654010675]
+[node name="Scene 1" type="Control" parent="." unique_id=654010675]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -417,16 +512,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=483187258]
+[node name="VBoxContainer" type="VBoxContainer" parent="Scene 1" unique_id=483187258]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -530.5
+offset_top = -56.5
+offset_right = 530.5
+offset_bottom = 56.5
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Goal" type="Label" parent="Control/VBoxContainer" unique_id=157712272]
+[node name="Goal" type="Label" parent="Scene 1/VBoxContainer" unique_id=157712272]
 texture_filter = 2
 layout_mode = 2
 size_flags_horizontal = 4
@@ -435,7 +536,7 @@ theme_override_font_sizes/font_size = 54
 text = "Goal:"
 horizontal_alignment = 1
 
-[node name="body" type="Label" parent="Control/VBoxContainer" unique_id=1719149130]
+[node name="body" type="Label" parent="Scene 1/VBoxContainer" unique_id=1719149130]
 texture_filter = 2
 layout_mode = 2
 size_flags_horizontal = 4
@@ -443,3 +544,64 @@ theme_override_fonts/font = ExtResource("4_ifthc")
 theme_override_font_sizes/font_size = 33
 text = "Find and deafeat the Necromancer to reclaim the lost castle."
 horizontal_alignment = 1
+
+[node name="Scene 2" type="Control" parent="." unique_id=921637610]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scene 2" unique_id=185365293]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -530.5
+offset_top = -56.5
+offset_right = 530.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="body" type="Label" parent="Scene 2/VBoxContainer" unique_id=82883263]
+texture_filter = 2
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_ifthc")
+theme_override_font_sizes/font_size = 33
+text = "The compass will quide you along 
+the way through the castle to the Necromancer's Lair..."
+horizontal_alignment = 1
+
+[node name="BG" type="Sprite2D" parent="Scene 2" unique_id=1730473403]
+position = Vector2(1032, 544)
+scale = Vector2(0.063999966, 0.063999966)
+texture = ExtResource("5_ifthc")
+
+[node name="Arrow" type="Sprite2D" parent="Scene 2" unique_id=1780606748]
+position = Vector2(1031.9998, 544.0001)
+scale = Vector2(0.032000266, 0.032000266)
+texture = ExtResource("6_ifthc")
+offset = Vector2(0, -255.74)
+script = ExtResource("7_bhc6h")
+
+[node name="Press Enter" type="Label" parent="." unique_id=1419530736]
+offset_left = 24.0
+offset_top = 600.0
+offset_right = 226.0
+offset_bottom = 623.0
+theme_override_fonts/font = ExtResource("4_ifthc")
+text = "Press ENTER to continue..."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=456811278]
+libraries/ = SubResource("AnimationLibrary_nhi4k")
+autoplay = &"text"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=2136488202]
+libraries/ = SubResource("AnimationLibrary_nhi4k")
+autoplay = &"text"

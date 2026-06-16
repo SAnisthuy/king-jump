@@ -1,9 +1,6 @@
 extends Node2D
-var timed = false
-
 func _ready() -> void:
 	GameManager.player_health = 100
-	GameManager.next_level = "res://Scenes/necromancers_lair.tscn"
-	GameManager.curr_level = 4
+	GameManager.curr_level = 5
 	Collectables.update_vals()
 	Inventory.clear()

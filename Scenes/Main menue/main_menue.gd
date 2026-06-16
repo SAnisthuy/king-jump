@@ -2,7 +2,7 @@ extends Control
 
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var button_sfx: AudioStreamPlayer = $buttonSFX
-var level = preload("res://Scenes/level_1.tscn")
+var level = preload("res://Scenes/Main menue/tutorial.tscn")
 
 func _process(_delta: float) -> void:
 

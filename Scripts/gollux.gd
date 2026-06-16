@@ -105,9 +105,10 @@ func take_damage(_amount):
 	hurt_sfx.play()
 	
 	if health <= 0:
-		var key = key_scene.instantiate()
-		get_parent().add_child(key)
-		key.global_position = Vector2(global_position.x, global_position.y+20)
+		if GameManager.curr_level != 5:
+			var key = key_scene.instantiate()
+			get_parent().add_child(key)
+			key.global_position = Vector2(global_position.x, global_position.y+20)
 		queue_free()
 	
 	golly.modulate = Color(18.892, 18.892, 18.892, 1.0)
