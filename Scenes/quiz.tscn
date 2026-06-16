@@ -52,7 +52,6 @@ offset_right = 504.0
 offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_stretch_ratio = 0.0
 columns = 2
 
 [node name="Answer1" type="Button" parent="CanvasLayer/GridContainer" unique_id=1358169820]
