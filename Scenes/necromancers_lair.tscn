@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cukrepkuivqig" path="res://Scenes/gollux.tscn" id="12_vou0f"]
 [ext_resource type="PackedScene" uid="uid://btse7qdsbnfg6" path="res://Scenes/skeleton.tscn" id="13_h1qw5"]
 [ext_resource type="PackedScene" uid="uid://bc1u2lqu83mat" path="res://Scenes/necromancer2.tscn" id="14_h1qw5"]
+[ext_resource type="AudioStream" uid="uid://dmci2ud3ooov0" path="res://Audio/Music/ominous_wind.mp3" id="16_asvb6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kdki"]
 texture = ExtResource("2_wnqql")
@@ -1454,7 +1455,13 @@ position = Vector2(-287, -613)
 position = Vector2(57, -597)
 
 [node name="necromancer" parent="Enemies" unique_id=916766111 instance=ExtResource("14_h1qw5")]
-position = Vector2(223, -376)
+position = Vector2(223, -364)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=118652752]
 position = Vector2(224, -384)
+
+[node name="Spooky wind" type="AudioStreamPlayer" parent="." unique_id=336067443]
+stream = ExtResource("16_asvb6")
+autoplay = true
+bus = &"SFX"
+parameters/looping = true

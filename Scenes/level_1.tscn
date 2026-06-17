@@ -733,14 +733,26 @@ position = Vector2(-205, -8)
 
 [node name="Label" type="Label" parent="." unique_id=1451818988]
 texture_filter = 2
-offset_left = -368.0
-offset_top = 51.0
-offset_right = -40.0
-offset_bottom = 118.0
+offset_left = -373.0
+offset_top = 111.0
+offset_right = -253.0
+offset_bottom = 142.0
 theme_override_fonts/font = ExtResource("2_wrinw")
+theme_override_font_sizes/font_size = 5
 text = "Dont fall...
-Collect all the coins and reach 
-the double doors to move on"
+Collect all the coins and follow the compass..."
+
+[node name="Hold F or Shift to sprint" type="Label" parent="." unique_id=639099040]
+texture_filter = 2
+offset_left = -385.0
+offset_top = 88.0
+offset_right = -292.0
+offset_bottom = 119.0
+theme_override_fonts/font = ExtResource("2_wrinw")
+theme_override_font_sizes/font_size = 5
+text = "Hold F or Shift to sprint..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="mapping/nextlevel" to="." method="_on_nextlevel_body_entered"]
 [connection signal="body_entered" from="mapping/Deathzone" to="Player" method="_on_area_2d_body_entered"]

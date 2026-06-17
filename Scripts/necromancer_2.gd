@@ -44,13 +44,8 @@ var melee = true
 var in_range_attack = false
 var in_range_detect = false
 
-func _ready() -> void:
-	print(global_position)
-
 func _physics_process(_delta: float):
 	player_pos = GameManager.player_pos
-	if Input.is_action_just_pressed("slot_4"):
-		print(range_a)
 	if dying: #MAKE SURE THAT IF DYING HE ACTUALLY DIES INSTEAD OF SWITCHING STATES
 		return
 	if attack: # ENSURE THE ATTACK ANIMATION GOES THROUGH

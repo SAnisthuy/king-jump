@@ -746,6 +746,8 @@ volume_db = -10.0
 stream = SubResource("AudioStreamRandomizer_uebny")
 volume_db = -10.0
 max_distance = 60.0
+attenuation = 3.0
+bus = &"SFX"
 
 [node name="attack" type="AudioStreamPlayer" parent="Audio stuff" unique_id=249485255]
 stream = ExtResource("20_qt1qk")

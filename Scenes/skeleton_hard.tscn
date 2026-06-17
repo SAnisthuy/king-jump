@@ -556,7 +556,7 @@ stream_1/stream = ExtResource("10_snnpv")
 stream_2/stream = ExtResource("11_mq6gy")
 stream_3/stream = ExtResource("12_dvx0u")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4nblo"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lvjbo"]
 streams_count = 4
 stream_0/stream = ExtResource("14_a13qn")
 stream_1/stream = ExtResource("15_pbtfg")
@@ -639,15 +639,13 @@ stream = SubResource("AudioStreamRandomizer_njj1d")
 stream = ExtResource("13_sca0h")
 volume_db = -10.0
 
-[node name="walk" type="AudioStreamPlayer2D" parent="Audio stuff" unique_id=429019391]
-stream = SubResource("AudioStreamRandomizer_4nblo")
-volume_db = 10.0
-max_distance = 20.0
-bus = &"SFX"
-
 [node name="attack" type="AudioStreamPlayer" parent="Audio stuff" unique_id=1814916313]
 stream = ExtResource("21_upl1x")
 volume_db = -5.0
+
+[node name="walk" type="AudioStreamPlayer2D" parent="Audio stuff" unique_id=356659196]
+stream = SubResource("AudioStreamRandomizer_lvjbo")
+max_distance = 125.0
 
 [connection signal="skeley_damaged" from="." to="Health" method="_on_skeleton_skeley_damaged"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
