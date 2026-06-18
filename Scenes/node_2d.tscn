@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bih1bp5hja7jr"]
+
+[ext_resource type="Texture2D" uid="uid://caywln8vaerks" path="res://Assets/Sprites [Enemies]/Ghost/Ghost/ghost-Sheet.png" id="1_j2wod"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1qfn"]
+atlas = ExtResource("1_j2wod")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh5uf"]
+atlas = ExtResource("1_j2wod")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6whob"]
+atlas = ExtResource("1_j2wod")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7krg"]
+atlas = ExtResource("1_j2wod")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tx0tn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1qfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh5uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6whob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7krg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=1484689802]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=50772750]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1605269293]
+sprite_frames = SubResource("SpriteFrames_tx0tn")
+autoplay = "default"
