@@ -474,6 +474,7 @@ stream_4/stream = ExtResource("21_p1odr")
 stream_5/stream = ExtResource("22_0gysh")
 
 [node name="Player" type="CharacterBody2D" unique_id=1732569539]
+z_index = 1
 collision_layer = 3
 collision_mask = 7
 script = ExtResource("1_vgqql")
@@ -564,6 +565,7 @@ bus = &"SFX"
 
 [node name="walkSFX" type="AudioStreamPlayer" parent="." unique_id=689852935]
 stream = SubResource("AudioStreamRandomizer_vfarp")
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="groundImpactSFX" type="AudioStreamPlayer" parent="." unique_id=117189132]
@@ -586,9 +588,6 @@ bus = &"SFX"
 
 [node name="breakSFX" type="AudioStreamPlayer" parent="." unique_id=154968778]
 stream = ExtResource("26_0gysh")
-
-[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=407972691]
-current = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

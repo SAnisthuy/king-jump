@@ -1,0 +1,210 @@
+[gd_scene format=3 uid="uid://bih1bp5hja7jr"]
+
+[ext_resource type="Script" uid="uid://hdlob3gwtafg" path="res://Scripts/door_guard.gd" id="1_a0fnl"]
+[ext_resource type="Texture2D" uid="uid://c4j2yqlqr3osy" path="res://Assets/Sprites [Enemies]/Dark Mage/Sheets/dm-walk.png" id="2_y2o0s"]
+[ext_resource type="Texture2D" uid="uid://uscojrxquhxq" path="res://Assets/maintileset/objects_/staticObjects_.png" id="3_58mc5"]
+[ext_resource type="Texture2D" uid="uid://l3h2l0obeoop" path="res://Assets/Sprites [Enemies]/Dark Mage/Sheets/dm-blast-ATK.png" id="3_f0qbw"]
+[ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="4_58mc5"]
+[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="6_ngi6h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32qkf"]
+atlas = ExtResource("3_58mc5")
+region = Rect2(64, 70, 33, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq2bg"]
+atlas = ExtResource("3_58mc5")
+region = Rect2(97, 70, 33, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdyh8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32qkf")
+}],
+"loop": false,
+"name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq2bg")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58mc5"]
+atlas = ExtResource("2_y2o0s")
+region = Rect2(0, 0, 166, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngi6h"]
+atlas = ExtResource("2_y2o0s")
+region = Rect2(166, 0, 166, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tltm"]
+atlas = ExtResource("2_y2o0s")
+region = Rect2(332, 0, 166, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc2ix"]
+atlas = ExtResource("2_y2o0s")
+region = Rect2(498, 0, 166, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ayh3"]
+atlas = ExtResource("3_f0qbw")
+region = Rect2(0, 0, 166, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtv4p"]
+atlas = ExtResource("3_f0qbw")
+region = Rect2(166, 0, 166, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jwlm"]
+atlas = ExtResource("3_f0qbw")
+region = Rect2(332, 0, 166, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7fdy"]
+atlas = ExtResource("3_f0qbw")
+region = Rect2(498, 0, 166, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq8oc"]
+atlas = ExtResource("3_f0qbw")
+region = Rect2(664, 0, 166, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gcjr"]
+atlas = ExtResource("3_f0qbw")
+region = Rect2(830, 0, 166, 98)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tx0tn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58mc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngi6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tltm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc2ix")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ayh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtv4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jwlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7fdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq8oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gcjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq8oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gcjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq8oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gcjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq8oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gcjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq8oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gcjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq8oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gcjr")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0qbw"]
+radius = 27.018513
+
+[node name="door_guard" type="Node2D" unique_id=1484689802]
+script = ExtResource("1_a0fnl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=444667949]
+offset_left = -80.0
+offset_top = -1.0
+offset_right = -42.0
+offset_bottom = 31.0
+color = Color(0.03125, 0.02462121, 0.020833336, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=990868653]
+position = Vector2(-60, 14)
+scale = Vector2(0.20765625, 0.20765625)
+color = Color(0.2400937, 0.7273974, 1, 1)
+texture = ExtResource("4_58mc5")
+
+[node name="door" type="AnimatedSprite2D" parent="." unique_id=1355137065]
+position = Vector2(-59, 15)
+scale = Vector2(1.3174359, 1.3174359)
+sprite_frames = SubResource("SpriteFrames_kdyh8")
+animation = &"Open"
+autoplay = "Closed"
+
+[node name="doorguy" type="AnimatedSprite2D" parent="." unique_id=1605269293]
+position = Vector2(-93.99999, 6)
+scale = Vector2(0.7500001, 0.75)
+sprite_frames = SubResource("SpriteFrames_tx0tn")
+autoplay = "default"
+frame_progress = 0.7394776
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=50772750]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=558291949]
+visible = false
+position = Vector2(-60, 13)
+shape = SubResource("CircleShape2D_f0qbw")
+
+[node name="dialogue" type="Label" parent="." unique_id=225402219]
+modulate = Color(4.415934, 4.415934, 4.415934, 1)
+z_index = 8
+z_as_relative = false
+offset_left = -200.0
+offset_right = 77.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("6_ngi6h")
+theme_override_font_sizes/font_size = 6
+text = "You don't have the required items..."
+
+[node name="dl timer" type="Timer" parent="." unique_id=1498943865]
+one_shot = true
+
+[connection signal="animation_finished" from="doorguy" to="." method="_on_doorguy_animation_finished"]
+[connection signal="frame_changed" from="doorguy" to="." method="_on_doorguy_frame_changed"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

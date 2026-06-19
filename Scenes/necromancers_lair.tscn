@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://e3345owannxu"]
 
-[ext_resource type="Script" uid="uid://da0n2ttovhlmc" path="res://Scenes/necromancers_lair.gd" id="1_gfctg"]
+[ext_resource type="Script" uid="uid://da0n2ttovhlmc" path="res://Scripts/necromancers_lair.gd" id="1_gfctg"]
 [ext_resource type="PackedScene" uid="uid://c6jcqf2bc6x3k" path="res://Scenes/player.tscn" id="1_medsk"]
 [ext_resource type="Texture2D" uid="uid://cpklwvhhar0i2" path="res://Assets/maintileset/midground_/dungeon_.png" id="2_wnqql"]
 [ext_resource type="PackedScene" uid="uid://bbnx47h6fr5qc" path="res://Scenes/hotbar_ui.tscn" id="2_x75bj"]

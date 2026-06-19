@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var deathSFX: AudioStreamPlayer = $audio/death
 @onready var walkSFX: AudioStreamPlayer = $audio/walk
 @onready var ambiance: AudioStreamPlayer = $audio/ambiance
+@onready var hurt: AudioStreamPlayer = $audio/hurt
 
 
 var throwable = preload("res://Scenes/skull_throwable.tscn")
@@ -133,6 +134,7 @@ func enemy(): pass
 
 func take_damage(amount: int):
 	health.value -= amount
+	hurt.play()
 	if health.value <= 0:
 		death()
 	else:

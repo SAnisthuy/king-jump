@@ -22,6 +22,10 @@
 [ext_resource type="AudioStream" uid="uid://cwv1hxv30wy2s" path="res://Audio/SFX/Necromancer/magic-4.mp3" id="20_crry3"]
 [ext_resource type="AudioStream" uid="uid://xjfrebqqjevr" path="res://Audio/SFX/Necromancer/magic-5.mp3" id="21_c1gc4"]
 [ext_resource type="AudioStream" uid="uid://dtl0hbwa214p4" path="res://Audio/SFX/Necromancer/magic-6.mp3" id="22_cg4is"]
+[ext_resource type="AudioStream" uid="uid://c1x2snfkx2hxb" path="res://Audio/SFX/Skeleton/Skeleton_hurt1.ogg" id="23_c1gc4"]
+[ext_resource type="AudioStream" uid="uid://b3ym041pcjwnk" path="res://Audio/SFX/Skeleton/Skeleton_hurt2.ogg" id="24_cg4is"]
+[ext_resource type="AudioStream" uid="uid://b4vqbe06y2rkw" path="res://Audio/SFX/Skeleton/Skeleton_hurt3.ogg" id="25_oquog"]
+[ext_resource type="AudioStream" uid="uid://dlcfv0lcbxg20" path="res://Audio/SFX/Skeleton/Skeleton_hurt4.ogg" id="26_w2iyj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pnhd5"]
 atlas = ExtResource("2_028aq")
@@ -1484,6 +1488,13 @@ stream_3/stream = ExtResource("20_crry3")
 stream_4/stream = ExtResource("21_c1gc4")
 stream_5/stream = ExtResource("22_cg4is")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_utlty"]
+streams_count = 4
+stream_0/stream = ExtResource("23_c1gc4")
+stream_1/stream = ExtResource("24_cg4is")
+stream_2/stream = ExtResource("25_oquog")
+stream_3/stream = ExtResource("26_w2iyj")
+
 [node name="necromancer" type="CharacterBody2D" unique_id=916766111]
 collision_layer = 4
 motion_mode = 1
@@ -1517,9 +1528,9 @@ offset_right = 13.0
 offset_bottom = 25.0
 theme_override_styles/background = SubResource("StyleBoxFlat_wdw8x")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xwdgr")
-max_value = 600.0
+max_value = 800.0
 step = 1.0
-value = 600.0
+value = 800.0
 show_percentage = false
 
 [node name="damage" type="Timer" parent="." unique_id=2097068374]
@@ -1571,6 +1582,9 @@ bus = &"SFX"
 [node name="ambianceTIME" type="Timer" parent="audio" unique_id=221490479]
 wait_time = 3.0
 autostart = true
+
+[node name="hurt" type="AudioStreamPlayer" parent="audio" unique_id=234749209]
+stream = SubResource("AudioStreamRandomizer_utlty")
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="frame_changed" from="sprite" to="." method="_on_sprite_frame_changed"]

@@ -64,3 +64,4 @@ texture = ExtResource("2_fa2wh")
 stream = ExtResource("3_fa2wh")
 autoplay = true
 max_distance = 50.0
+bus = &"SFX"

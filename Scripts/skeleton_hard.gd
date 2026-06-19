@@ -29,6 +29,7 @@ var player_in_range = false
 
 var skull_scene = preload("res://Scenes/skull.tscn")
 
+
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -147,6 +148,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		if skeley.frame == 5 and player_in_range and target != null:
 			target.take_damage(25)
 	if skeley.animation == "chase" or skeley.animation == "walk":
+
 		if skeley.frame in [1, 5]:
 			walkSFX.play()
 	if skeley.animation == "death" and skeley.frame == 3:

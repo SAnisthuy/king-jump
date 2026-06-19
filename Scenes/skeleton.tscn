@@ -729,7 +729,7 @@ texture_scale = 0.25
 wait_time = 0.15
 one_shot = true
 
-[node name="Audio stuff" type="Node" parent="." unique_id=795748255]
+[node name="Audio stuff" type="Node2D" parent="." unique_id=724785692]
 
 [node name="hurt" type="AudioStreamPlayer" parent="Audio stuff" unique_id=1568812251]
 stream = SubResource("AudioStreamRandomizer_ksbdh")
@@ -744,9 +744,9 @@ volume_db = -10.0
 
 [node name="idle" type="AudioStreamPlayer2D" parent="Audio stuff" unique_id=1014906173]
 stream = SubResource("AudioStreamRandomizer_uebny")
-volume_db = -10.0
-max_distance = 60.0
-attenuation = 3.0
+volume_db = -5.0
+max_distance = 300.0
+attenuation = 2.0
 bus = &"SFX"
 
 [node name="attack" type="AudioStreamPlayer" parent="Audio stuff" unique_id=249485255]

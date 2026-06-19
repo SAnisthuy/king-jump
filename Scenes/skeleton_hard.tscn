@@ -612,6 +612,7 @@ script = ExtResource("7_0jw7g")
 metadata/_edit_use_anchors_ = true
 
 [node name="glow" type="PointLight2D" parent="." unique_id=1179237291]
+position = Vector2(-2, -1)
 color = Color(0.43448606, 0.00073996215, 0.5606473, 1)
 texture = ExtResource("8_gjns4")
 texture_scale = 0.25
@@ -630,22 +631,28 @@ target_position = Vector2(7, 17)
 wait_time = 0.15
 one_shot = true
 
-[node name="Audio stuff" type="Node" parent="." unique_id=1619983990]
+[node name="Audio stuff" type="Node2D" parent="." unique_id=1853921284]
 
 [node name="hurt" type="AudioStreamPlayer" parent="Audio stuff" unique_id=964554259]
 stream = SubResource("AudioStreamRandomizer_njj1d")
+bus = &"SFX"
 
 [node name="death" type="AudioStreamPlayer" parent="Audio stuff" unique_id=1746971231]
 stream = ExtResource("13_sca0h")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="attack" type="AudioStreamPlayer" parent="Audio stuff" unique_id=1814916313]
 stream = ExtResource("21_upl1x")
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="walk" type="AudioStreamPlayer2D" parent="Audio stuff" unique_id=356659196]
+position = Vector2(2, 1)
 stream = SubResource("AudioStreamRandomizer_lvjbo")
-max_distance = 125.0
+max_distance = 300.0
+attenuation = 2.0
+bus = &"SFX"
 
 [connection signal="skeley_damaged" from="." to="Health" method="_on_skeleton_skeley_damaged"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
