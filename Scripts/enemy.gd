@@ -58,4 +58,4 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if sprite.frame == 4 and sprite.animation.begins_with("attack"):
 		for body in hitbox.get_overlapping_bodies():
 			if body.has_method("player"):
-				body.take_damage(10)
+				body.take_damage(10, global_position)

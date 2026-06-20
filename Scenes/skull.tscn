@@ -29,8 +29,69 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_moowi"]
-radius = 3.0
-height = 10.0
+radius = 4.0
+height = 12.0
+
+[sub_resource type="Animation" id="Animation_vjweu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 5.9999995)]
+}
+
+[sub_resource type="Animation" id="Animation_7ruoq"]
+resource_name = "skull"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, 5.9999995), Vector2(6, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bt6fs"]
+_data = {
+&"RESET": SubResource("Animation_vjweu"),
+&"skull": SubResource("Animation_7ruoq")
+}
 
 [node name="Skull" type="Node2D" unique_id=1500536410]
 script = ExtResource("1_6bgmt")
@@ -62,6 +123,10 @@ one_shot = true
 [node name="collectSFX" type="AudioStreamPlayer" parent="." unique_id=106353472]
 stream = ExtResource("5_vjweu")
 bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=670950391]
+libraries/ = SubResource("AnimationLibrary_bt6fs")
+autoplay = &"skull"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="pickup_cooldown" to="." method="_on_pickup_cooldown_timeout"]

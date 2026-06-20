@@ -1,10 +1,10 @@
 extends Node
 
 var required = [null, 
-{"skulls": null, "coins": 4}, # Level 1
-{"skulls": null, "coins": 5}, # level 2
+{"skulls": null, "coins": 1}, # Level 1
+{"skulls": null, "coins": 2}, # level 2
 {"skulls": 1, "coins": 3},  # Level 3
-{"coins": 12, "skulls": 3}, # Level 4
+{"coins": 5, "skulls": 3}, # Level 4
 {"coins": 0, "skulls": 0}]	#level 5
 
 

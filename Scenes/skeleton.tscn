@@ -646,7 +646,7 @@ radius = 8.0
 height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shq1q"]
-size = Vector2(107, 25)
+size = Vector2(107, 45.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ks230"]
 radius = 27.018513
@@ -693,7 +693,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1170386931]
-position = Vector2(1, 6)
+position = Vector2(1, -4.25)
 shape = SubResource("RectangleShape2D_shq1q")
 
 [node name="enemy hit box" type="Area2D" parent="." unique_id=364138723]

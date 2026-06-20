@@ -1430,9 +1430,6 @@ position = Vector2(6, -161)
 [node name="Skeleton5" parent="Enemies/Skeletons E" unique_id=1586024922 instance=ExtResource("10_7huqf")]
 position = Vector2(-368, -417)
 
-[node name="Skeleton6" parent="Enemies/Skeletons E" unique_id=733108292 instance=ExtResource("10_7huqf")]
-position = Vector2(-627, -111)
-
 [node name="Skeleton7" parent="Enemies/Skeletons E" unique_id=2097961776 instance=ExtResource("10_7huqf")]
 position = Vector2(-235, -240)
 
@@ -1443,6 +1440,12 @@ position = Vector2(-173, -48)
 
 [node name="Skeleton_Hard2" parent="Enemies/Skeletons H" unique_id=136827466 instance=ExtResource("1_5eaas")]
 position = Vector2(-49, -385)
+
+[node name="Skeleton_Hard4" parent="Enemies/Skeletons H" unique_id=1473303399 instance=ExtResource("1_5eaas")]
+position = Vector2(-562, -112)
+
+[node name="Skeleton_Hard5" parent="Enemies/Skeletons H" unique_id=133721289 instance=ExtResource("1_5eaas")]
+position = Vector2(-210, -287)
 
 [node name="Skeleton_Hard3" parent="Enemies/Skeletons H" unique_id=742933599 instance=ExtResource("1_5eaas")]
 position = Vector2(-409, -240)
@@ -1506,23 +1509,11 @@ autoplay = &"new_animation"
 [node name="Coin" type="Node" parent="." unique_id=486129383]
 
 [node name="coin" parent="Coin" unique_id=1875311853 instance=ExtResource("16_b8ytw")]
-position = Vector2(-552, -104.99999)
-scale = Vector2(0.36, 0.36)
-
-[node name="coin18" parent="Coin" unique_id=936303711 instance=ExtResource("16_b8ytw")]
-position = Vector2(-520, -104.99999)
-scale = Vector2(0.36, 0.36)
-
-[node name="coin2" parent="Coin" unique_id=1295956468 instance=ExtResource("16_b8ytw")]
-position = Vector2(-209, -281)
+position = Vector2(-536, -105.99999)
 scale = Vector2(0.36, 0.36)
 
 [node name="coin3" parent="Coin" unique_id=51015557 instance=ExtResource("16_b8ytw")]
 position = Vector2(-257, -314)
-scale = Vector2(0.36, 0.36)
-
-[node name="coin4" parent="Coin" unique_id=807102178 instance=ExtResource("16_b8ytw")]
-position = Vector2(-281, -379)
 scale = Vector2(0.36, 0.36)
 
 [node name="coin5" parent="Coin" unique_id=341098495 instance=ExtResource("16_b8ytw")]
@@ -1533,28 +1524,12 @@ scale = Vector2(0.36, 0.36)
 position = Vector2(-432, -363)
 scale = Vector2(0.36, 0.36)
 
-[node name="coin7" parent="Coin" unique_id=177296470 instance=ExtResource("16_b8ytw")]
-position = Vector2(-577, -299)
-scale = Vector2(0.36, 0.36)
-
-[node name="coin8" parent="Coin" unique_id=1914039951 instance=ExtResource("16_b8ytw")]
-position = Vector2(-647, -440)
-scale = Vector2(0.36, 0.36)
-
 [node name="coin9" parent="Coin" unique_id=1071059019 instance=ExtResource("16_b8ytw")]
 position = Vector2(-603, -185.99994)
 scale = Vector2(0.36, 0.36)
 
-[node name="coin10" parent="Coin" unique_id=1675833195 instance=ExtResource("16_b8ytw")]
-position = Vector2(-166.99994, -201)
-scale = Vector2(0.36, 0.36)
-
 [node name="coin11" parent="Coin" unique_id=846112157 instance=ExtResource("16_b8ytw")]
 position = Vector2(-242, -137)
-scale = Vector2(0.36, 0.36)
-
-[node name="coin12" parent="Coin" unique_id=1500720718 instance=ExtResource("16_b8ytw")]
-position = Vector2(-313, -168)
 scale = Vector2(0.36, 0.36)
 
 [node name="coin13" parent="Coin" unique_id=1788604920 instance=ExtResource("16_b8ytw")]
@@ -1565,14 +1540,6 @@ scale = Vector2(0.36, 0.36)
 position = Vector2(-368, -28.999985)
 scale = Vector2(0.36, 0.36)
 
-[node name="coin15" parent="Coin" unique_id=519447008 instance=ExtResource("16_b8ytw")]
-position = Vector2(-408, -91.00001)
-scale = Vector2(0.36, 0.36)
-
-[node name="coin16" parent="Coin" unique_id=823888639 instance=ExtResource("16_b8ytw")]
-position = Vector2(-485.99997, -187)
-scale = Vector2(0.36, 0.36)
-
 [node name="coin17" parent="Coin" unique_id=1300603053 instance=ExtResource("16_b8ytw")]
 position = Vector2(-480, -265)
 scale = Vector2(0.36, 0.36)
@@ -1580,7 +1547,7 @@ scale = Vector2(0.36, 0.36)
 [node name="Lighting" type="Node" parent="." unique_id=1966527907]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Lighting" unique_id=775860392]
-color = Color(0.2775187, 0.20377061, 0.0048957397, 1)
+color = Color(0.43359375, 0.3175616, 0.0061069587, 1)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=878605949]
 position = Vector2(184, -175)

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c1vmu8i7lq0uk" path="res://Assets/Compass/compass/1.svg" id="5_ifthc"]
 [ext_resource type="Texture2D" uid="uid://ceq2sm0csdr04" path="res://Assets/Compass/compass 2.svg" id="6_ifthc"]
 [ext_resource type="Script" uid="uid://bl8shyinyvb8s" path="res://Scenes/Main menue/arrow.gd" id="7_bhc6h"]
-[ext_resource type="Texture2D" uid="uid://dctwl71jha7b3" path="res://Assets/maintileset/objects_/coin_.png" id="9_nhi4k"]
+[ext_resource type="PackedScene" uid="uid://qrj8wlmcg1as" path="res://Scenes/coin.tscn" id="9_nhi4k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhc6h"]
 texture = ExtResource("1_rng8g")
@@ -406,98 +406,6 @@ sources/0 = SubResource("TileSetAtlasSource_bhc6h")
 sources/1 = SubResource("TileSetAtlasSource_nhi4k")
 sources/2 = SubResource("TileSetAtlasSource_phdi3")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_phdi3"]
-atlas = ExtResource("9_nhi4k")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_erxjo"]
-atlas = ExtResource("9_nhi4k")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oyokj"]
-atlas = ExtResource("9_nhi4k")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqdde"]
-atlas = ExtResource("9_nhi4k")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oowid"]
-atlas = ExtResource("9_nhi4k")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_scuf4"]
-atlas = ExtResource("9_nhi4k")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ty4uf"]
-atlas = ExtResource("9_nhi4k")
-region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_isgxt"]
-atlas = ExtResource("9_nhi4k")
-region = Rect2(112, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x6eys"]
-atlas = ExtResource("9_nhi4k")
-region = Rect2(128, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1pemj"]
-atlas = ExtResource("9_nhi4k")
-region = Rect2(144, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_743a2"]
-atlas = ExtResource("9_nhi4k")
-region = Rect2(160, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kdxq7"]
-atlas = ExtResource("9_nhi4k")
-region = Rect2(176, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_i7qob"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_phdi3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_erxjo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oyokj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqdde")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oowid")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_scuf4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ty4uf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_isgxt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x6eys")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1pemj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_743a2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kdxq7")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
 [sub_resource type="Animation" id="Animation_ifthc"]
 length = 0.001
 tracks/0/type = "value"
@@ -753,15 +661,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("4_ifthc")
 theme_override_font_sizes/font_size = 33
-text = "Collect all the coins of each level to advance to the next..."
+text = "Collect all the books of each level to advance to the next..."
 horizontal_alignment = 1
 
-[node name="Coin" type="AnimatedSprite2D" parent="Scene 3" unique_id=1805359598]
-position = Vector2(1033, 544)
-scale = Vector2(5.250006, 5.250006)
-sprite_frames = SubResource("SpriteFrames_i7qob")
-autoplay = "default"
-frame_progress = 0.4998211
+[node name="coin" parent="Scene 3" unique_id=1875311853 instance=ExtResource("9_nhi4k")]
+position = Vector2(1064, 575)
+scale = Vector2(2.6888509, 2.6888509)
 
 [node name="Press Enter" type="Label" parent="." unique_id=1419530736]
 offset_left = 24.0

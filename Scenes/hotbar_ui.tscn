@@ -9,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://c1vmu8i7lq0uk" path="res://Assets/Compass/compass/1.svg" id="7_suigy"]
 [ext_resource type="Texture2D" uid="uid://yklnmuxrurrp" path="res://Assets/Compass/compass/3.svg" id="8_5vurm"]
 [ext_resource type="Texture2D" uid="uid://dqec5wepclbv2" path="res://Assets/Compass/compass/2.svg" id="9_j4l73"]
+[ext_resource type="Script" uid="uid://baf2m20coty8" path="res://Scripts/cooldown_manager.gd" id="10_j4l73"]
+[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="11_kpmmu"]
+[ext_resource type="FontFile" uid="uid://yc4yq3ha3mvw" path="res://Assets/Fonts/minecraft-font/MinecraftRegular-Bmg3.otf" id="12_kpmmu"]
+[ext_resource type="Script" uid="uid://ndcktfqmfyyp" path="res://Scripts/coinscore1.gd" id="13_sqsv3"]
+[ext_resource type="FontFile" uid="uid://b7byj2n5235jx" path="res://Assets/Fonts/minecraft-font/MinecraftBold-nMK1.otf" id="14_gmv3m"]
+[ext_resource type="Script" uid="uid://c6ososgbmombj" path="res://Scenes/Main menue/level.gd" id="15_0sm4m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6xqg"]
 bg_color = Color(0.21568628, 0.101960786, 0.08235294, 0.39215687)
@@ -30,6 +36,48 @@ bg_color = Color(0.87601763, 0.27127624, 0.21065876, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_suigy"]
 radius = 909.7751
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqsv3"]
+bg_color = Color(0.24609375, 0.24609375, 0.24609375, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krndi"]
+
+[sub_resource type="Animation" id="Animation_sqsv3"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_krndi"]
+resource_name = "fade"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Level:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gmv3m"]
+_data = {
+&"RESET": SubResource("Animation_sqsv3"),
+&"fade": SubResource("Animation_krndi")
+}
 
 [node name="HotbarUI" type="CanvasLayer" unique_id=2133312155]
 script = ExtResource("1_tbcuq")
@@ -82,10 +130,48 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Slots" type="HBoxContainer" parent="." unique_id=1515953808]
-offset_left = 444.0
-offset_top = 583.0
-offset_right = 712.0
-offset_bottom = 647.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.5
+offset_top = -64.0
+offset_right = 184.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Shield" type="Panel" parent="Slots" unique_id=1076093387]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Slots/Shield" unique_id=721256661]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="item_health" type="ProgressBar" parent="Slots/Shield" unique_id=846323883]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 54.0
+offset_right = 55.0
+offset_bottom = 60.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tbcuq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u8qfg")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Seperator" type="Control" parent="Slots" unique_id=1437811336]
+custom_minimum_size = Vector2(29.175, 0)
+layout_mode = 2
 
 [node name="Slot1" type="Panel" parent="Slots" unique_id=1036406436]
 custom_minimum_size = Vector2(64, 64)
@@ -191,6 +277,19 @@ step = 1.0
 value = 50.0
 show_percentage = false
 
+[node name="coinsNeeded" type="Label" parent="." unique_id=1493155880]
+modulate = Color(4.415934, 4.415934, 4.415934, 1)
+z_index = 2
+texture_filter = 2
+offset_left = 19.0
+offset_top = 22.0
+offset_right = 247.0
+offset_bottom = 61.395832
+theme_override_fonts/font = ExtResource("12_kpmmu")
+theme_override_font_sizes/font_size = 32
+text = "Books needed:"
+script = ExtResource("13_sqsv3")
+
 [node name="compass" type="Node2D" parent="." unique_id=1788862092]
 modulate = Color(0.67058825, 0.6509804, 0.4745098, 0.72156864)
 position = Vector2(1072, 577)
@@ -219,6 +318,77 @@ texture = ExtResource("9_j4l73")
 position = Vector2(-0.00018882751, 0)
 shape = SubResource("CircleShape2D_suigy")
 debug_color = Color(2.9841065e-06, 0.65492725, 0.7636424, 0.41960785)
+
+[node name="attack_cooldown" type="Node2D" parent="." unique_id=2009219494]
+script = ExtResource("10_j4l73")
+
+[node name="Attack Cooldown" type="ProgressBar" parent="attack_cooldown" unique_id=1131332133]
+offset_left = 24.0
+offset_top = 619.0
+offset_right = 153.0
+offset_bottom = 636.0
+theme_override_styles/background = SubResource("StyleBoxFlat_sqsv3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_krndi")
+max_value = 60.0
+step = 1.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="attack_cooldown" unique_id=166508847]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="dialogue" type="Label" parent="attack_cooldown" unique_id=1525708394]
+modulate = Color(4.415934, 4.415934, 4.415934, 1)
+z_index = 8
+z_as_relative = false
+offset_left = 24.0
+offset_top = 596.0
+offset_right = 138.0
+offset_bottom = 612.5208
+theme_override_fonts/font = ExtResource("11_kpmmu")
+theme_override_font_sizes/font_size = 13
+text = "Attack cooldown"
+
+[node name="shield_help" type="Label" parent="." unique_id=1121416635]
+visible = false
+texture_filter = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -102.0
+offset_right = 126.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("12_kpmmu")
+text = "Hold [Right Click] to use shield..."
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="shield_help" unique_id=1030972919]
+libraries/ = SubResource("AnimationLibrary_gmv3m")
+autoplay = &"fade"
+
+[node name="Level" type="Label" parent="." unique_id=1972924795]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.0
+offset_top = 23.0
+offset_right = 226.0
+offset_bottom = 56.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("14_gmv3m")
+theme_override_font_sizes/font_size = 32
+text = "The Necromancer's Lair"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("15_0sm4m")
 
 [connection signal="pressed" from="HBoxContainer/Restart" to="Buttons manager" method="_on_restart_pressed"]
 [connection signal="pressed" from="HBoxContainer/Settings" to="Buttons manager" method="_on_settings_pressed"]

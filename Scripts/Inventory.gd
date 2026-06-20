@@ -1,12 +1,18 @@
 extends Node2D
 
-var levelDefs = [["sword"], ["sword"], ["sword", "spear"], ["sword", "spear", "shield"], ["sword", "spear", "shield"]]
+var levelDefs = [["sword", {"shield": false}], # l1
+				["sword", {"shield": false}], # l2
+				["sword", "spear", {"shield": false}], #l3 
+				["sword", "spear", {"shield": true}],  #l4
+				["sword", "spear", {"shield": true}]] #lair
 
 var inventory = [{"name": "sword", "health": 5},
 	null,
 	null,
 	null
 ]
+
+var shield = null
 
 var items = {"spear": preload("res://Scenes/spear.tscn"), "shield": preload("res://Scenes/shield.tscn") ,"key": preload("res://Scenes/key.tscn")}
 
@@ -19,9 +25,14 @@ var item_info = [{"name": "shield","health": 5},
 var selected_slot = 0
 
 func add_item(item_data):
-	for i in range(inventory.size()):
-		if inventory[i] == null:
-			inventory[i] = item_data.duplicate()
+	if item_data["name"] != "shield":
+		for i in range(inventory.size()):
+			if inventory[i] == null:
+				inventory[i] = item_data.duplicate()
+				return true
+	else:
+		if shield == null:
+			shield = item_data["health"]
 			return true
 	return false
 
@@ -29,7 +40,13 @@ func clear():
 	for i in range(inventory.size()):
 			inventory[i] = null
 	for item in levelDefs[GameManager.curr_level - 1]:
-		add_item(item_info[item_map[item]])
+		if item is Dictionary:
+			if item["shield"]:
+				shield = 5
+			else:
+				shield = null
+		else:
+			add_item(item_info[item_map[item]])
 	
 func drop_item(slot_num):
 	if slot_num != 0 and inventory[slot_num] != null:

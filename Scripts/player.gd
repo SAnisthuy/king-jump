@@ -3,9 +3,15 @@ var SPEED = 100
 var JUMP_VELOCITY = -250
 var attacking = false
 var dying = false
+var knockback_timer = 0.0
+var knockback_velocity = 0
 
 var can_jump = true
 var in_air = false
+
+var mult = 60
+var attack_cooldown = 0.0
+
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $"player hitbox"
@@ -29,23 +35,35 @@ func _physics_process(delta: float) -> void:
 		damage_sfx.play()
 		return
 	GameManager.player_pos = global_position
+	GameManager.player_attack_cooldown = attack_cooldown * mult
 	SPEED = 100
 	var direction = 1
 	if can_jump == false and is_on_floor():
 		can_jump = true
-	
+		
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		in_air = true
 	
 	if holding_shield():
 		JUMP_VELOCITY = -100
+		
 	if !holding_shield():
 		JUMP_VELOCITY = -250
 	if dying:
 		return
 	if attacking:
 		velocity.x = 0 
+		move_and_slide()
+		return
+		
+		
+	if knockback_timer > 0:
+		knockback_timer -= delta
+
+		velocity.x = knockback_velocity
+		knockback_velocity = move_toward(knockback_velocity, 0, 1000 * delta)
+
 		move_and_slide()
 		return
 	
@@ -76,11 +94,10 @@ func _physics_process(delta: float) -> void:
 		else: pass
 		
 	elif Input.is_action_pressed("forward"):
-		
 		if Input.is_action_pressed("sprint"):
 			if holding_shield():
-				pass
-			else: 
+				animated_sprite_2d.play("s_walk")
+			else:
 				animated_sprite_2d.play("sprint")
 				SPEED = 150
 		else:
@@ -95,8 +112,8 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("backward"):
 		if Input.is_action_pressed("sprint"):
 			if holding_shield():
-				pass
-			else: 
+				animated_sprite_2d.play("s_walk")
+			else:
 				animated_sprite_2d.play("sprint")
 				SPEED = 150
 		else:
@@ -112,8 +129,6 @@ func _physics_process(delta: float) -> void:
 		if holding_shield():	
 			animated_sprite_2d.play("s_idle")
 		else: animated_sprite_2d.play("idle")
-		
-		
 	move_and_slide()
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
@@ -151,6 +166,7 @@ func jump():
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite_2d.animation.begins_with("attack"):
+		attack_cooldown -= 0.1
 		if animated_sprite_2d.frame == 2:
 			damage_enemy()
 	
@@ -161,13 +177,11 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		if animated_sprite_2d.frame == 2 or animated_sprite_2d.frame == 5:
 			walk_sfx.play()
 
-func take_damage(amount:int):
-	
+func take_damage(amount:int, pos):
 	if holding_shield():
-		var item = Inventory.inventory[Inventory.selected_slot]
-		item["health"] -= 1
-		if item["health"] <= 0:
-			Inventory.inventory[Inventory.selected_slot] = null
+		Inventory.shield -= 1
+		if Inventory.shield <= 0:
+			Inventory.shield = null
 			break_sfx.play()
 		else:
 			block_sfx.play()
@@ -178,12 +192,11 @@ func take_damage(amount:int):
 		animated_sprite_2d.modulate = Color(18.892, 18.892, 18.892, 1.0)
 		damage_cooldown.start()
 		damage_sfx.play()
+		knockback(pos)
 		
 func holding_shield():
 
-	var item = Inventory.inventory[Inventory.selected_slot]
-
-	return item != null and item["name"] == "shield"
+	return Inventory.shield != null and Input.is_action_pressed("block")
 
 func holding_spear():
 	var item = Inventory.inventory[Inventory.selected_slot]
@@ -199,3 +212,18 @@ func _on_damage_cooldown_timeout() -> void:
 
 func _on_coyote_time_timeout() -> void:
 	can_jump = false
+
+func _on_animated_sprite_2d_animation_changed() -> void:
+	if animated_sprite_2d == null: return
+	if animated_sprite_2d.animation == "attack1":
+		attack_cooldown = 1.1
+		mult = 60
+	elif animated_sprite_2d.animation == "attack2":
+		attack_cooldown = 0.7
+		mult = 94.2857142857
+
+func knockback(pos):
+	var dir = sign(global_position.x - pos.x)
+
+	knockback_velocity = dir * 100
+	knockback_timer = 0.2

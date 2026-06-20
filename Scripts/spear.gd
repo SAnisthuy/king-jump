@@ -7,6 +7,8 @@ var spear_path = preload("res://Scenes/throwable.tscn")
 var cooldown = false
 
 func _process(_delta):
+	if !timer.is_stopped():
+		GameManager.player_attack_cooldown = timer.time_left * 66
 	visible = holding_spear()
 	look_at(get_global_mouse_position())
 	

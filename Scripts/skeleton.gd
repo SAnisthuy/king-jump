@@ -128,7 +128,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		if skeley.frame == 6:
 			attackSFX.play()
 		if skeley.frame == 7 and target:
-			target.take_damage(10)
+			target.take_damage(10, global_position)
 
 	# handling audio
 	if skeley.animation == "idle" and skeley.frame == 5:

@@ -15,9 +15,7 @@ var opening = false
 
 func _ready() -> void:
 	dialogue.visible = false
-	coins = Collectables.required[GameManager.curr_level]["coins"]
-	skulls = Collectables.required[GameManager.curr_level]["skulls"]
-
+	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interact") and player_in:
 		if available():
@@ -33,8 +31,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player_in = true
 
 func available():
+	coins = Collectables.required[GameManager.curr_level]["coins"]
+	skulls = Collectables.required[GameManager.curr_level]["skulls"]
+
 	if coins - Collectables.coins == coins:
-		if skulls != null: 
+		if Collectables.skulls != null: 
 			return skulls - Collectables.skulls == skulls
 		return true
 	return false
@@ -62,4 +63,5 @@ func _on_doorguy_frame_changed() -> void:
 	if doorguy == null:
 		return
 	if doorguy.animation == "open" and doorguy.frame == 6:
+		GlobalAudios.door_sfx.play()
 		door.play("Open")

@@ -8,9 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://b15y5qw6rsntk" path="res://Assets/Knight Hero Platfomer/Sword Channel.png" id="3_1ts7t"]
 [ext_resource type="Texture2D" uid="uid://uscojrxquhxq" path="res://Assets/maintileset/objects_/staticObjects_.png" id="3_psiuk"]
 [ext_resource type="Texture2D" uid="uid://dxrigu8ta6qy4" path="res://Assets/Sprites [Enemies]/Necromancer/Idle/spr_NecromancerIdle_strip50.png" id="4_1cs0q"]
-[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="4_ayxne"]
 [ext_resource type="PackedScene" uid="uid://dttrhqrns5k2w" path="res://Scenes/torches.tscn" id="4_bmxip"]
+[ext_resource type="FontFile" uid="uid://bulb86n7s3n4" path="res://Assets/Fonts/minecraft-ten-font/MinecraftTen-VGORe.ttf" id="10_252l6"]
 [ext_resource type="AudioStream" uid="uid://qfo3tf14fnoh" path="res://Audio/SFX/UI/button-click.mp3" id="11_1cs0q"]
+[ext_resource type="FontFile" uid="uid://yc4yq3ha3mvw" path="res://Assets/Fonts/minecraft-font/MinecraftRegular-Bmg3.otf" id="11_nj802"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_252l6"]
 atlas = ExtResource("2_5ikna")
@@ -979,13 +980,14 @@ layout_mode = 2
 theme_override_constants/separation = 60
 
 [node name="seperator" type="Control" parent="MarginContainer/VBoxContainer" unique_id=182512174]
+custom_minimum_size = Vector2(0, 31.56)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=810533196]
 texture_filter = 2
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_ayxne")
-theme_override_font_sizes/font_size = 103
+theme_override_fonts/font = ExtResource("10_252l6")
+theme_override_font_sizes/font_size = 137
 text = "King Jump"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1007,14 +1009,14 @@ layout_mode = 2
 texture_filter = 2
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_ayxne")
+theme_override_fonts/font = ExtResource("11_nj802")
 theme_override_font_sizes/font_size = 44
 text = "Play"
 
 [node name="Button2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=209833230]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_ayxne")
+theme_override_fonts/font = ExtResource("11_nj802")
 theme_override_font_sizes/font_size = 44
 text = "Quit"
 

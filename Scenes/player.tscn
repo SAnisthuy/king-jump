@@ -3,9 +3,7 @@
 [ext_resource type="Script" uid="uid://cdf1qwioyokm5" path="res://Scripts/player.gd" id="1_vgqql"]
 [ext_resource type="Texture2D" uid="uid://8jm2ypfimd3w" path="res://Assets/Knight Hero Platfomer/Attack 2.png" id="2_3smsa"]
 [ext_resource type="Texture2D" uid="uid://did1i44wv4iyc" path="res://Assets/Knight Hero Platfomer/Combat Ready Idle.png" id="2_fkybt"]
-[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="2_ukyrk"]
 [ext_resource type="Texture2D" uid="uid://cfb13hhjkgyp3" path="res://Assets/Knight Hero Platfomer/Roll.png" id="2_x3wgy"]
-[ext_resource type="Script" uid="uid://ndcktfqmfyyp" path="res://Scripts/coinscore1.gd" id="3_7dp3o"]
 [ext_resource type="Texture2D" uid="uid://d046hceafs7wl" path="res://Assets/Knight Hero Platfomer/Attack 3.png" id="3_f1ek2"]
 [ext_resource type="Texture2D" uid="uid://dre8d8wqa444f" path="res://Assets/Knight Hero Platfomer/Run.png" id="3_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://prw7xe7vf7fe" path="res://Assets/Knight Hero Platfomer/Walk.png" id="4_3smsa"]
@@ -479,23 +477,9 @@ collision_layer = 3
 collision_mask = 7
 script = ExtResource("1_vgqql")
 
-[node name="coinsNeeded" type="Label" parent="." unique_id=1488474412]
-modulate = Color(4.415934, 4.415934, 4.415934, 1)
-z_index = 2
-texture_filter = 2
-offset_left = -136.0
-offset_top = -72.0
-offset_right = -79.0
-offset_bottom = -49.0
-theme_override_fonts/font = ExtResource("2_ukyrk")
-theme_override_font_sizes/font_size = 8
-text = "Coins needed:"
-script = ExtResource("3_7dp3o")
-metadata/_edit_use_anchors_ = true
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=73788332]
 sprite_frames = SubResource("SpriteFrames_p1odr")
-animation = &"s_idle"
+animation = &"attack2"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1521626952]
@@ -589,6 +573,10 @@ bus = &"SFX"
 [node name="breakSFX" type="AudioStreamPlayer" parent="." unique_id=154968778]
 stream = ExtResource("26_0gysh")
 
+[node name="Listener" type="AudioListener2D" parent="." unique_id=128528086]
+current = true
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="player hitbox" to="." method="_on_player_hitbox_body_entered"]

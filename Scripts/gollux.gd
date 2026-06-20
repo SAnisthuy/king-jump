@@ -142,7 +142,7 @@ func _on_golly_frame_changed() -> void:
 		if golly.frame == 6:
 			attack_sfx.play()
 			if target != null and attack:
-				target.take_damage(damage)
+				target.take_damage(damage, global_position)
 	elif golly.animation == "chase" or golly.animation == "move":
 		if golly.frame == 6:
 			walk_sfx.play()

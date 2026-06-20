@@ -1,9 +1,11 @@
 extends Node2D
-@onready var answer_1: Button = $CanvasLayer/GridContainer/Answer1
-@onready var answer_2: Button = $CanvasLayer/GridContainer/Answer2
-@onready var answer_3: Button = $CanvasLayer/GridContainer/Answer3
-@onready var answer_4: Button = $CanvasLayer/GridContainer/Answer4
-@onready var question: Label = $CanvasLayer/Question
+@onready var answer_1: Button = $CanvasLayer/TextureRect/VBoxContainer/Answer1
+@onready var answer_2: Button = $CanvasLayer/TextureRect/VBoxContainer/Answer2
+@onready var answer_3: Button = $CanvasLayer/TextureRect/VBoxContainer/Answer3
+@onready var answer_4: Button = $CanvasLayer/TextureRect/VBoxContainer/Answer4
+
+@onready var question: Label = $CanvasLayer/TextureRect/CenterContainer/Question
+
 @onready var collection_sfx: AudioStreamPlayer = $collectionSFX
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var damage_sfx: AudioStreamPlayer = $damageSFX

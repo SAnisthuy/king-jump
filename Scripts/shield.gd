@@ -11,8 +11,7 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player") and pickup_available and Inventory.add_item({"name": "shield", "health": health}):
-		equip_sfx.play()
-		await equip_sfx.finished
+		GlobalAudios.equip_play()
 		queue_free()
 	pass
 

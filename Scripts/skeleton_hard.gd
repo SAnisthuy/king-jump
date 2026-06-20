@@ -146,7 +146,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		if skeley.frame == 4:
 			attackSFX.play()
 		if skeley.frame == 5 and player_in_range and target != null:
-			target.take_damage(25)
+			target.take_damage(25, global_position)
 	if skeley.animation == "chase" or skeley.animation == "walk":
 
 		if skeley.frame in [1, 5]:

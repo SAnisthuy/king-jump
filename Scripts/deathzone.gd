@@ -9,4 +9,4 @@ func _on_body_entered(body: Node2D) -> void:
 	if triggered:
 		return
 	triggered = true
-	body.take_damage(1000)
+	body.take_damage(1000, Vector2(0, 0))

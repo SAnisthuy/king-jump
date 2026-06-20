@@ -126,6 +126,7 @@ func enter_phase_two():
 
 func death():
 	dying = true
+	if dying: return
 	sprite.play("death")
 	deathSFX.play()
 
@@ -179,7 +180,7 @@ func _on_sprite_frame_changed() -> void:
 		return
 	if sprite.animation == "attack" and sprite.frame == 6:
 		if in_range_attack:
-			player.take_damage(20)
+			player.take_damage(20, global_position)
 		attack_1.play()
 	if sprite.animation == "walk" and sprite.frame in [0, 5]:
 		walkSFX.play()

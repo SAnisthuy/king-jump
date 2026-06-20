@@ -4,16 +4,29 @@
 [ext_resource type="AudioStream" uid="uid://qfo3tf14fnoh" path="res://Audio/SFX/UI/button-click.mp3" id="2_bbb0c"]
 [ext_resource type="AudioStream" uid="uid://5ydn1hfn6pgt" path="res://Audio/SFX/liecio-collect-points-190037.mp3" id="3_bbb0c"]
 [ext_resource type="AudioStream" uid="uid://ca0na1lb2d5cf" path="res://Audio/SFX/Items/collect_key.mp3" id="4_5rrka"]
+[ext_resource type="AudioStream" uid="uid://bwjxqqjdvc22l" path="res://Audio/SFX/Items/item_equip.mp3" id="5_6vjre"]
+[ext_resource type="AudioStream" uid="uid://02rd3qstihno" path="res://Audio/SFX/Items/door_unlock.mp3" id="6_fqob2"]
 
 [node name="Global Audios" type="Node" unique_id=1221035648]
 script = ExtResource("1_870vq")
 
 [node name="button_click" type="AudioStreamPlayer" parent="." unique_id=380578763]
 stream = ExtResource("2_bbb0c")
+bus = &"SFX"
 
 [node name="collectSFX" type="AudioStreamPlayer" parent="." unique_id=1850161630]
 stream = ExtResource("3_bbb0c")
+bus = &"SFX"
 
 [node name="keySFX" type="AudioStreamPlayer" parent="." unique_id=614798889]
 stream = ExtResource("4_5rrka")
 volume_db = -10.0
+bus = &"SFX"
+
+[node name="equipSFX" type="AudioStreamPlayer" parent="." unique_id=1375358967]
+stream = ExtResource("5_6vjre")
+bus = &"SFX"
+
+[node name="doorSFX" type="AudioStreamPlayer" parent="." unique_id=581213868]
+stream = ExtResource("6_fqob2")
+bus = &"SFX"
