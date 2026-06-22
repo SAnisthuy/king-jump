@@ -125,8 +125,8 @@ func enter_phase_two():
 	melee = false
 
 func death():
-	dying = true
 	if dying: return
+	dying = true
 	sprite.play("death")
 	deathSFX.play()
 
@@ -190,7 +190,6 @@ func _on_damage_timeout() -> void:
 
 func _on_range_atack_timeout() -> void:
 	attack_available_r = true
-
 
 func _on_ambiance_time_timeout() -> void:
 	ambiance.play()

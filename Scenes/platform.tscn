@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bbp0plbv7agbs"]
 
-[ext_resource type="Texture2D" uid="uid://cpklwvhhar0i2" path="res://Assets/maintileset/midground_/dungeon_.png" id="1_1rc8e"]
 [ext_resource type="AudioStream" uid="uid://yshcp8510vhs" path="res://Audio/SFX/Items/platform.mp3" id="2_n5262"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1rc8e"]
+load_path = "res://.godot/imported/dungeon_.png-abdeaed27c1dbc97bbafe93d6b4586f3.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5262"]
 size = Vector2(347, 65)
@@ -11,7 +13,7 @@ size = Vector2(347, 65)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1960454740]
 position = Vector2(630.3333, 293.5)
 scale = Vector2(10.833333, 10.833333)
-texture = ExtResource("1_1rc8e")
+texture = SubResource("CompressedTexture2D_1rc8e")
 region_enabled = true
 region_rect = Rect2(111.99695, 47.889393, 32.075302, 6.084877)
 

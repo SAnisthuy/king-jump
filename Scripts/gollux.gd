@@ -108,7 +108,7 @@ func take_damage(_amount):
 		if GameManager.curr_level != 5:
 			var key = key_scene.instantiate()
 			get_parent().add_child(key)
-			key.global_position = Vector2(global_position.x, global_position.y+20)
+			key.global_position = Vector2(global_position.x, global_position.y)
 		queue_free()
 	
 	golly.modulate = Color(18.892, 18.892, 18.892, 1.0)

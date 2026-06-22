@@ -15,6 +15,7 @@ func _process(_delta):
 
 func fire():
 	if !cooldown:
+		spear_sfx.play()
 		var spear = spear_path.instantiate()
 
 		spear.global_position = $Node2D.global_position
@@ -22,7 +23,6 @@ func fire():
 		spear.rotation = global_rotation
 	
 		get_tree().current_scene.add_child(spear)
-		spear_sfx.play()
 		cooldown = true
 		#take health off the spear
 		var item = Inventory.inventory[Inventory.selected_slot]
@@ -31,6 +31,7 @@ func fire():
 			Inventory.inventory[Inventory.selected_slot] = null
 		
 		timer.start()
+		
 		
 	
 	

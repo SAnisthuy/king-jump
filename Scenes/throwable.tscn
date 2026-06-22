@@ -2,9 +2,20 @@
 
 [ext_resource type="Script" uid="uid://ctihhp2e6kgdb" path="res://Scripts/throwable.gd" id="1_80pas"]
 [ext_resource type="Texture2D" uid="uid://b1ox2m3bof4b0" path="res://Assets/Inventory/spear.png" id="1_cbmkd"]
+[ext_resource type="AudioStream" uid="uid://cipmojta0sj0k" path="res://Audio/SFX/Items/spear/Arrow_hit1.ogg" id="3_xukva"]
+[ext_resource type="AudioStream" uid="uid://dt8xppq1cqymj" path="res://Audio/SFX/Items/spear/Arrow_hit2.ogg" id="4_tuesf"]
+[ext_resource type="AudioStream" uid="uid://emgbvivwrtat" path="res://Audio/SFX/Items/spear/Arrow_hit3.ogg" id="5_58pxu"]
+[ext_resource type="AudioStream" uid="uid://dsc1fkk2g0ak0" path="res://Audio/SFX/Items/spear/Arrow_hit4.ogg" id="6_m16ic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbmkd"]
 size = Vector2(19, 2)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2wggm"]
+streams_count = 4
+stream_0/stream = ExtResource("3_xukva")
+stream_1/stream = ExtResource("4_tuesf")
+stream_2/stream = ExtResource("5_58pxu")
+stream_3/stream = ExtResource("6_m16ic")
 
 [node name="CharacterBody2D" type="Area2D" unique_id=1631236154]
 collision_mask = 7
@@ -20,4 +31,14 @@ texture = ExtResource("1_cbmkd")
 position = Vector2(0.5, -9)
 shape = SubResource("RectangleShape2D_cbmkd")
 
+[node name="despawn" type="Timer" parent="." unique_id=1825357073]
+wait_time = 60.0
+one_shot = true
+
+[node name="contactSFX" type="AudioStreamPlayer2D" parent="." unique_id=2061830660]
+stream = SubResource("AudioStreamRandomizer_2wggm")
+max_distance = 500.0
+bus = &"SFX"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="despawn" to="." method="_on_despawn_timeout"]

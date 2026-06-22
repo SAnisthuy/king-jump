@@ -675,14 +675,17 @@ collision_mask = 3
 script = ExtResource("1_cjcee")
 
 [node name="golly" type="AnimatedSprite2D" parent="." unique_id=583308945]
+position = Vector2(-1.333347, 2.9844398)
 sprite_frames = SubResource("SpriteFrames_27k3o")
 animation = &"chase"
+offset = Vector2(0, -34.54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1802252757]
-position = Vector2(1.1111089, 33.611115)
+position = Vector2(-0.22223806, 1.0399971)
 shape = SubResource("RectangleShape2D_hhkp4")
 
 [node name="detection" type="Area2D" parent="." unique_id=595098330]
+position = Vector2(-1.333347, -32.571117)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection" unique_id=26185019]
@@ -690,6 +693,7 @@ position = Vector2(2.2222223, 32.222225)
 shape = SubResource("RectangleShape2D_i7dsh")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=871502327]
+position = Vector2(-1.333347, -32.571117)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1101066492]
@@ -697,6 +701,7 @@ position = Vector2(0, 35.555557)
 shape = SubResource("CircleShape2D_0hnvp")
 
 [node name="raycasts" type="Node2D" parent="." unique_id=697638962]
+position = Vector2(-1.333347, -32.571117)
 
 [node name="wallcheck" type="RayCast2D" parent="raycasts" unique_id=1742249447]
 position = Vector2(1, 34)
@@ -710,9 +715,10 @@ target_position = Vector2(43, 33)
 wait_time = 2.0
 
 [node name="health" type="ProgressBar" parent="." unique_id=60583625]
-offset_left = -20.0
-offset_top = -6.666667
-offset_right = 17.777779
+offset_left = -21.333347
+offset_top = -39.237785
+offset_right = 16.444431
+offset_bottom = -32.571117
 theme_override_styles/background = SubResource("StyleBoxFlat_uc2pa")
 theme_override_styles/fill = SubResource("StyleBoxFlat_iuma4")
 step = 1.0
@@ -721,7 +727,7 @@ show_percentage = false
 script = ExtResource("8_hhkp4")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1634237388]
-position = Vector2(0, 35.555557)
+position = Vector2(-1.333347, 2.9844398)
 scale = Vector2(0.61, 0.61)
 color = Color(0.93103015, 0, 0.24690253, 1)
 texture = ExtResource("9_uc2pa")
@@ -736,6 +742,7 @@ volume_db = -5.0
 bus = &"SFX"
 
 [node name="walkSFX" type="AudioStreamPlayer2D" parent="." unique_id=1280911902]
+position = Vector2(-1.333347, -32.571117)
 stream = ExtResource("11_cusjs")
 volume_db = 20.0
 max_distance = 250.0

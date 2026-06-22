@@ -8,6 +8,7 @@ var knockback_velocity = 0
 
 var can_jump = true
 var in_air = false
+var can_use_shield = true
 
 var mult = 60
 var attack_cooldown = 0.0
@@ -166,6 +167,10 @@ func jump():
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite_2d.animation.begins_with("attack"):
+		if animated_sprite_2d.frame < 6:
+			can_use_shield = false
+		else:
+			can_use_shield = true
 		attack_cooldown -= 0.1
 		if animated_sprite_2d.frame == 2:
 			damage_enemy()
@@ -196,7 +201,7 @@ func take_damage(amount:int, pos):
 		
 func holding_shield():
 
-	return Inventory.shield != null and Input.is_action_pressed("block")
+	return Inventory.shield != null and Input.is_action_pressed("block") and can_use_shield
 
 func holding_spear():
 	var item = Inventory.inventory[Inventory.selected_slot]
