@@ -1351,12 +1351,11 @@ corner_detail = 20
 script = ExtResource("1_3v663")
 
 [node name="Player" parent="." unique_id=1732569539 instance=ExtResource("2_5eaas")]
-position = Vector2(188, -77)
+position = Vector2(-597, -449)
 
 [node name="mapping" type="Node" parent="." unique_id=256189909]
 
 [node name="Main" type="TileMap" parent="mapping" unique_id=2057767885]
-visible = false
 tile_set = SubResource("TileSet_j11ov")
 format = 2
 layer_0/name = "Midground"
