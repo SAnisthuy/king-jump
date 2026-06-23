@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://da0n2ttovhlmc" path="res://Scripts/necromancers_lair.gd" id="1_gfctg"]
 [ext_resource type="PackedScene" uid="uid://c6jcqf2bc6x3k" path="res://Scenes/player.tscn" id="1_medsk"]
 [ext_resource type="Texture2D" uid="uid://cpklwvhhar0i2" path="res://Assets/maintileset/midground_/dungeon_.png" id="2_wnqql"]
-[ext_resource type="PackedScene" uid="uid://bbnx47h6fr5qc" path="res://Scenes/hotbar_ui.tscn" id="2_x75bj"]
 [ext_resource type="Texture2D" uid="uid://ir1onf1h2012" path="res://Assets/maintileset/background_/desertDungeon_.png" id="3_x75bj"]
 [ext_resource type="Texture2D" uid="uid://uscojrxquhxq" path="res://Assets/maintileset/objects_/staticObjects_.png" id="4_l0ogt"]
 [ext_resource type="Texture2D" uid="uid://qhess0d4fiul" path="res://Assets/maintileset/background_/dungeon_.png" id="5_vou0f"]
@@ -1390,13 +1389,8 @@ sources/2 = SubResource("TileSetAtlasSource_rm6ic")
 [node name="Necromancers lair" type="Node2D" unique_id=257077601]
 script = ExtResource("1_gfctg")
 
-[node name="Player2" parent="." unique_id=1732569539 instance=ExtResource("1_medsk")]
+[node name="Player" parent="." unique_id=1732569539 instance=ExtResource("1_medsk")]
 position = Vector2(-508, -601)
-
-[node name="HotbarUI" parent="Player2" unique_id=2133312155 instance=ExtResource("2_x75bj")]
-
-[node name="Camera2D" type="Camera2D" parent="Player2" unique_id=907344656]
-zoom = Vector2(4, 4)
 
 [node name="Main" type="TileMap" parent="." unique_id=1244813005]
 tile_set = SubResource("TileSet_hlpij")
@@ -1455,7 +1449,8 @@ position = Vector2(-287, -613)
 position = Vector2(57, -597)
 
 [node name="necromancer" parent="Enemies" unique_id=916766111 instance=ExtResource("14_h1qw5")]
-position = Vector2(223, -364)
+position = Vector2(232, -336)
+motion_mode = 0
 
 [node name="Node2D" type="Node2D" parent="." unique_id=118652752]
 position = Vector2(224, -384)

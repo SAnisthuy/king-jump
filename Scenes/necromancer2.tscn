@@ -1469,7 +1469,7 @@ bg_color = Color(1, 0.47412336, 0.61326104, 1)
 bg_color = Color(0.8039216, 0, 0.4, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4tfpn"]
-size = Vector2(138, 112)
+size = Vector2(80, 112)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nnkr8"]
 streams_count = 4
@@ -1522,10 +1522,11 @@ wait_time = 1.5
 position = Vector2(11, -26)
 
 [node name="health" type="ProgressBar" parent="." unique_id=669771079]
-offset_left = -10.0
-offset_top = 21.0
-offset_right = 13.0
-offset_bottom = 25.0
+z_index = 2
+offset_left = -8.0
+offset_top = 24.0
+offset_right = 15.0
+offset_bottom = 28.0
 theme_override_styles/background = SubResource("StyleBoxFlat_wdw8x")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xwdgr")
 max_value = 800.0
@@ -1550,9 +1551,10 @@ target_position = Vector2(32, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack range" unique_id=103175493]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_4tfpn")
+debug_color = Color(0.99649113, 0, 0.194504, 0.41960785)
 
 [node name="range atack" type="Timer" parent="." unique_id=1024268486]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 
 [node name="audio" type="Node" parent="." unique_id=290499208]
