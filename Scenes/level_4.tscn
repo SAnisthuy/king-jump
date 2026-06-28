@@ -1502,8 +1502,8 @@ offset_top = -128.0
 offset_right = -373.0
 offset_bottom = -105.0
 scale = Vector2(0.375, 0.375)
-theme_override_fonts/font = ExtResource("17_mbnb1")
-text = "Oh look! Its a coin..."
+theme_override_fonts/font = ExtResource("24_nqprj")
+text = "Oh look! Its a book..."
 
 [node name="Wedges" type="Node" parent="Platforms" unique_id=44399950]
 
