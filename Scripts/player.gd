@@ -83,10 +83,10 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_pressed("attack"):
 		if holding_shield():
 			pass
-		if holding_spear():
+		elif holding_spear():
 			spear.fire()
-			
-		if holding_sword():
+
+		elif holding_sword():
 			attacking = true
 			var my_list = ["attack1", "attack2"]
 			var attack = my_list.pick_random()
@@ -210,7 +210,12 @@ func holding_spear():
 
 func holding_sword():
 	var item = Inventory.inventory[Inventory.selected_slot]
-	return item != null and item["name"] == "sword"
+	if item != null and item["name"] == "sword":
+		return true
+	elif item == null and GameManager.auto_switch_sword:
+		Inventory.selected_slot = 0
+		return true
+	return false
 
 func _on_damage_cooldown_timeout() -> void:
 	animated_sprite_2d.modulate = Color(1.0, 1.0, 1.0, 1.0)

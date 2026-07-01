@@ -1196,10 +1196,6 @@ occluder = SubResource("OccluderPolygon2D_i6dbo")
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="mapping/Lighting/occluders" unique_id=1683402124]
 occluder = SubResource("OccluderPolygon2D_e2piv")
 
-[node name="door_guard" parent="mapping/Lighting" unique_id=1484689802 instance=ExtResource("15_yvrk7")]
-position = Vector2(-83, 88)
-scale = Vector2(0.75561017, 0.75561017)
-
 [node name="Label" type="Label" parent="." unique_id=2107242255]
 texture_filter = 2
 offset_left = -590.0
@@ -1407,10 +1403,6 @@ occluder = SubResource("OccluderPolygon2D_i6dbo")
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="Minimap/PanelContainer/SubViewportContainer/SubViewport/Lighting/occluders" unique_id=184362814]
 occluder = SubResource("OccluderPolygon2D_e2piv")
 
-[node name="door_guard" parent="Minimap/PanelContainer/SubViewportContainer/SubViewport/Lighting" unique_id=2064290883 instance=ExtResource("15_yvrk7")]
-position = Vector2(-83, 88)
-scale = Vector2(0.75561017, 0.75561017)
-
 [node name="Camera2D" type="Camera2D" parent="Minimap/PanelContainer/SubViewportContainer/SubViewport" unique_id=1841933425]
 zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
@@ -1430,6 +1422,9 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("22_c5xoi")
 text = "Hide"
 expand_icon = true
+
+[node name="door_guard" parent="." unique_id=1484689802 instance=ExtResource("15_yvrk7")]
+position = Vector2(-72, 80)
 
 [connection signal="body_entered" from="Info box/enemy" to="Info box/enemy" method="_on_body_entered"]
 [connection signal="pressed" from="Minimap/hide" to="Minimap" method="_on_hide_pressed"]

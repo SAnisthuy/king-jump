@@ -2,7 +2,7 @@ extends CanvasLayer
 
 var inventory = Inventory.inventory
 var shield_help_needed = true
-var selected_slot = 0
+var selected_slot = Inventory.selected_slot
 @onready var shield_help: Label = $shield_help
 
 @onready var slots = [
@@ -41,7 +41,7 @@ func _ready():
 	pass
 
 func _process(_delta: float):
-	
+	selected_slot = Inventory.selected_slot
 	if shield_help_needed and Inventory.shield:
 		shield_help.visible = true
 	update_hotbar()

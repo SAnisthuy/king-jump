@@ -19,6 +19,7 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_accept") and state == 2 and press_enter.visible:
 		get_tree().change_scene_to_packed(level)
+		GameManager.opening_tut = true
 	if Input.is_action_just_pressed("ui_accept") and press_enter.visible:
 		GlobalAudios.play_button_click()
 		press_enter.visible = false
@@ -32,7 +33,6 @@ func _input(_event: InputEvent) -> void:
 
 func _on_timer_timeout() -> void:
 	press_enter.visible = true
-
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Transition":

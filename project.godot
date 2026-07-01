@@ -13,7 +13,7 @@ config_version=5
 config/name="King Jump"
 run/main_scene="uid://6sywbrjkf4v"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dwghafjk48roc"
 
 [audio]
 

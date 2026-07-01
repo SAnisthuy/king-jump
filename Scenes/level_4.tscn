@@ -1351,7 +1351,7 @@ corner_detail = 20
 script = ExtResource("1_3v663")
 
 [node name="Player" parent="." unique_id=1732569539 instance=ExtResource("2_5eaas")]
-position = Vector2(-597, -449)
+position = Vector2(190, -58)
 
 [node name="mapping" type="Node" parent="." unique_id=256189909]
 
@@ -1391,6 +1391,7 @@ texture = ExtResource("4_b8ytw")
 script = ExtResource("12_6xecf")
 
 [node name="ColorRect" type="ColorRect" parent="mapping/LevelBlock" unique_id=272904064]
+visible = false
 modulate = Color(0, 0, 0, 0.6627451)
 offset_left = 160.0
 offset_top = -239.0

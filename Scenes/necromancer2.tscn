@@ -1496,7 +1496,6 @@ stream_2/stream = ExtResource("25_oquog")
 stream_3/stream = ExtResource("26_w2iyj")
 
 [node name="necromancer" type="CharacterBody2D" unique_id=916766111]
-collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_4tfpn")
 

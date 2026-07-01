@@ -1266,10 +1266,6 @@ script = ExtResource("18_nbwsh")
 position = Vector2(-400, -224)
 shape = SubResource("RectangleShape2D_s80er")
 
-[node name="door_guard" parent="." unique_id=1484689802 instance=ExtResource("18_s80er")]
-position = Vector2(860.99994, -200)
-scale = Vector2(0.75561017, 0.75561017)
-
 [node name="Golem" type="Node" parent="." unique_id=1770580555]
 
 [node name="Gollux" type="Node" parent="." unique_id=1413686963]
@@ -1385,6 +1381,9 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("22_hed5s")
 text = "Hide"
 expand_icon = true
+
+[node name="door_guard" parent="." unique_id=1484689802 instance=ExtResource("18_s80er")]
+position = Vector2(876, -207)
 
 [connection signal="body_entered" from="Lower death handling/Deathzone" to="Lower death handling/Deathzone" method="_on_body_entered"]
 [connection signal="body_entered" from="Info box/Skeley_warrior" to="Info box/Skeley_warrior" method="_on_body_entered"]

@@ -657,7 +657,7 @@ animations = [{
 size = Vector2(68.88889, 61.66667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7dsh"]
-size = Vector2(625, 117.77779)
+size = Vector2(625, 112.57112)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hnvp"]
 radius = 84.903145
@@ -689,7 +689,7 @@ position = Vector2(-1.333347, -32.571117)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection" unique_id=26185019]
-position = Vector2(2.2222223, 32.222225)
+position = Vector2(2.2222223, 29.618893)
 shape = SubResource("RectangleShape2D_i7dsh")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=871502327]
@@ -703,13 +703,13 @@ shape = SubResource("CircleShape2D_0hnvp")
 [node name="raycasts" type="Node2D" parent="." unique_id=697638962]
 position = Vector2(-1.333347, -32.571117)
 
-[node name="wallcheck" type="RayCast2D" parent="raycasts" unique_id=1742249447]
-position = Vector2(1, 34)
-target_position = Vector2(45, 0)
+[node name="wallcheck" type="RayCast2D" parent="raycasts" unique_id=1815064438]
+position = Vector2(-0.88887537, 45.90445)
+target_position = Vector2(37.77778, 1.9073486e-06)
 
-[node name="floorcheck" type="RayCast2D" parent="raycasts" unique_id=1032208377]
-position = Vector2(1, 34)
-target_position = Vector2(43, 33)
+[node name="floorcheck" type="RayCast2D" parent="raycasts" unique_id=628994697]
+position = Vector2(1.1111246, 30.348896)
+target_position = Vector2(35.77778, 35.555557)
 
 [node name="cooldown_timer" type="Timer" parent="." unique_id=1000858355]
 wait_time = 2.0
