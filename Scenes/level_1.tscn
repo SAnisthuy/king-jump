@@ -936,4 +936,4 @@ expand_icon = true
 [connection signal="body_entered" from="mapping/Deathzone" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="mapping/Deathzone" to="mapping/Deathzone" method="_on_body_entered"]
 [connection signal="timeout" from="mapping/Deathzone/Timer" to="mapping/Deathzone" method="_on_timer_timeout"]
-[connection signal="pressed" from="Minimap/hide" to="Minimap" method="_on_hide_pressed"]
+[connection signal="pressed" from="Minimap/hide" to="Minimap" method="_on_hide_button_pressed"]

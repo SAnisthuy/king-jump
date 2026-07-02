@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bft6np24gc0h3"
+path="res://.godot/imported/25_Wind_01.wav-e667dd3bd81438ef3cd074446029df9f.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/SFX pack/8_Atk_Magic_SFX/25_Wind_01.wav"
+dest_files=["res://.godot/imported/25_Wind_01.wav-e667dd3bd81438ef3cd074446029df9f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

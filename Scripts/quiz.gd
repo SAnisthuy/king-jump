@@ -31,15 +31,15 @@ func close():
 	closing = true
 	audio_stream_player.stop()
 	if player_correct:
-		collection_sfx.play()
-		GameManager.healing = true
-		await collection_sfx.finished
+		GlobalAudios.collect_sfx.play()
 	else:
-		damage_sfx.play()
-		await damage_sfx.finished
+		GlobalAudios.damage_sfx.play()
 	timer.start()
 	await timer.timeout
 	get_tree().paused = false
+	if player_correct:
+		if GameManager.player_health <= 90:
+			GameManager.player.heal(10)
 	queue_free()	
 
 func initialize():
@@ -56,6 +56,7 @@ func check_answer(choice: int):
 		Collectables.coins -= 1
 	if correct == choice:
 		player_correct = true
+
 	else:
 		player_correct = false
 		GameManager.player_health -= 20

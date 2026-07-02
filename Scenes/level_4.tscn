@@ -1653,4 +1653,4 @@ expand_icon = true
 [connection signal="body_entered" from="mapping/LevelBlock/Area2D" to="mapping/LevelBlock" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="mapping/LevelBlock/Area2D" to="mapping/LevelBlock" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="info box/Area2D" to="info box/Area2D" method="_on_body_entered"]
-[connection signal="pressed" from="Minimap/hide" to="Minimap" method="_on_hide_pressed"]
+[connection signal="pressed" from="Minimap/hide" to="Minimap" method="_on_hide_button_pressed"]

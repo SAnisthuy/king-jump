@@ -4,6 +4,8 @@ extends Node
 @onready var key_sfx: AudioStreamPlayer = $keySFX
 @onready var equip_sfx: AudioStreamPlayer = $equipSFX
 @onready var door_sfx: AudioStreamPlayer = $doorSFX
+@onready var heal_sfx: AudioStreamPlayer = $healSFX
+@onready var damage_sfx: AudioStreamPlayer = $damageSFX
 
 func play_button_click():
 	button_click.play()

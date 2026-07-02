@@ -3,9 +3,10 @@ extends Node2D
 @onready var timer: Timer = $Timer
 @onready var hitbox: Area2D = $Area2D
 
-
 var play_in_range = false
 var attacking  = false
+
+var potion_scene = preload("res://Scenes/healing_potion.tscn")
 
 func _ready() -> void:
 	sprite.play("idle")
@@ -40,7 +41,6 @@ func try_attack():
 	var attack = my_list.pick_random()
 	sprite.play(attack)
 
-
 func _on_timer_timeout() -> void:
 	if play_in_range:
 		try_attack()
@@ -51,8 +51,10 @@ func enemy():
 	pass
 
 func take_damage(_amount):
+	var potion = potion_scene.instantiate()
+	get_parent().add_child(potion)
+	potion.global_position = Vector2(global_position.x, global_position.y+10)
 	queue_free()
-
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if sprite.frame == 4 and sprite.animation.begins_with("attack"):

@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://ca0na1lb2d5cf" path="res://Audio/SFX/Items/collect_key.mp3" id="4_5rrka"]
 [ext_resource type="AudioStream" uid="uid://bwjxqqjdvc22l" path="res://Audio/SFX/Items/item_equip.mp3" id="5_6vjre"]
 [ext_resource type="AudioStream" uid="uid://02rd3qstihno" path="res://Audio/SFX/Items/door_unlock.mp3" id="6_fqob2"]
+[ext_resource type="AudioStream" uid="uid://dq0cfota263wq" path="res://Audio/SFX/SFX pack/8_Buffs_Heals_SFX/02_Heal_02.wav" id="7_hgghs"]
+[ext_resource type="AudioStream" uid="uid://cnp5rfqs26nvu" path="res://Audio/SFX/damage.mp3" id="8_3x8hk"]
 
 [node name="Global Audios" type="Node" unique_id=1221035648]
 script = ExtResource("1_870vq")
@@ -29,4 +31,12 @@ bus = &"SFX"
 
 [node name="doorSFX" type="AudioStreamPlayer" parent="." unique_id=581213868]
 stream = ExtResource("6_fqob2")
+bus = &"SFX"
+
+[node name="healSFX" type="AudioStreamPlayer" parent="." unique_id=1326579621]
+stream = ExtResource("7_hgghs")
+bus = &"SFX"
+
+[node name="damageSFX" type="AudioStreamPlayer" parent="." unique_id=709053981]
+stream = ExtResource("8_3x8hk")
 bus = &"SFX"

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ca50e0udajnep"
+path="res://.godot/imported/070_Equip_10.wav-31fcd7061cc94dd0917cb7f7c64bdc5a.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/SFX pack/10_UI_Menu_SFX/070_Equip_10.wav"
+dest_files=["res://.godot/imported/070_Equip_10.wav-31fcd7061cc94dd0917cb7f7c64bdc5a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1388,4 +1388,4 @@ position = Vector2(876, -207)
 [connection signal="body_entered" from="Lower death handling/Deathzone" to="Lower death handling/Deathzone" method="_on_body_entered"]
 [connection signal="body_entered" from="Info box/Skeley_warrior" to="Info box/Skeley_warrior" method="_on_body_entered"]
 [connection signal="body_entered" from="Info box/sksley_knight" to="Info box/sksley_knight" method="_on_body_entered"]
-[connection signal="pressed" from="Minimap/hide" to="Minimap" method="_on_hide_pressed"]
+[connection signal="pressed" from="Minimap/hide" to="Minimap" method="_on_hide_button_pressed"]

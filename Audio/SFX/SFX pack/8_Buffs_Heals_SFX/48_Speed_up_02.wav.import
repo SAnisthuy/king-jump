@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dms6atfiw6k8d"
+path="res://.godot/imported/48_Speed_up_02.wav-06bc3316f4b12dee808b4639e179d9bc.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/SFX pack/8_Buffs_Heals_SFX/48_Speed_up_02.wav"
+dest_files=["res://.godot/imported/48_Speed_up_02.wav-06bc3316f4b12dee808b4639e179d9bc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

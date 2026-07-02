@@ -290,9 +290,17 @@ theme_override_font_sizes/font_size = 32
 text = "Books needed:"
 script = ExtResource("13_sqsv3")
 
-[node name="compass" type="Node2D" parent="." unique_id=1788862092]
+[node name="compass" type="Control" parent="." unique_id=2026556511]
 modulate = Color(0.67058825, 0.6509804, 0.4745098, 0.72156864)
-position = Vector2(1072, 577)
+custom_minimum_size = Vector2(71.51, 74.505)
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
 scale = Vector2(0.065, 0.065)
 script = ExtResource("6_6w6hs")
 
@@ -319,10 +327,20 @@ position = Vector2(-0.00018882751, 0)
 shape = SubResource("CircleShape2D_suigy")
 debug_color = Color(2.9841065e-06, 0.65492725, 0.7636424, 0.41960785)
 
-[node name="attack_cooldown" type="Node2D" parent="." unique_id=2009219494]
+[node name="attack_cooldown" type="Control" parent="." unique_id=1264362591]
+custom_minimum_size = Vector2(0, 656.82)
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -113.475
+offset_right = 215.375
+grow_vertical = 0
 script = ExtResource("10_j4l73")
 
 [node name="Attack Cooldown" type="ProgressBar" parent="attack_cooldown" unique_id=1131332133]
+layout_mode = 1
+anchors_preset = -1
 offset_left = 24.0
 offset_top = 619.0
 offset_right = 153.0
@@ -335,6 +353,7 @@ rounded = true
 show_percentage = false
 
 [node name="Label" type="Label" parent="attack_cooldown" unique_id=166508847]
+layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
 
@@ -342,6 +361,7 @@ offset_bottom = 23.0
 modulate = Color(4.415934, 4.415934, 4.415934, 1)
 z_index = 8
 z_as_relative = false
+layout_mode = 1
 offset_left = 24.0
 offset_top = 596.0
 offset_right = 138.0

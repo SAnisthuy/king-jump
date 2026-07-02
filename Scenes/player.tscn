@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://lo55q7bgx1i3" path="res://Scripts/health.gd" id="6_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://qh0e8tliwldi" path="res://Assets/Knight Hero Platfomer/Shield Raise Walk.png" id="7_pu2lt"]
 [ext_resource type="Texture2D" uid="uid://b13v77a53tuyo" path="res://Assets/Lighting/neutral_point_light.webp" id="8_8erm5"]
+[ext_resource type="Texture2D" uid="uid://cnvujn5xj1t57" path="res://Assets/Inventory/Heal icon.png" id="12_83xs0"]
 [ext_resource type="Texture2D" uid="uid://b1ox2m3bof4b0" path="res://Assets/Inventory/spear.png" id="14_7dp3o"]
 [ext_resource type="Script" uid="uid://esq3y7arbjkj" path="res://Scripts/spear.gd" id="15_h4iuc"]
 [ext_resource type="AudioStream" uid="uid://bepipnl1nmne0" path="res://Audio/SFX/sword-slash.mp3" id="16_wpjfl"]
@@ -459,6 +460,26 @@ bg_color = Color(0.38160297, 0.181672, 0.06396194, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3wgy"]
 bg_color = Color(1.3717264e-06, 0.4533646, 0.08726459, 1)
 
+[sub_resource type="Gradient" id="Gradient_ypfnu"]
+colors = PackedColorArray(0, 1, 0, 1, 0.22352941, 0.74509805, 0, 0.5058824)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xuaoq"]
+gradient = SubResource("Gradient_ypfnu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wohnl"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(9, 9, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.01
+color = Color(0, 0.8527348, 0, 1)
+color_ramp = SubResource("GradientTexture1D_xuaoq")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_8erm5"]
 radius = 18.0
 
@@ -499,11 +520,12 @@ shape = SubResource("RectangleShape2D_0gysh")
 [node name="health" type="ProgressBar" parent="." unique_id=1997858370]
 offset_left = -14.0
 offset_top = -15.0
-offset_right = 7.0
-offset_bottom = -11.0
+offset_right = 196.0
+offset_bottom = 25.0
+scale = Vector2(0.1, 0.1)
 theme_override_styles/background = SubResource("StyleBoxFlat_fkybt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_x3wgy")
-step = 10.0
+step = 0.0
 value = 100.0
 show_percentage = false
 script = ExtResource("6_x3wgy")
@@ -513,6 +535,15 @@ position = Vector2(-2, 5)
 scale = Vector2(0.3, 0.3)
 color = Color(1, 1, 0.8392157, 1)
 texture = ExtResource("8_8erm5")
+
+[node name="HealParticles" type="GPUParticles2D" parent="." unique_id=1514810668]
+position = Vector2(-2, 7)
+emitting = false
+texture = ExtResource("12_83xs0")
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_wohnl")
 
 [node name="player hitbox" type="Area2D" parent="." unique_id=1195490525]
 visible = false
@@ -591,9 +622,6 @@ current = true
 [node name="Camera2D" type="Camera2D" parent="." unique_id=40796823]
 zoom = Vector2(4, 4)
 
-[node name="healing" type="Timer" parent="." unique_id=106515046]
-wait_time = 0.1
-
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
@@ -602,4 +630,3 @@ wait_time = 0.1
 [connection signal="timeout" from="spear/Timer" to="spear" method="_on_timer_timeout"]
 [connection signal="timeout" from="damage_cooldown" to="." method="_on_damage_cooldown_timeout"]
 [connection signal="timeout" from="coyote time" to="." method="_on_coyote_time_timeout"]
-[connection signal="timeout" from="healing" to="." method="_on_healing_timeout"]

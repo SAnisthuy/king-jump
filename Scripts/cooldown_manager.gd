@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var attack_cooldown: ProgressBar = $"Attack Cooldown"
 

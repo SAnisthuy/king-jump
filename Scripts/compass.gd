@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var bg: Sprite2D = $bg
 @onready var pin: Node2D = $Node2D

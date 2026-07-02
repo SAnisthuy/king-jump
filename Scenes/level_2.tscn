@@ -1427,7 +1427,7 @@ text = "Hide"
 expand_icon = true
 
 [connection signal="body_entered" from="Info box/enemy" to="Info box/enemy" method="_on_body_entered"]
-[connection signal="pressed" from="Minimap/hide" to="Minimap" method="_on_hide_pressed"]
+[connection signal="pressed" from="Minimap/hide" to="Minimap" method="_on_hide_button_pressed"]
 
 [editable path="Golem/Enemy"]
 [editable path="Golem/Enemy2"]

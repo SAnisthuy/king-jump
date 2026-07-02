@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://68m11ypr8tr1"]
+
+[ext_resource type="Script" uid="uid://cl1ovyrgnpcs7" path="res://Scripts/healing_potion.gd" id="1_qaugd"]
+[ext_resource type="Texture2D" uid="uid://r2u2ih0f0bo" path="res://Assets/Inventory/Small Vial - RED - Spritesheet.png" id="2_6hdgu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cpkb"]
+atlas = ExtResource("2_6hdgu")
+region = Rect2(0, 0, 14, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dfgv"]
+atlas = ExtResource("2_6hdgu")
+region = Rect2(14, 0, 14, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq0wr"]
+atlas = ExtResource("2_6hdgu")
+region = Rect2(28, 0, 14, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kij0d"]
+atlas = ExtResource("2_6hdgu")
+region = Rect2(42, 0, 14, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh5xt"]
+atlas = ExtResource("2_6hdgu")
+region = Rect2(56, 0, 14, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oabi"]
+atlas = ExtResource("2_6hdgu")
+region = Rect2(70, 0, 14, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kdho"]
+atlas = ExtResource("2_6hdgu")
+region = Rect2(84, 0, 14, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4dfi"]
+atlas = ExtResource("2_6hdgu")
+region = Rect2(98, 0, 14, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u4ru"]
+atlas = ExtResource("2_6hdgu")
+region = Rect2(112, 0, 14, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgkxs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cpkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dfgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq0wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kij0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh5xt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oabi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kdho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4dfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u4ru")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_attvo"]
+radius = 8.5440035
+
+[sub_resource type="Animation" id="Animation_qaugd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6hdgu"]
+resource_name = "idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7cpkb"]
+_data = {
+&"RESET": SubResource("Animation_qaugd"),
+&"idle": SubResource("Animation_6hdgu")
+}
+
+[node name="healing potion" type="Area2D" unique_id=114176667]
+script = ExtResource("1_qaugd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=903021208]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_rgkxs")
+frame_progress = 0.15706858
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1851941302]
+shape = SubResource("CircleShape2D_attvo")
+debug_color = Color(0.9427573, 9.914935e-06, 0.6069267, 0.41960785)
+
+[node name="Timer" type="Timer" parent="." unique_id=2058037172]
+wait_time = 0.75
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1359713816]
+libraries/ = SubResource("AnimationLibrary_7cpkb")
+autoplay = &"idle"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

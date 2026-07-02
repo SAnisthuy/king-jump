@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://0ome7kdqqjk4"
+path="res://.godot/imported/22_Slash_04.wav-2925f6633598f335ad20bfeb24a91ed8.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/SFX pack/10_Battle_SFX/22_Slash_04.wav"
+dest_files=["res://.godot/imported/22_Slash_04.wav-2925f6633598f335ad20bfeb24a91ed8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://18os8pgsjn80"]
 
 [ext_resource type="Script" uid="uid://duvrcwplwkd55" path="res://Scripts/restart_menue.gd" id="1_68mug"]
-[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="2_0kk1r"]
+[ext_resource type="FontFile" uid="uid://b7byj2n5235jx" path="res://Assets/Fonts/minecraft-font/MinecraftBold-nMK1.otf" id="2_0kk1r"]
+[ext_resource type="FontFile" uid="uid://yc4yq3ha3mvw" path="res://Assets/Fonts/minecraft-font/MinecraftRegular-Bmg3.otf" id="2_1n88m"]
 
 [node name="Restart menue" type="CanvasLayer" unique_id=28243914]
 script = ExtResource("1_68mug")
@@ -55,7 +56,7 @@ layout_mode = 2
 [node name="Button" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer" unique_id=1710955626]
 texture_filter = 2
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_0kk1r")
+theme_override_fonts/font = ExtResource("2_1n88m")
 theme_override_font_sizes/font_size = 59
 text = "Restart"
 
