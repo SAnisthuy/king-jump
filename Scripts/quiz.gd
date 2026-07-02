@@ -32,6 +32,7 @@ func close():
 	audio_stream_player.stop()
 	if player_correct:
 		collection_sfx.play()
+		GameManager.healing = true
 		await collection_sfx.finished
 	else:
 		damage_sfx.play()

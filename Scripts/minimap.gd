@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var camera_2d: Camera2D = $PanelContainer/SubViewportContainer/SubViewport/Camera2D
 @onready var knight_icon: Sprite2D = $PanelContainer/SubViewportContainer/SubViewport/KnightIcon
 
-@onready var hide: Button = $hide
+@onready var hide_button: Button = $hide
 
 
 @onready var coins: Node = $"../mapping/coins"
@@ -89,7 +89,7 @@ func _ready() -> void:
 		
 		tracking[platform] = platform_node
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var to_remove = []
 	for reference in tracking:
 		if !is_instance_valid(reference):
@@ -104,13 +104,13 @@ func _process(delta: float) -> void:
 	camera_2d.position = GameManager.player_pos
 	knight_icon.position = GameManager.player_pos
 
-func _on_hide_pressed() -> void:
+func _on_hide_button_pressed() -> void:
 	main_panel.visible = !main_panel.visible
 	secondary_panel.visible = main_panel.visible
 	if hidden:
 		hidden = false
-		hide.text = "Hide"
+		hide_button.text = "Hide"
 	else:
 		hidden = true
-		hide.text = "Show"
+		hide_button.text = "Show"
 		

@@ -107,7 +107,7 @@ func take_damage(_amount):
 	if health <= 0:
 		if GameManager.curr_level != 5:
 			var key = key_scene.instantiate()
-			get_parent().add_child(key)
+			get_parent().call_deferred("add_child", key)
 			key.global_position = Vector2(global_position.x, global_position.y)
 		queue_free()
 	

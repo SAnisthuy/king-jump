@@ -6,4 +6,4 @@ func _ready() -> void:
 	countdown.start()
 
 func _on_countdown_timeout() -> void:
-	get_tree().change_scene_to_packed(GameManager.levels[GameManager.curr_level + 1])
+	get_tree().change_scene_to_file(GameManager.levels[GameManager.curr_level + 1])

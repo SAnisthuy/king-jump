@@ -23,15 +23,16 @@ var item_texture  = {
 }
 
 func update_hotbar():
+	var icon = null
 	for i in range(slots.size()): #Manage the four slots
-		var icon = slots[i].get_node("Icon")
+		icon = slots[i].get_node("Icon")
 		var item = inventory[i]
 		if item == null:
 			icon.texture = null
 		else:
 			icon.texture = item_texture[item["name"]]
 	
-	var icon = shield.get_node("Icon")
+	icon = shield.get_node("Icon")
 	if Inventory.shield != null:
 		icon.texture = item_texture["shield"]
 	else:
@@ -79,8 +80,9 @@ func get_selected_item():
 	return inventory[selected_slot]
 		
 func update_item_health():
+	var health = null
 	for i in range(slots.size()): #shield health
-		var health = slots[i].get_node("item_health")
+		health = slots[i].get_node("item_health")
 		if inventory[i] == null:
 			health.visible = false
 		else:
@@ -89,7 +91,7 @@ func update_item_health():
 				health.value = inventory[i]["health"] * 20
 			else: # set to false so that if full health you dont show the health bar
 				health.visible = false
-	var health = shield.get_node("item_health")
+	health = shield.get_node("item_health")
 	if Inventory.shield == null: #shield health
 		health.visible = false
 	else:

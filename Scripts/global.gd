@@ -1,10 +1,10 @@
 extends Node
 var player_health = 100
-var levels = [null, preload("res://Scenes/level_1.tscn"), 
-					preload("res://Scenes/level_2.tscn"), 
-					preload("res://Scenes/level_3.tscn"),
-					preload("res://Scenes/level_4.tscn"),
-					preload("res://Scenes/necromancers_lair.tscn")]
+var levels = [null, "res://Scenes/level_1.tscn", 
+					"res://Scenes/level_2.tscn", 
+					"res://Scenes/level_3.tscn",
+					"res://Scenes/level_4.tscn",
+					"res://Scenes/necromancers_lair.tscn"]
 var curr_level = 1
 var player_pos: Vector2
 
@@ -16,3 +16,5 @@ var player_attack_cooldown = 60 #seconds
 
 var tut = {"golem": false, "skeleton_easy": false, "skeleton_hard": false, "gollux": false}
 var opening_tut = false
+
+var healing = false

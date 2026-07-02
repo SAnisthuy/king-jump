@@ -1227,6 +1227,9 @@ position = Vector2(1, 0)
 [node name="Enemy2" parent="Golem" unique_id=1650088883 instance=ExtResource("4_vcilj")]
 position = Vector2(-140, 220)
 
+[node name="door_guard" parent="." unique_id=1484689802 instance=ExtResource("15_yvrk7")]
+position = Vector2(-72, 80)
+
 [node name="Gollux" type="Node" parent="." unique_id=1152171926]
 
 [node name="SkeletonE" type="Node" parent="." unique_id=1116242118]
@@ -1422,9 +1425,6 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("22_c5xoi")
 text = "Hide"
 expand_icon = true
-
-[node name="door_guard" parent="." unique_id=1484689802 instance=ExtResource("15_yvrk7")]
-position = Vector2(-72, 80)
 
 [connection signal="body_entered" from="Info box/enemy" to="Info box/enemy" method="_on_body_entered"]
 [connection signal="pressed" from="Minimap/hide" to="Minimap" method="_on_hide_pressed"]

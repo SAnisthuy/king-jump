@@ -26,11 +26,14 @@ var attack_cooldown = 0.0
 @onready var damage_sfx: AudioStreamPlayer = $damageSFX
 @onready var block_sfx: AudioStreamPlayer = $blockSFX
 @onready var break_sfx: AudioStreamPlayer = $breakSFX
+@onready var healing: Timer = $healing
 
 var restart_screen = preload("res://Scenes/restart_menue.tscn")
 
 
 func _physics_process(delta: float) -> void:
+	if GameManager.healing:
+		heal(10)
 	if GameManager.player_health <= 0 and !dying:
 		_on_health_dead()
 		damage_sfx.play()
@@ -237,3 +240,15 @@ func knockback(pos):
 
 	knockback_velocity = dir * 100
 	knockback_timer = 0.2
+
+func heal(amount:int):
+	if amount == null:
+		GameManager.player_health += 10
+	else:
+		GameManager.player_health += amount
+	GameManager.healing = false
+	modulate = Color(0.0, 2.297, 0.0, 1.0)
+	healing.start()
+	
+func _on_healing_timeout() -> void:
+	modulate = Color(1.0, 1.0, 1.0, 1.0)
