@@ -169,6 +169,8 @@ func _on_sprite_animation_finished() -> void:
 	if sprite.animation == "jump":
 		sprite.play("idle")
 	if sprite.animation == "death":
+		TimerGlobal.timing = false
+		TimerGlobal.sector5 = TimerGlobal.time_elapsed - (TimerGlobal.sector1 + TimerGlobal.sector2 + TimerGlobal.sector3 + TimerGlobal.sector4)
 		get_tree().change_scene_to_packed(end_scene)
 		queue_free()
 		

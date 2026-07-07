@@ -18,6 +18,8 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body: Node2D) -> void:
+	if hit:
+		return
 	for thing in get_overlapping_bodies():
 		if thing.has_method("enemy"):
 			thing.take_damage(40)
@@ -31,7 +33,6 @@ func _on_body_entered(body: Node2D) -> void:
 		hit = true
 		contact_sfx.play()
 		await contact_sfx.finished
-		$CollisionShape2D.set_deferred("disabled", true)
 		despawn.start()
 
 func _on_despawn_timeout() -> void:

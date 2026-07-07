@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://5mqd5cqjxqen" path="res://Scenes/Main menue/menue icons/5.svg" id="5_j4l73"]
 [ext_resource type="Script" uid="uid://da00so1jtto5e" path="res://Scripts/compass.gd" id="6_6w6hs"]
 [ext_resource type="Texture2D" uid="uid://c1vmu8i7lq0uk" path="res://Assets/Compass/compass/1.svg" id="7_suigy"]
+[ext_resource type="Script" uid="uid://cyhmdhsox2ufk" path="res://Scripts/time_disp.gd" id="8_0sm4m"]
 [ext_resource type="Texture2D" uid="uid://yklnmuxrurrp" path="res://Assets/Compass/compass/3.svg" id="8_5vurm"]
+[ext_resource type="Script" uid="uid://dhokblj2qj6rn" path="res://Scripts/penalty_disp.gd" id="8_xvkg7"]
 [ext_resource type="Texture2D" uid="uid://dqec5wepclbv2" path="res://Assets/Compass/compass/2.svg" id="9_j4l73"]
 [ext_resource type="Script" uid="uid://baf2m20coty8" path="res://Scripts/cooldown_manager.gd" id="10_j4l73"]
 [ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="11_kpmmu"]
@@ -277,14 +279,39 @@ step = 1.0
 value = 50.0
 show_percentage = false
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=500733222]
+offset_left = 19.0
+offset_top = 23.0
+offset_right = 147.0
+offset_bottom = 63.0
+alignment = 1
+
+[node name="Time" type="Label" parent="HBoxContainer2" unique_id=1588162285]
+modulate = Color(4.415934, 4.415934, 4.415934, 1)
+z_index = 2
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_kpmmu")
+theme_override_font_sizes/font_size = 32
+text = "00:00:00"
+script = ExtResource("8_0sm4m")
+
+[node name="PenaltyDisp" type="Label" parent="HBoxContainer2" unique_id=269673157]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_kpmmu")
+theme_override_font_sizes/font_size = 1
+text = "+5.0"
+script = ExtResource("8_xvkg7")
+
 [node name="coinsNeeded" type="Label" parent="." unique_id=1493155880]
 modulate = Color(4.415934, 4.415934, 4.415934, 1)
 z_index = 2
 texture_filter = 2
 offset_left = 19.0
-offset_top = 22.0
+offset_top = 75.15
 offset_right = 247.0
-offset_bottom = 61.395832
+offset_bottom = 114.54582
 theme_override_fonts/font = ExtResource("12_kpmmu")
 theme_override_font_sizes/font_size = 32
 text = "Books needed:"

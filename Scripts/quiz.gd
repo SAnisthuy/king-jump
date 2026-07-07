@@ -40,6 +40,9 @@ func close():
 	if player_correct:
 		if GameManager.player_health <= 90:
 			GameManager.player.heal(10)
+	else:
+		TimerGlobal.penalty = true
+		TimerGlobal.add_time(5.0)
 	queue_free()	
 
 func initialize():

@@ -31,6 +31,7 @@ position = Vector2(6, 5)
 shape = SubResource("CircleShape2D_t4qxn")
 
 [node name="pickup_cooldown" type="Timer" parent="." unique_id=207660478]
+wait_time = 0.25
 one_shot = true
 
 [node name="equipSFX" type="AudioStreamPlayer" parent="." unique_id=1418638279]

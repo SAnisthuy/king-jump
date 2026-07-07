@@ -151,7 +151,7 @@ shape = SubResource("CircleShape2D_attvo")
 debug_color = Color(0.9427573, 9.914935e-06, 0.6069267, 0.41960785)
 
 [node name="Timer" type="Timer" parent="." unique_id=2058037172]
-wait_time = 0.75
+wait_time = 0.25
 one_shot = true
 autostart = true
 

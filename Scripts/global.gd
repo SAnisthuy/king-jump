@@ -21,3 +21,6 @@ var tut = {"golem": false, "skeleton_easy": false, "skeleton_hard": false, "goll
 var opening_tut = false
 
 var healing = false
+
+var best_score = INF
+var sectors_bests = [INF, INF, INF, INF, INF]

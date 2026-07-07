@@ -1372,6 +1372,9 @@ position = Vector2(91.00007, 50)
 scale = Vector2(0.03, 0.026)
 texture = ExtResource("22_2awvy")
 
+[node name="door_guard" parent="Minimap/PanelContainer/SubViewportContainer/SubViewport" unique_id=1484689802 instance=ExtResource("18_s80er")]
+position = Vector2(876, -207)
+
 [node name="hide" type="Button" parent="Minimap" unique_id=830835832]
 offset_left = 928.0
 offset_top = 104.0
@@ -1382,7 +1385,7 @@ theme_override_fonts/font = ExtResource("22_hed5s")
 text = "Hide"
 expand_icon = true
 
-[node name="door_guard" parent="." unique_id=1484689802 instance=ExtResource("18_s80er")]
+[node name="door_guard" parent="." unique_id=248732049 instance=ExtResource("18_s80er")]
 position = Vector2(876, -207)
 
 [connection signal="body_entered" from="Lower death handling/Deathzone" to="Lower death handling/Deathzone" method="_on_body_entered"]

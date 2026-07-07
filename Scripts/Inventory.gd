@@ -14,7 +14,10 @@ var inventory = [{"name": "sword", "health": 5},
 
 var shield = null
 
-var items = {"spear": preload("res://Scenes/spear.tscn"), "shield": preload("res://Scenes/shield.tscn") ,"key": preload("res://Scenes/key.tscn")}
+var items = {"spear": preload("res://Scenes/spear.tscn"), 
+			"shield": preload("res://Scenes/shield.tscn"),
+			"key": preload("res://Scenes/key.tscn")}
+
 
 var item_map = {"shield": 0, "spear": 1, "sword": 2}
 

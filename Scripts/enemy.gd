@@ -52,7 +52,8 @@ func enemy():
 
 func take_damage(_amount):
 	var potion = potion_scene.instantiate()
-	get_parent().add_child(potion)
+	#get_parent().add_child(potion)
+	get_parent().call_deferred("add_child", potion)
 	potion.global_position = Vector2(global_position.x, global_position.y+10)
 	queue_free()
 

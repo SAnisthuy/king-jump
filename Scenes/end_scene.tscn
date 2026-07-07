@@ -1,13 +1,16 @@
 [gd_scene format=4 uid="uid://bdvqv2lwv8ft2"]
 
-[ext_resource type="FontFile" uid="uid://c8toacur2nbbv" path="res://Assets/Fonts/Oldenburg/Oldenburg-Regular.ttf" id="1_5pkqa"]
 [ext_resource type="Texture2D" uid="uid://qhess0d4fiul" path="res://Assets/maintileset/background_/dungeon_.png" id="1_20ln8"]
+[ext_resource type="Script" uid="uid://damacwp66eyyg" path="res://Scripts/end_scene.gd" id="1_xom27"]
 [ext_resource type="Texture2D" uid="uid://cpklwvhhar0i2" path="res://Assets/maintileset/midground_/dungeon_.png" id="2_foadp"]
 [ext_resource type="Texture2D" uid="uid://uscojrxquhxq" path="res://Assets/maintileset/objects_/staticObjects_.png" id="3_xom27"]
 [ext_resource type="Texture2D" uid="uid://dfnaaulsprw7x" path="res://Assets/maintileset/midground_/desertDungeon_.png" id="4_kwb7v"]
 [ext_resource type="Texture2D" uid="uid://ir1onf1h2012" path="res://Assets/maintileset/background_/desertDungeon_.png" id="5_f7vrb"]
+[ext_resource type="FontFile" uid="uid://b7byj2n5235jx" path="res://Assets/Fonts/minecraft-font/MinecraftBold-nMK1.otf" id="7_kwb7v"]
+[ext_resource type="FontFile" uid="uid://yc4yq3ha3mvw" path="res://Assets/Fonts/minecraft-font/MinecraftRegular-Bmg3.otf" id="8_f7vrb"]
+[ext_resource type="FontFile" uid="uid://cbi47b4pl5g2a" path="res://Assets/Fonts/minecraft-font/MinecraftItalic-R8Mo.otf" id="8_kwb7v"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4hnb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwb7v"]
 texture = ExtResource("1_20ln8")
 0:0/0 = 0
 1:0/0 = 0
@@ -64,7 +67,7 @@ texture = ExtResource("1_20ln8")
 4:8/0 = 0
 5:8/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8tjku"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f7vrb"]
 texture = ExtResource("2_foadp")
 0:0/0 = 0
 1:0/0 = 0
@@ -253,7 +256,7 @@ texture = ExtResource("2_foadp")
 16:11/0 = 0
 17:11/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pofh2"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4hnb"]
 texture = ExtResource("3_xom27")
 3:0/0 = 0
 4:0/0 = 0
@@ -398,7 +401,7 @@ texture = ExtResource("3_xom27")
 15:8/0 = 0
 16:8/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8s5f5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8tjku"]
 texture = ExtResource("4_kwb7v")
 0:0/0 = 0
 1:0/0 = 0
@@ -443,7 +446,7 @@ texture = ExtResource("4_kwb7v")
 4:6/0 = 0
 5:6/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n6kfr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pofh2"]
 texture = ExtResource("5_f7vrb")
 0:0/0 = 0
 1:0/0 = 0
@@ -501,13 +504,54 @@ texture = ExtResource("5_f7vrb")
 5:8/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_c5fa4"]
-sources/0 = SubResource("TileSetAtlasSource_b4hnb")
-sources/1 = SubResource("TileSetAtlasSource_8tjku")
-sources/2 = SubResource("TileSetAtlasSource_pofh2")
-sources/3 = SubResource("TileSetAtlasSource_8s5f5")
-sources/4 = SubResource("TileSetAtlasSource_n6kfr")
+sources/0 = SubResource("TileSetAtlasSource_kwb7v")
+sources/1 = SubResource("TileSetAtlasSource_f7vrb")
+sources/2 = SubResource("TileSetAtlasSource_b4hnb")
+sources/3 = SubResource("TileSetAtlasSource_8tjku")
+sources/4 = SubResource("TileSetAtlasSource_pofh2")
+
+[sub_resource type="Gradient" id="Gradient_f7vrb"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.7265625, 0.55359936, 0.0040467326, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kwb7v"]
+gradient = SubResource("Gradient_f7vrb")
+width = 80
+
+[sub_resource type="Gradient" id="Gradient_b4hnb"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.7265625, 0.55359936, 0.0040467326, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b4hnb"]
+gradient = SubResource("Gradient_b4hnb")
+width = 80
+
+[sub_resource type="Gradient" id="Gradient_8tjku"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.7265625, 0.55359936, 0.0040467326, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8tjku"]
+gradient = SubResource("Gradient_8tjku")
+width = 80
+
+[sub_resource type="Gradient" id="Gradient_pofh2"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.7265625, 0.55359936, 0.0040467326, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pofh2"]
+gradient = SubResource("Gradient_pofh2")
+width = 80
+
+[sub_resource type="Gradient" id="Gradient_kwb7v"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.7265625, 0.55359936, 0.0040467326, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f7vrb"]
+gradient = SubResource("Gradient_kwb7v")
+width = 80
 
 [node name="EndScene" type="CanvasLayer" unique_id=1508141523]
+script = ExtResource("1_xom27")
 
 [node name="Control" type="Control" parent="." unique_id=1298296758]
 layout_mode = 3
@@ -532,20 +576,178 @@ scale = Vector2(4.505, 4.505)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAABAABAAAAAAABAAEAAAAAAAAAAAACAAEABAACAAEAAAACAAIAAAAAAAAAAAADAAIABAADAAIAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQABAACAAMAAAAIAAUABAAAAAEAAAAJAAUAAAAAAAAAAAAKAAUABAACAAEAAAAAAAEABAAAAAEAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUABAAAAAEAAAALAAAABAABAAAAAAAKAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAABAAFAAAAAAAEAAAABAAEAAAAAAADAAAAAAAAAAAAAAACAAAABAACAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEABAADAAEAAAAHAAEABAABAAAAAAAFAAIABAAFAAIAAAAGAAIABAAAAAEAAAAHAAIAAAAAAAAAAAAIAAIABAACAAEAAAAJAAIABAADAAEAAAAKAAIAAAAAAAAAAAADAAMAAAAAAAAAAAALAAIABAABAAIAAAAJAAMABAADAAIAAAAIAAMAAAAAAAAAAAAHAAMABAABAAIAAAAKAAMABAAEAAIAAAABAAIABAABAAIAAAABAAMAAAAAAAAAAAABAAQABAABAAAAAAABAAUAAAAAAAAAAAACAAMABAACAAMAAAACAAQABAACAAAAAAACAAUABAACAAEAAAADAAQAAAAAAAAAAAADAAUABAADAAEAAAAEAAQABAAEAAAAAAAEAAUABAACAAAAAAAFAAQABAAFAAAAAAAFAAUAAAAAAAAAAAAGAAUABAAEAAAAAAAHAAUABAAFAAAAAAAIAAEABAACAAAAAAAJAAEAAAAAAAAAAAAJAAQABAABAAAAAAAKAAEABAAAAAEAAAAKAAQABAACAAAAAAALAAEABAAFAAAAAAALAAMABAAFAAIAAAALAAQABAAFAAMAAAALAAUABAADAAEAAAAFAAMABAAFAAMAAAAGAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAIABAAEAAIAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAYABAABAAIAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAACAAYABAAAAAEAAAACAAcABAACAAMAAAACAAgAAAAAAAAAAAADAAYABAADAAIAAAADAAcABAABAAIAAAADAAgAAAAAAAAAAAAEAAYABAAEAAIAAAAEAAcAAAAAAAAAAAAEAAgABAACAAMAAAAFAAYABAAFAAIAAAAFAAcABAAFAAMAAAAFAAgAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcABAAEAAIAAAAGAAgAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcABAAFAAIAAAAHAAgABAAAAAEAAAAIAAYAAAAAAAAAAAAIAAcABAABAAAAAAAIAAgAAAAAAAAAAAAJAAYABAABAAIAAAAJAAcABAACAAAAAAAJAAgABAACAAEAAAAKAAYAAAAAAAAAAAAKAAcABAACAAMAAAAKAAgABAADAAEAAAALAAYABAADAAIAAAALAAcABAAEAAAAAAALAAgAAAAAAAAAAAAMAAAABAACAAAAAAAMAAEABAACAAEAAAAMAAIAAAAAAAAAAAAMAAMABAACAAMAAAAMAAQABAAEAAAAAAAMAAUAAAAAAAAAAAAMAAYABAAEAAIAAAAMAAcABAAFAAAAAAAMAAgAAAAAAAAAAAANAAAAAAAAAAAAAAANAAEABAADAAEAAAANAAIABAADAAIAAAANAAMAAAAAAAAAAAANAAQABAAFAAAAAAANAAUAAAAAAAAAAAANAAYABAAFAAIAAAANAAcABAAFAAMAAAANAAgAAAAAAAAAAAAOAAAABAAEAAAAAAAOAAEAAAAAAAAAAAAOAAIABAAEAAIAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYABAAAAAEAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAAABAAFAAAAAAAPAAEAAAAAAAAAAAAPAAIABAAFAAIAAAAPAAMABAAFAAMAAAAPAAQAAAAAAAAAAAAPAAUABAABAAAAAAAPAAYAAAAAAAAAAAAPAAcABAABAAIAAAAPAAgAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_c5fa4")
 
-[node name="Label" type="Label" parent="Control" unique_id=1219343322]
-texture_filter = 2
+[node name="HBoxContainer" type="VBoxContainer" parent="Control" unique_id=725232763]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -357.0
+offset_top = -128.5
+offset_right = 357.0
+offset_bottom = 128.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_5pkqa")
+
+[node name="Label" type="Label" parent="Control/HBoxContainer" unique_id=1219343322]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_kwb7v")
 theme_override_font_sizes/font_size = 75
 text = "Game Completed!"
+horizontal_alignment = 1
+
+[node name="Seperator" type="Control" parent="Control/HBoxContainer" unique_id=2026541216]
+custom_minimum_size = Vector2(0, 6.95)
+layout_mode = 2
+
+[node name="best score" type="Label" parent="Control/HBoxContainer" unique_id=174655802]
+texture_filter = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.38846976, 1.96951, 0, 1)
+theme_override_fonts/font = ExtResource("8_kwb7v")
+theme_override_font_sizes/font_size = 41
+text = "New Best Score!"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="Control/HBoxContainer" unique_id=1045580229]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_f7vrb")
+theme_override_font_sizes/font_size = 50
+text = "00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seperator2" type="Control" parent="Control/HBoxContainer" unique_id=469783057]
+custom_minimum_size = Vector2(0, 6.95)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer" unique_id=654426948]
+custom_minimum_size = Vector2(0, 14.63)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sec1" type="VBoxContainer" parent="Control/HBoxContainer/HBoxContainer" unique_id=501086360]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/HBoxContainer/Sec1" unique_id=1341326122]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_f7vrb")
+text = "00:00:00"
+horizontal_alignment = 1
+
+[node name="Diff" type="Label" parent="Control/HBoxContainer/HBoxContainer/Sec1" unique_id=371841382]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65234375, 0.65234375, 0.65234375, 1)
+theme_override_fonts/font = ExtResource("8_f7vrb")
+theme_override_font_sizes/font_size = 16
+text = "+0.05"
+horizontal_alignment = 1
+
+[node name="Sector" type="TextureRect" parent="Control/HBoxContainer/HBoxContainer/Sec1" unique_id=891608335]
+custom_minimum_size = Vector2(0, 7.78)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_kwb7v")
+
+[node name="Sec2" type="VBoxContainer" parent="Control/HBoxContainer/HBoxContainer" unique_id=583751981]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/HBoxContainer/Sec2" unique_id=1115278715]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_f7vrb")
+text = "00:00:00"
+horizontal_alignment = 1
+
+[node name="Diff" type="Label" parent="Control/HBoxContainer/HBoxContainer/Sec2" unique_id=1181907124]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65234375, 0.65234375, 0.65234375, 1)
+theme_override_fonts/font = ExtResource("8_f7vrb")
+theme_override_font_sizes/font_size = 16
+text = "+0.05"
+horizontal_alignment = 1
+
+[node name="Sector" type="TextureRect" parent="Control/HBoxContainer/HBoxContainer/Sec2" unique_id=250964803]
+custom_minimum_size = Vector2(0, 7.78)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_b4hnb")
+
+[node name="Sec3" type="VBoxContainer" parent="Control/HBoxContainer/HBoxContainer" unique_id=1025500483]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/HBoxContainer/Sec3" unique_id=1756879884]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_f7vrb")
+text = "00:00:00"
+horizontal_alignment = 1
+
+[node name="Diff" type="Label" parent="Control/HBoxContainer/HBoxContainer/Sec3" unique_id=666513350]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65234375, 0.65234375, 0.65234375, 1)
+theme_override_fonts/font = ExtResource("8_f7vrb")
+theme_override_font_sizes/font_size = 16
+text = "+0.05"
+horizontal_alignment = 1
+
+[node name="Sector" type="TextureRect" parent="Control/HBoxContainer/HBoxContainer/Sec3" unique_id=1481995329]
+custom_minimum_size = Vector2(0, 7.78)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_8tjku")
+
+[node name="Sec4" type="VBoxContainer" parent="Control/HBoxContainer/HBoxContainer" unique_id=61566766]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/HBoxContainer/Sec4" unique_id=36942473]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_f7vrb")
+text = "00:00:00"
+horizontal_alignment = 1
+
+[node name="Diff" type="Label" parent="Control/HBoxContainer/HBoxContainer/Sec4" unique_id=2132278689]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65234375, 0.65234375, 0.65234375, 1)
+theme_override_fonts/font = ExtResource("8_f7vrb")
+theme_override_font_sizes/font_size = 16
+text = "+0.05"
+horizontal_alignment = 1
+
+[node name="Sector" type="TextureRect" parent="Control/HBoxContainer/HBoxContainer/Sec4" unique_id=853743748]
+custom_minimum_size = Vector2(0, 7.78)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_pofh2")
+
+[node name="Sec5" type="VBoxContainer" parent="Control/HBoxContainer/HBoxContainer" unique_id=114628759]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/HBoxContainer/Sec5" unique_id=1014125726]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_f7vrb")
+text = "00:00:00"
+horizontal_alignment = 1
+
+[node name="Diff" type="Label" parent="Control/HBoxContainer/HBoxContainer/Sec5" unique_id=7445806]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65234375, 0.65234375, 0.65234375, 1)
+theme_override_fonts/font = ExtResource("8_f7vrb")
+theme_override_font_sizes/font_size = 16
+text = "+0.05"
+horizontal_alignment = 1
+
+[node name="Sector" type="TextureRect" parent="Control/HBoxContainer/HBoxContainer/Sec5" unique_id=742994343]
+custom_minimum_size = Vector2(0, 7.78)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_f7vrb")
+
+[node name="Seperator3" type="Control" parent="Control/HBoxContainer" unique_id=2131094842]
+custom_minimum_size = Vector2(0, 6.95)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/HBoxContainer" unique_id=11237080]
+custom_minimum_size = Vector2(0, 52.42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_f7vrb")
+theme_override_font_sizes/font_size = 50
+text = "Menu"
+
+[connection signal="pressed" from="Control/HBoxContainer/Button" to="." method="_on_button_pressed"]

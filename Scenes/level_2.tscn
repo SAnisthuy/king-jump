@@ -1416,6 +1416,9 @@ position = Vector2(91.00007, 50)
 scale = Vector2(0.03, 0.026)
 texture = ExtResource("21_c5xoi")
 
+[node name="door_guard" parent="Minimap/PanelContainer/SubViewportContainer/SubViewport" unique_id=759796274 instance=ExtResource("15_yvrk7")]
+position = Vector2(-72, 80)
+
 [node name="hide" type="Button" parent="Minimap" unique_id=1869175057]
 offset_left = 928.0
 offset_top = 104.0

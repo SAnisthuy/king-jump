@@ -923,6 +923,9 @@ position = Vector2(-81, 64)
 [node name="torch9" parent="Minimap/PanelContainer/SubViewportContainer/SubViewport/Lighting/torches" unique_id=1875047521 instance=ExtResource("10_chwpn")]
 position = Vector2(-205, -8)
 
+[node name="door_guard" parent="Minimap/PanelContainer/SubViewportContainer/SubViewport" unique_id=1450948967 instance=ExtResource("13_6r07y")]
+position = Vector2(371, 32)
+
 [node name="hide" type="Button" parent="Minimap" unique_id=34751973]
 offset_left = 928.0
 offset_top = 104.0
